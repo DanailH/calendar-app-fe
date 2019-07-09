@@ -16,17 +16,19 @@ class CalendarWeek extends React.Component {
     }
 
     return props.week.map((day, i) => {
+      const isHoliday = this.props.listOfUsedHolidays.indexOf(day);
+
       if (!day) return <CalendarDay key={i} type={undefined} date={day} />;
 
       switch (weekDays[new Date(day).getDay()]) {
         case 'sat':
-          return <CalendarDay key={i} type={'weekend'} date={day}  />
+          return <CalendarDay key={i} type={'weekend'} date={day} />
           break;
         case 'sun':
           return <CalendarDay key={i} type={'weekend'} date={day} />
           break;
         default:
-          return <CalendarDay key={i} type={'weekday'} date={day} />
+          return <CalendarDay useHoliday={this.props.useHoliday} isHoliday={isHoliday > -1 ? true : false} canUseHolidays={this.props.canUseHolidays} key={i} type={'weekday'} date={day} />
       }
     });
   }
