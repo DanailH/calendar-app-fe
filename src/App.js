@@ -60,10 +60,6 @@ class App extends React.Component {
   }
 
   render() {
-    fetch('/users')
-      .then(res => res.json())
-      .then(console.log);
-
     const remainigHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
 
     return (
