@@ -23,10 +23,8 @@ class CalendarWeek extends React.Component {
       switch (weekDays[new Date(day).getDay()]) {
         case 'sat':
           return <CalendarDay key={i} type={'weekend'} date={day} />
-          break;
         case 'sun':
           return <CalendarDay key={i} type={'weekend'} date={day} />
-          break;
         default:
           return <CalendarDay useHoliday={this.props.useHoliday} isHoliday={isHoliday > -1 ? true : false} canUseHolidays={this.props.canUseHolidays} key={i} type={'weekday'} date={day} />
       }
