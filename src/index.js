@@ -7,6 +7,7 @@ import {
 import './index.css';
 import App from './App';
 import Login from './components/Login';
+import Register from './components/Register';
 import PrivateRoute from './privateRoute';
 import * as serviceWorker from './serviceWorker';
 
@@ -14,6 +15,7 @@ const Routing = (
   <Router>
     <PrivateRoute exact path="/" component={App} />
     <Route path="/login" component={Login} />
+    <Route path="/register" component={Register} />
   </Router>
 )
 

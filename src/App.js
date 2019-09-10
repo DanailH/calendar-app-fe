@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
@@ -9,7 +10,8 @@ class App extends React.Component {
     selectedMonth: 1,
     holidays: 0,
     numberOfUsedHolidays: 0,
-    listOfUsedHolidays: []
+    listOfUsedHolidays: [],
+    isAuth: true
   }
 
   constructor() {
@@ -19,6 +21,7 @@ class App extends React.Component {
     this.selectMonth = this.selectMonth.bind(this);
     this.setHolidays = this.setHolidays.bind(this);
     this.useHoliday = this.useHoliday.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   selectYear(year) {
@@ -59,26 +62,41 @@ class App extends React.Component {
     })
   }
 
+  handleLogOut() {
+    fetch('/auth/logout')
+    .then(localStorage.removeItem('_id'))
+    .then(this.setState({isAuth: false}))
+    .catch(error => console.error('Error:', error));
+  }
+
   render() {
     const remainigHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
 
-    return (
-      <div className="d-flex">
-        <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+    if (!this.state.isAuth) {
+      return <Redirect to='/' />
+    }
 
-        <div className="w-100 pt-2">
-          <div className="d-flex align-items-center align-self-center">
-            <div className="w-20">
-              <SetHolidays setHolidays={this.setHolidays} />
+    return (
+      <div>
+        <button type="button" className="btn btn-warning" onClick={this.handleLogOut}>Log out</button>
+        <br/><br/>
+        <div className="d-flex">
+          <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+
+          <div className="w-100 pt-2">
+            <div className="d-flex align-items-center align-self-center">
+              <div className="w-20">
+                <SetHolidays setHolidays={this.setHolidays} />
+              </div>
+              <div className="w-50 ml-auto">
+                {`Remaining days: ${remainigHolidays}`}
+                <br />
+                {`Total number of holidays: ${this.state.holidays}`}
+              </div>
             </div>
-            <div className="w-50 ml-auto">
-              {`Remaining days: ${remainigHolidays}`}
-              <br />
-              {`Total number of holidays: ${this.state.holidays}`}
-            </div>
+            <br />
+            <CalendarMain useHoliday={this.useHoliday} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={!!remainigHolidays} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
           </div>
-          <br />
-          <CalendarMain useHoliday={this.useHoliday} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={!!remainigHolidays} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
         </div>
       </div>
     )
