@@ -13,8 +13,10 @@ class SetHolidays extends React.Component {
   }
 
   handleHolidaysChange(event) {
+    const count = event.target.value - 0;
+
     this.setState({
-      holidaysValue: event.target.value
+      holidaysValue: count
     });
   }
 
@@ -22,6 +24,14 @@ class SetHolidays extends React.Component {
     event.preventDefault();
 
     this.props.setHolidays(this.state.holidaysValue);
+  }
+
+  componentDidUpdate(nextProps) {
+    if (this.props.count !== nextProps.count) {
+      this.setState({
+        holidaysValue: this.props.count
+      });
+    }
   }
 
   render() {

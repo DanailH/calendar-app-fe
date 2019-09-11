@@ -11,7 +11,8 @@ class App extends React.Component {
     holidays: 0,
     numberOfUsedHolidays: 0,
     listOfUsedHolidays: [],
-    isAuth: true
+    isAuth: true,
+    userId: localStorage.getItem('_id')
   }
 
   constructor() {
@@ -38,9 +39,24 @@ class App extends React.Component {
   }
 
   setHolidays(numberOfHolidays) {
-    this.setState({
-      holidays: numberOfHolidays
-    });
+    const data = {
+      userId: this.state.userId,
+      holidaysCount: numberOfHolidays,
+      selectedHolidays: this.state.listOfUsedHolidays
+    };
+
+    fetch('/holiday/holidays', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(res => this.setState({
+      holidays: res.holidaysCount
+    }))
+    .catch(error => console.error('Error:', error));
   }
 
   useHoliday(holiday, used) {
@@ -56,10 +72,25 @@ class App extends React.Component {
       }
     }
 
-    this.setState({
-      listOfUsedHolidays: holidaysArr,
-      numberOfUsedHolidays: used ? this.state.numberOfUsedHolidays + 1 : this.state.numberOfUsedHolidays - 1
-    })
+    const data = {
+      userId: this.state.userId,
+      holidaysCount: this.state.holidays,
+      selectedHolidays: holidaysArr
+    };
+
+    fetch('/holiday/holidays', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(res => this.setState({
+        listOfUsedHolidays: holidaysArr,
+        numberOfUsedHolidays: used ? this.state.numberOfUsedHolidays + 1 : this.state.numberOfUsedHolidays - 1
+      }))
+      .catch(error => console.error('Error:', error));
   }
 
   handleLogOut() {
@@ -67,6 +98,16 @@ class App extends React.Component {
     .then(localStorage.removeItem('_id'))
     .then(this.setState({isAuth: false}))
     .catch(error => console.error('Error:', error));
+  }
+
+  componentDidMount() {
+    fetch(`/holiday/holidays?userId=${this.state.userId}`)
+      .then(res => res.json())
+      .then(res => this.setState({
+        holidays: res.holidaysCount,
+        listOfUsedHolidays: res.selectedHolidays
+      }))
+      .catch(error => console.error('Error:', error));
   }
 
   render() {
@@ -86,7 +127,7 @@ class App extends React.Component {
           <div className="w-100 pt-2">
             <div className="d-flex align-items-center align-self-center">
               <div className="w-20">
-                <SetHolidays setHolidays={this.setHolidays} />
+                <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
               </div>
               <div className="w-50 ml-auto">
                 {`Remaining days: ${remainigHolidays}`}

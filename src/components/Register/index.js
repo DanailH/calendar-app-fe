@@ -7,10 +7,6 @@ class Register extends React.Component {
 
     const elements = event.target.elements;
 
-    console.log(elements.email.value)
-    console.log(elements.password.value)
-    console.log(elements.passwordRe.value)
-
     const formData = {
       email: elements.email.value,
       password: elements.password.value,
