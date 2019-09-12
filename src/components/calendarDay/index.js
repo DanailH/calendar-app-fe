@@ -5,18 +5,19 @@ class CalendarDay extends React.Component {
     super();
 
     this.setAsHoliday = this.setAsHoliday.bind(this);
+    this.isWeekend = this.isWeekend.bind(this);
   }
 
   isWeekend(date) {
     const day = new Date(date);
 
-    if (day.getDay() === 6 || day.getDay() === 0) return true;
+    if (day.getDay() === 6 || day.getDay() === 0 || this.props.type === 'public') return true;
 
     return false;
   }
 
   setAsHoliday() {
-    if (!this.props.canUseHolidays && !this.props.isHoliday) return;
+    if (!this.props.canUseHolidays && !this.props.isHoliday || this.props.type === 'public') return;
 
     this.props.useHoliday(this.props.date, !this.props.isHoliday)
   }

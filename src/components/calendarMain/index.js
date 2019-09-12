@@ -39,10 +39,10 @@ class CalendarMain extends React.Component {
   printCalendarWeeks() {
     const numberOfWeeks = this.state.weeks.length;
     return this.state.weeks.map((week, i) => {
-      if (i === 0) return <CalendarWeek useHoliday={this.props.useHoliday} listOfUsedHolidays={this.props.listOfUsedHolidays} canUseHolidays={this.props.canUseHolidays} key={i} week={week} initialWeek={true} lastWeek={false} />
-      if (i === numberOfWeeks - 1) return <CalendarWeek useHoliday={this.props.useHoliday} listOfUsedHolidays={this.props.listOfUsedHolidays} canUseHolidays={this.props.canUseHolidays} key={i} week={week} initialWeek={false} lastWeek={true} />
+      if (i === 0) return <CalendarWeek useHoliday={this.props.useHoliday} publicHolidays={this.props.publicHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} canUseHolidays={this.props.canUseHolidays} key={i} week={week} initialWeek={true} lastWeek={false} />
+      if (i === numberOfWeeks - 1) return <CalendarWeek useHoliday={this.props.useHoliday} publicHolidays={this.props.publicHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} canUseHolidays={this.props.canUseHolidays} key={i} week={week} initialWeek={false} lastWeek={true} />
 
-      return <CalendarWeek useHoliday={this.props.useHoliday} canUseHolidays={this.props.canUseHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} key={i} week={week} initialWeek={false} lastWeek={false} />
+      return <CalendarWeek useHoliday={this.props.useHoliday} canUseHolidays={this.props.canUseHolidays} publicHolidays={this.props.publicHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} key={i} week={week} initialWeek={false} lastWeek={false} />
     });
   }
 

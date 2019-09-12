@@ -3,14 +3,17 @@ import { Redirect } from 'react-router-dom';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
+import SetCountry from './components/setCountry';
 
 class App extends React.Component {
   state = {
     selectedYear: new Date().getFullYear(),
     selectedMonth: 1,
     holidays: 0,
+    country: '',
     numberOfUsedHolidays: 0,
     listOfUsedHolidays: [],
+    publicHolidays: [],
     isAuth: true,
     userId: localStorage.getItem('_id')
   }
@@ -23,6 +26,7 @@ class App extends React.Component {
     this.setHolidays = this.setHolidays.bind(this);
     this.useHoliday = this.useHoliday.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
+    this.setCountry = this.setCountry.bind(this);
   }
 
   selectYear(year) {
@@ -41,6 +45,7 @@ class App extends React.Component {
   setHolidays(numberOfHolidays) {
     const data = {
       userId: this.state.userId,
+      country: this.state.country,
       holidaysCount: numberOfHolidays,
       selectedHolidays: this.state.listOfUsedHolidays
     };
@@ -59,6 +64,34 @@ class App extends React.Component {
     .catch(error => console.error('Error:', error));
   }
 
+  setCountry(country) {
+    const data = {
+      userId: this.state.userId,
+      country: country,
+      holidaysCount: this.state.holidays,
+      selectedHolidays: this.state.listOfUsedHolidays
+    };
+
+    fetch('/holiday/holidays', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(
+      fetch(`/holiday/public?countryCode=${country}`)
+        .then(res => res.json())
+        .then(res => this.setState({
+          country: res.countryCode,
+          publicHolidays: res.publicHolidays
+        }))
+        .catch(error => console.error('Error:', error))
+    )
+    .catch(error => console.error('Error:', error));
+
+  }
+
   useHoliday(holiday, used) {
     let holidaysArr = this.state.listOfUsedHolidays;
 
@@ -74,6 +107,7 @@ class App extends React.Component {
 
     const data = {
       userId: this.state.userId,
+      country: this.state.country,
       holidaysCount: this.state.holidays,
       selectedHolidays: holidaysArr
     };
@@ -103,15 +137,26 @@ class App extends React.Component {
   componentDidMount() {
     fetch(`/holiday/holidays?userId=${this.state.userId}`)
       .then(res => res.json())
-      .then(res => this.setState({
-        holidays: res.holidaysCount,
-        listOfUsedHolidays: res.selectedHolidays,
-        numberOfUsedHolidays: res.selectedHolidays.length
-      }))
+      .then(res => {
+        const userData = res;
+
+        fetch(`/holiday/public?countryCode=${res.country}`)
+          .then(res => res.json())
+          .then(res => this.setState({
+            country: res.countryCode,
+            publicHolidays: res.publicHolidays,
+            holidays: userData.holidaysCount,
+            listOfUsedHolidays: userData.selectedHolidays,
+            numberOfUsedHolidays: userData.selectedHolidays.length
+          }))
+          .catch(error => console.error('Error:', error))
+      })
       .catch(error => console.error('Error:', error));
   }
 
   render() {
+    console.log(this.state)
+
     const remainigHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
 
     if (!this.state.isAuth) {
@@ -126,9 +171,11 @@ class App extends React.Component {
           <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
 
           <div className="w-100 pt-2">
-            <div className="d-flex align-items-center align-self-center">
-              <div className="w-20">
+            <div className="d-flex align-self-center">
+              <div className="w-20 flex-column">
                 <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
+                <br />
+                <SetCountry country={this.state.country} setCountry={this.setCountry} />
               </div>
               <div className="w-50 ml-auto">
                 {`Remaining days: ${remainigHolidays}`}
@@ -137,7 +184,7 @@ class App extends React.Component {
               </div>
             </div>
             <br />
-            <CalendarMain useHoliday={this.useHoliday} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={!!remainigHolidays} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+            <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={!!remainigHolidays} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
           </div>
         </div>
       </div>
