@@ -1,10 +1,7 @@
 import React from "react";
-import {
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
-const isLogin = () => {
+const isLoggedIn = () => {
   if (localStorage.getItem('_id')) {
     return true;
   }
@@ -17,7 +14,7 @@ function PrivateRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        isLogin() ? (
+        isLoggedIn() ? (
           <Component {...props} />
         ) : (
           <Redirect

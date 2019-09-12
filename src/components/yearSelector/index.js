@@ -8,7 +8,8 @@ class YearSelector extends React.Component {
 
     this.state = {
       currentDate: currentDate,
-      currentYear: currentDate.getFullYear()
+      currentYear: currentDate.getFullYear(),
+      isCurrentYear: true
     };
   }
 
@@ -31,7 +32,8 @@ class YearSelector extends React.Component {
 
     this.setState({
       currentDate: selectedDate,
-      currentYear: selectedDate.getFullYear()
+      currentYear: selectedDate.getFullYear(),
+      isCurrentYear: !this.state.isCurrentYear
     });
 
     this.props.resetSelectedMonth();
@@ -41,13 +43,13 @@ class YearSelector extends React.Component {
   render() {
     return (
       <div className="d-flex align-items-center justify-content-center">
-        <button className="btn" onClick={this.changeYear.bind(this, 'down')}>
+        <button className="btn" disabled={this.state.isCurrentYear} onClick={this.changeYear.bind(this, 'down')}>
           <i className="material-icons">arrow_left</i>
         </button>
 
         <div className="h5">{this.state.currentYear}</div>
 
-        <button className="btn" onClick={this.changeYear.bind(this, 'up')}>
+        <button className="btn" disabled={!this.state.isCurrentYear} onClick={this.changeYear.bind(this, 'up')}>
           <i className="material-icons">arrow_right</i>
         </button>
       </div>

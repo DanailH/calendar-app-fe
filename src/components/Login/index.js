@@ -32,8 +32,13 @@ class Login extends React.Component {
       }
     })
     .then(res => res.json())
-    .then(response => localStorage.setItem('_id', response._id))
-    .then(this.setState({isAuth: true}))
+    .then(res => {
+      localStorage.setItem('_id', res._id);
+
+      this.setState({
+        isAuth: true
+      })
+    })
     .catch(error => console.error('Error:', error));
   }
 

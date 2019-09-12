@@ -105,7 +105,8 @@ class App extends React.Component {
       .then(res => res.json())
       .then(res => this.setState({
         holidays: res.holidaysCount,
-        listOfUsedHolidays: res.selectedHolidays
+        listOfUsedHolidays: res.selectedHolidays,
+        numberOfUsedHolidays: res.selectedHolidays.length
       }))
       .catch(error => console.error('Error:', error));
   }
