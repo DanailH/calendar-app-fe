@@ -16,9 +16,9 @@ class CalendarWeek extends React.Component {
     }
 
     return props.week.map((day, i) => {
+      const prepDayForPHolidayCheck = day ? day.split('T')[0] : undefined;
       const isHoliday = this.props.listOfUsedHolidays.indexOf(day);
-      const isPublicHoliday = this.props.publicHolidays.indexOf(day);
-
+      const isPublicHoliday = this.props.publicHolidays.indexOf(prepDayForPHolidayCheck);
       const dateType = isPublicHoliday > -1 ? 'public' : 'weekday';
 
       if (!day) return <CalendarDay key={i} type={undefined} date={day} />;
