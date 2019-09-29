@@ -1,10 +1,13 @@
-.MuiSvgIcon-root {
+.MuiDialogContent-root .MuiSvgIcon-root {
     color: green;
-    width: 2em;
-    height: 2em;
-
+    font-size: 3rem;
+    margin-right: 16px;
 }
 
-.MuiDialogActions-root.MuiButtonBase-root {
+.MuiDialogActions-root .MuiButtonBase-root {
     margin: 0 auto 24px;
+}
+
+.MuiDialogContent-root:first-child {
+    padding-top: 24px;
 }

@@ -1,18 +1,10 @@
-.MuiSvgIcon-root {
+.MuiList-root .MuiSvgIcon-root {
     font-size: 1.4rem !important;
     opacity: 0.8;
 }
 
 .MuiMenuItem-gutters {
     padding: 0 8px !important;
-}
-
-.header {
-    color: #878787;
-    text-transform: uppercase;
-    font-size: 1.3rem !important;
-    padding: 24px;
-    font-weight: 200 !important;
 }
 
 .user-container {
@@ -44,7 +36,8 @@
     }
 }
 
-.MuiButton-contained {
+.MuiButton-contained,
+a .MuiButton-contained  {
     border-radius: 25px !important;
     background: linear-gradient(to right, #eb7873, #ee9578);
     padding: 2% 16% !important;
@@ -63,10 +56,15 @@
     }
 }
 
-.MuiButton-contained.user-button {
+a:hover {
+    text-decoration: none;
+}
+
+.MuiButton-contained.user-button,
+a .user-button {
     position: relative;
     bottom: -65px;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto !important;
 }
 

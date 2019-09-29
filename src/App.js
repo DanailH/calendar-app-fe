@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
@@ -177,9 +176,6 @@ class App extends React.Component {
         <Grid container>
           <Grid item xs={2} className="menu-container">
             <Logo/>
-            <Typography variant="h5" className="header">
-              Set up
-            </Typography>
             <MenuList>
               <MenuItem>
                 <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />

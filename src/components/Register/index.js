@@ -1,9 +1,8 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -58,9 +57,11 @@ class Register extends React.Component {
           </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button type="submit" href={'/login'} variant="contained">
+            <Link to="/login">
+              <Button type="submit" variant="contained" className="user-button">
               Login
             </Button>
+            </Link>
           </DialogActions>
         </Dialog>
         <Container maxWidth="sm" className="user-form">

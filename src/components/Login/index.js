@@ -1,9 +1,8 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Logo from '../Logo/Logo';
 
 class Login extends React.Component {
@@ -74,9 +73,7 @@ class Login extends React.Component {
               variant="outlined"
             />
             <div className="user-link">
-              <Link href={'/register'}>
-                Register an account
-            </Link>
+              <Link to="/register">Register an account</Link>
             </div>
             <Button type="submit" variant="contained" className="user-button">
               Login

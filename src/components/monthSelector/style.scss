@@ -15,16 +15,16 @@
     text-align: center;
 }
 
-.MuiTypography-root.MuiTypography-body1 {
+.MuiListItemText-root .MuiTypography-root.MuiTypography-body1 {
     font-size: 0.7rem;
     line-height: 1.8rem;
     opacity: 0.6;
 }
 
 .Mui-selected .MuiTypography-body1 {
-  font-size: 1.3rem;
-  line-height: 1.8rem;
-  opacity: 1;
+  font-size: 1.3rem !important;
+  line-height: 1.8rem !important;
+  opacity: 1 !important;
 }
 
 .Mui-selected:hover .MuiTypography-body1 {
@@ -36,4 +36,9 @@
     font-size: 1.3rem;
     line-height: 1.8rem;
     opacity: 1;
+}
+
+.months .MuiListItem-root.Mui-selected, .months .MuiListItem-root.Mui-selected:hover {
+  border-radius: 25px;
+  background: #d8d9f7;
 }
