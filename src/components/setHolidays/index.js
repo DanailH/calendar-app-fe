@@ -5,7 +5,7 @@ import './style.scss';
 
 class SetHolidays extends React.Component {
   state = {
-    holidaysValue: ''
+    holidaysValue: 0
   }
 
   constructor() {
@@ -38,6 +38,7 @@ class SetHolidays extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <form onBlur={this.setHolidaysNumber}>
         <TextField
