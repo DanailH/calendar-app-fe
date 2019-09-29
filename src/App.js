@@ -11,6 +11,7 @@ import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
 import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
+import Logo from './components/Logo/Logo';
 import './App.scss';
 import './styles/base.scss';
 
@@ -175,7 +176,7 @@ class App extends React.Component {
       <div className="main-container">
         <Grid container>
           <Grid item xs={2} className="menu-container">
-            <img src='./logo.png' className="img-container" />
+            <Logo/>
             <Typography variant="h5" className="header">
               Set up
             </Typography>

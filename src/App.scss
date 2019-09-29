@@ -7,7 +7,7 @@
     height: 100vh;
 }
 
-.MuiButton-root {
+.account-container .MuiButton-root {
     float: right;
     margin-left: 24px !important;
 }
@@ -50,13 +50,6 @@
     top: 50%;
     transform: translate(0,-50%);
     background: white;
-}
-
-.img-container {
-    height: 12%;
-    margin: 0 auto;
-    display: block;
-    margin-top: 16px;
 }
 
 .account-container {

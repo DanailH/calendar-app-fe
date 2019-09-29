@@ -1,8 +1,10 @@
 import React from 'react';
-import {
-  Link,
-  Redirect
-} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import Logo from '../Logo/Logo';
 
 class Login extends React.Component {
   state = {
@@ -31,15 +33,15 @@ class Login extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => res.json())
-    .then(res => {
-      localStorage.setItem('_id', res._id);
+      .then(res => res.json())
+      .then(res => {
+        localStorage.setItem('_id', res._id);
 
-      this.setState({
-        isAuth: true
+        this.setState({
+          isAuth: true
+        })
       })
-    })
-    .catch(error => console.error('Error:', error));
+      .catch(error => console.error('Error:', error));
   }
 
   render() {
@@ -48,20 +50,39 @@ class Login extends React.Component {
     }
 
     return (
-      <div className="col-5 mt-5 mx-auto">
-        <form onSubmit={this.handleLogin}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" className="form-control" id="password" placeholder="Password" />
-          </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
-        <br /><br />
-        <Link to="/register">Register an account!</Link>
+      <div className="user-container">
+        <Container maxWidth="sm" className="user-form">
+          <Logo />
+          <form onSubmit={this.handleLogin}>
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              margin="normal"
+              variant="outlined"
+              autoFocus
+            />
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              margin="normal"
+              variant="outlined"
+            />
+            <div className="user-link">
+              <Link href={'/register'}>
+                Register an account
+            </Link>
+            </div>
+            <Button type="submit" variant="contained" className="user-button">
+              Login
+            </Button>
+          </form>
+        </Container>
       </div>
     );
   }
