@@ -95,7 +95,7 @@ class App extends React.Component {
         .then(res => res.json())
         .then(res => this.setState({
           country: res.countryCode,
-          publicHolidays: res.publicHolidays
+          publicHolidays: res.publicHolidays.map(holiday => holiday.split('T')[0])
         }))
         .catch(error => console.error('Error:', error))
       )
@@ -155,7 +155,7 @@ class App extends React.Component {
           .then(res => res.json())
           .then(res => this.setState({
             country: res.countryCode,
-            publicHolidays: res.publicHolidays,
+            publicHolidays: res.publicHolidays.map(holiday => holiday.split('T')[0]),
             holidays: userData.holidaysCount,
             listOfUsedHolidays: userData.selectedHolidays,
             numberOfUsedHolidays: userData.selectedHolidays.length
