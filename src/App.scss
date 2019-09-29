@@ -2,7 +2,8 @@
     box-sizing: border-box;
 }
 
-.main-container {
+.main-container,
+.menu-container {
     height: 100vh;
 }
 
@@ -13,10 +14,6 @@
 
 .menu-container {
     background: #DED6D6;
-}
-
-.nav-container {
-    padding: 16px;
 }
 
 .months-container {
@@ -53,4 +50,16 @@
     top: 50%;
     transform: translate(0,-50%);
     background: white;
+}
+
+.img-container {
+    height: 12%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 16px;
+}
+
+.account-container {
+    float: right;
+    padding: 16px;
 }

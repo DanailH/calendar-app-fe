@@ -11,7 +11,6 @@ import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
 import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
-import Header from './components/Header/Header';
 import './App.scss';
 import './styles/base.scss';
 
@@ -174,19 +173,9 @@ class App extends React.Component {
 
     return (
       <div className="main-container">
-        <Grid container justify="space-between" alignItems="center" className="nav-container">
-          <Header/>
-          <div className="d-flex">
-            <Avatar>DH</Avatar>
-            <Button variant="outlined" size="small" color="secondary" onClick={this.handleLogOut}>
-              Log out
-          </Button>
-
-          </div>
-        </Grid>
-
         <Grid container>
           <Grid item xs={2} className="menu-container">
+            <img src='./logo.png' className="img-container" />
             <Typography variant="h5" className="header">
               Set up
             </Typography>
@@ -209,6 +198,13 @@ class App extends React.Component {
           </Grid>
 
           <Grid item xs={7} className="main-calendar">
+            <div className="d-flex account-container">
+              <Avatar>DH</Avatar>
+              <Button variant="outlined" size="small" color="secondary" onClick={this.handleLogOut}>
+                Log out
+              </Button>
+            </div>
+
             <div className="center-block w-100">
               <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={!!remainingHolidays} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
               <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
