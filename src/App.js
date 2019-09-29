@@ -167,7 +167,7 @@ class App extends React.Component {
 
   render() {
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
-
+    console.log(this.state)
     if (!this.state.isAuth) {
       return <Redirect to='/' />
     }
@@ -190,8 +190,10 @@ class App extends React.Component {
             </MenuList>
           </Grid>
 
-          <Grid container xs={2} justify="center" alignItems="center" className="months-container d-flex">
-            <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+          <Grid item xs={2} className="months-container d-flex">
+            <Grid container justify="center" alignItems="center">
+              <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+            </Grid>
           </Grid>
 
           <Grid item xs={1} className="curve-container">
@@ -207,7 +209,7 @@ class App extends React.Component {
             </div>
 
             <div className="center-block w-100">
-              <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={!!remainingHolidays} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+              <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
               <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
             </div>
           </Grid>

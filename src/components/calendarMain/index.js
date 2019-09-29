@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import CalendarWeek from '../calendarWeek';
 import './style.scss';
 
-const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'FriYay', 'Saturday', 'Sunday'];
+export const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const getWeeksArray = (year, month) => {
   if (!year || !month) return [];
@@ -49,13 +49,11 @@ class CalendarMain extends React.Component {
   }
 
   renderDays() {
-    return weekDays.map(
-      days => (
-        <Grid item sm spacing={1} className= "weekdays">
-            {days}
-         </Grid>
-      )
-    );
+    return weekDays.map((days, i) => (
+      <Grid item sm key={i} className="weekdays">
+        {days}
+      </Grid>
+    ));
   }
 
   render() {

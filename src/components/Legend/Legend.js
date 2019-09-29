@@ -29,12 +29,11 @@ class Legend extends React.Component {
 
             setTimeout(() => this.setState({
                 isSnackBarOpen: false
-            }), 8000);
+            }), 5000);
         }
     }
 
     render() {
-        console.log(this.props)
         return (
             <Grid container justify="space-between" alignItems="center" className="legend-container totals-container">
                 <div>
@@ -75,14 +74,16 @@ class Legend extends React.Component {
                         </Fab>
                     </Tooltip>
                 </div>
-                <Snackbar
-                    open={this.state.isSnackBarOpen}
-                    TransitionComponent={this.TransitionUp}
-                    ContentProps={{
-                        'aria-describedby': 'message-id',
-                    }}
-                    message={<span id="message-id">I love snacks</span>}
-                />
+                <div className="position-bottom">
+                    <Snackbar
+                        open={this.state.isSnackBarOpen}
+                        TransitionComponent={this.TransitionUp}
+                        ContentProps={{
+                            'aria-describedby': 'message-id',
+                        }}
+                        message={<span id="message-id">I love snacks</span>}
+                    />
+                </div>
             </Grid>
         )
     }

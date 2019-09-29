@@ -1,11 +1,13 @@
 @keyframes SELECT-MONTH-ANIMATION {
-  0%   { 
+  0%   {
     opacity: 0.7;
     font-size: 0.7rem;
+    line-height: 1.8rem;
 }
-  100% { 
+  100% {
     opacity: 1;
     font-size: 1.3rem;
+    line-height: 1.8rem;
   }
 }
 
@@ -15,15 +17,23 @@
 
 .MuiTypography-root.MuiTypography-body1 {
     font-size: 0.7rem;
+    line-height: 1.8rem;
     opacity: 0.6;
 }
 
-.MuiButtonBase-root.MuiListItem-button {
-    transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
+.Mui-selected .MuiTypography-body1 {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  opacity: 1;
 }
-.nav.MuiListItem-root.Mui-selected,
+
+.Mui-selected:hover .MuiTypography-body1 {
+  animation: none !important;
+}
+
 .MuiListItem-button:hover .MuiTypography-body1 {
-    animation: SELECT-MONTH-ANIMATION 0.5s;
+    animation: SELECT-MONTH-ANIMATION 0.2s ease;
     font-size: 1.3rem;
+    line-height: 1.8rem;
     opacity: 1;
 }

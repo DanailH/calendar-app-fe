@@ -36,7 +36,6 @@ class MonthSelector extends React.Component {
 
   isMonthActive(targetMonth) {
     return this.state.currentMonth === targetMonth;
-    
   }
 
   activateMonth(month) {
@@ -53,14 +52,15 @@ class MonthSelector extends React.Component {
 
   renderMonths() {
     return months.map(
-      month => (
+      (month, i) => (
         <ListItem button
-          key={month}
-          // selected={this.state.activeMonthIndex}
-          onClick={this.activateMonth.bind(this, month)}>
+          key={i}
+          selected={this.state.activeMonthIndex === i}
+          onClick={this.activateMonth.bind(this, month)}
+        >
           <ListItemText>
             {month}
-            </ListItemText>
+          </ListItemText>
         </ListItem>
       )
     );
@@ -69,7 +69,7 @@ class MonthSelector extends React.Component {
   render() {
     return (
       <List component="nav">
-        {this.renderMonths()}
+        { this.renderMonths() }
       </List>
     )
   };
