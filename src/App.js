@@ -1,9 +1,19 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
 import SetCountry from './components/setCountry';
+import Legend from './components/Legend/Legend';
+import Header from './components/Header/Header';
+import './App.scss';
+import './styles/base.scss';
 
 class App extends React.Component {
   state = {
@@ -57,14 +67,15 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => res.json())
-    .then(res => this.setState({
-      holidays: res.holidaysCount
-    }))
-    .catch(error => console.error('Error:', error));
+      .then(res => res.json())
+      .then(res => this.setState({
+        holidays: res.holidaysCount
+      }))
+      .catch(error => console.error('Error:', error));
   }
 
   setCountry(country) {
+    console.log(country)
     const data = {
       userId: this.state.userId,
       country: country,
@@ -79,7 +90,7 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(
+      .then(
       fetch(`/holiday/public?countryCode=${country}`)
         .then(res => res.json())
         .then(res => this.setState({
@@ -87,8 +98,8 @@ class App extends React.Component {
           publicHolidays: res.publicHolidays
         }))
         .catch(error => console.error('Error:', error))
-    )
-    .catch(error => console.error('Error:', error));
+      )
+      .catch(error => console.error('Error:', error));
 
   }
 
@@ -113,12 +124,12 @@ class App extends React.Component {
     };
 
     fetch('/holiday/holidays', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
       .then(res => res.json())
       .then(res => this.setState({
         listOfUsedHolidays: holidaysArr,
@@ -129,9 +140,9 @@ class App extends React.Component {
 
   handleLogOut() {
     fetch('/auth/logout')
-    .then(localStorage.removeItem('_id'))
-    .then(this.setState({isAuth: false}))
-    .catch(error => console.error('Error:', error));
+      .then(localStorage.removeItem('_id'))
+      .then(this.setState({ isAuth: false }))
+      .catch(error => console.error('Error:', error));
   }
 
   componentDidMount() {
@@ -139,7 +150,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(res => {
         const userData = res;
-
+        console.log(userData)
         fetch(`/holiday/public?countryCode=${res.country}`)
           .then(res => res.json())
           .then(res => this.setState({
@@ -155,38 +166,55 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-
-    const remainigHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
+    const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
 
     if (!this.state.isAuth) {
       return <Redirect to='/' />
     }
 
     return (
-      <div>
-        <button type="button" className="btn btn-warning" onClick={this.handleLogOut}>Log out</button>
-        <br/><br/>
-        <div className="d-flex">
-          <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+      <div className="main-container">
+        <Grid container justify="space-between" alignItems="center" className="nav-container">
+          <Header/>
+          <div className="d-flex">
+            <Avatar>DH</Avatar>
+            <Button variant="outlined" size="small" color="secondary" onClick={this.handleLogOut}>
+              Log out
+          </Button>
 
-          <div className="w-100 pt-2">
-            <div className="d-flex align-self-center">
-              <div className="w-20 flex-column">
-                <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
-                <br />
-                <SetCountry country={this.state.country} setCountry={this.setCountry} />
-              </div>
-              <div className="w-50 ml-auto">
-                {`Remaining days: ${remainigHolidays}`}
-                <br />
-                {`Total number of holidays: ${this.state.holidays}`}
-              </div>
-            </div>
-            <br />
-            <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={!!remainigHolidays} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
           </div>
-        </div>
+        </Grid>
+
+        <Grid container>
+          <Grid item xs={2} className="menu-container">
+            <Typography variant="h5" className="header">
+              Set up
+            </Typography>
+            <MenuList>
+              <MenuItem>
+                <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
+              </MenuItem>
+              <MenuItem>
+                <SetCountry country={this.state.country} setCountry={this.setCountry} />
+              </MenuItem>
+            </MenuList>
+          </Grid>
+
+          <Grid container xs={2} justify="center" alignItems="center" className="months-container d-flex">
+            <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+          </Grid>
+
+          <Grid item xs={1} className="curve-container">
+            <div className="curve"></div>
+          </Grid>
+
+          <Grid item xs={7} className="main-calendar">
+            <div className="center-block w-100">
+              <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={!!remainingHolidays} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+              <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
+            </div>
+          </Grid>
+        </Grid>
       </div>
     )
   };

@@ -1,0 +1,30 @@
+
+.MuiFab-primary {
+    background: #F0C808 !important;
+}
+
+.MuiFab-secondary {
+    background: #64B6D6 !important;
+}
+
+.MuiFab-root {
+    margin-left: 16px !important;
+}
+
+.MuiBadge-badge .MuiSvgIcon-root {
+    color: black;
+    margin-bottom: 16px;
+    margin-left: 16px;
+    width: 0.7em;
+}
+
+.totals-container {
+    background: #DED6D6;
+    padding: 16px;
+    border-radius: 5px;
+
+    .totals {
+        color: #9facbd;
+    }
+}
+

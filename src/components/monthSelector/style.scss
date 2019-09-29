@@ -1,0 +1,29 @@
+@keyframes SELECT-MONTH-ANIMATION {
+  0%   { 
+    opacity: 0.7;
+    font-size: 0.7rem;
+}
+  100% { 
+    opacity: 1;
+    font-size: 1.3rem;
+  }
+}
+
+.MuiListItemText-root {
+    text-align: center;
+}
+
+.MuiTypography-root.MuiTypography-body1 {
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+.MuiButtonBase-root.MuiListItem-button {
+    transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
+}
+.nav.MuiListItem-root.Mui-selected,
+.MuiListItem-button:hover .MuiTypography-body1 {
+    animation: SELECT-MONTH-ANIMATION 0.5s;
+    font-size: 1.3rem;
+    opacity: 1;
+}

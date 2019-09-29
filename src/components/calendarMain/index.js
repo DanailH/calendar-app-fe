@@ -1,7 +1,9 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import CalendarWeek from '../calendarWeek';
+import './style.scss';
 
-const weekDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'FriYay', 'Saturday', 'Sunday'];
 
 const getWeeksArray = (year, month) => {
   if (!year || !month) return [];
@@ -10,7 +12,7 @@ const getWeeksArray = (year, month) => {
   const result = [[]];
 
   while (date.getMonth() === month - 1) {
-    if (weekDays[date.getDay()] !== 'mon') {
+    if (weekDays[date.getDay()] !== 'Tuesday') {
       result[result.length - 1].push(date.toISOString());
     } else {
       if(result.length !== 1 || result[0].length !== 0) {
@@ -46,11 +48,24 @@ class CalendarMain extends React.Component {
     });
   }
 
+  renderDays() {
+    return weekDays.map(
+      days => (
+        <Grid item sm spacing={1} className= "weekdays">
+            {days}
+         </Grid>
+      )
+    );
+  }
+
   render() {
     return (
-      <div className="align-items-center align-self-center w-100">
+      <Grid container justify={'center'} >
+        {this.renderDays()}
+      <Grid container className="calendar-container">
         { this.printCalendarWeeks() }
-      </div>
+      </Grid>
+      </Grid>
     );
   }
 }

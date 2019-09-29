@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+.main-container {
+    height: 100vh;
+}
+
+.MuiButton-root {
+    float: right;
+    margin-left: 24px !important;
+}
+
+.menu-container {
+    background: #DED6D6;
+}
+
+.nav-container {
+    padding: 16px;
+}
+
+.months-container {
+    background: #FFF1D0;
+    display: flex;
+}
+
+.MuiList-root .MuiListItem-button:hover {
+    background-color: transparent;
+}
+
+.effect-container {
+    // border: 70px solid white;
+    border-top-left-radius: 200%;
+    border-bottom-left-radius: 200%;    
+}
+
+.main-calendar {
+    // padding: 36px 0;
+    position: relative;
+}
+
+.curve-container {
+    overflow: hidden;
+    position: relative;
+    background: #FFF1D0;
+}
+
+.curve {
+    border-radius: 50%;
+    padding: 900%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0,-50%);
+    background: white;
+}

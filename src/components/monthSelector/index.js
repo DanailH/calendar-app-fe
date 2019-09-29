@@ -1,4 +1,8 @@
 import React from 'react';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import './style.scss';
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -32,6 +36,7 @@ class MonthSelector extends React.Component {
 
   isMonthActive(targetMonth) {
     return this.state.currentMonth === targetMonth;
+    
   }
 
   activateMonth(month) {
@@ -49,22 +54,23 @@ class MonthSelector extends React.Component {
   renderMonths() {
     return months.map(
       month => (
-        <li
+        <ListItem button
           key={month}
-          onClick={this.activateMonth.bind(this, month)}
-          className={`c-pointer list-group-item list-group-item-action ${this.isMonthActive(month) ? 'active' : ''}`}
-        >
-          { month }
-        </li>
+          // selected={this.state.activeMonthIndex}
+          onClick={this.activateMonth.bind(this, month)}>
+          <ListItemText>
+            {month}
+            </ListItemText>
+        </ListItem>
       )
     );
   }
 
   render() {
     return (
-      <ul className="list-group list-group-flush text-center">
-        { this.renderMonths() }
-      </ul>
+      <List component="nav">
+        {this.renderMonths()}
+      </List>
     )
   };
 }

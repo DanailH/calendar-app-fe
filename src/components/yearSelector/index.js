@@ -1,4 +1,8 @@
 import React from 'react';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import './style.scss';
 
 const currentDate = new Date();
 
@@ -16,7 +20,7 @@ class YearSelector extends React.Component {
   changeYear(direction) {
     let newYear;
 
-    switch(direction) {
+    switch (direction) {
       case 'up':
         newYear = this.state.currentDate.setFullYear(this.state.currentDate.getFullYear() + 1);
         break;
@@ -42,17 +46,19 @@ class YearSelector extends React.Component {
 
   render() {
     return (
-      <div className="d-flex align-items-center justify-content-center">
-        <button className="btn" disabled={this.state.isCurrentYear} onClick={this.changeYear.bind(this, 'down')}>
-          <i className="material-icons">arrow_left</i>
-        </button>
+      <Grid container direction="row" alignItems="center" justify="center">
+        <IconButton className="material-icons" disabled={this.state.isCurrentYear} onClick={this.changeYear.bind(this, 'down')}>
+          arrow_left
+        </IconButton>
 
-        <div className="h5">{this.state.currentYear}</div>
+        <Typography variant="h5">
+          {this.state.currentYear}
+        </Typography>
 
-        <button className="btn" disabled={!this.state.isCurrentYear} onClick={this.changeYear.bind(this, 'up')}>
-          <i className="material-icons">arrow_right</i>
-        </button>
-      </div>
+        <IconButton className="material-icons" disabled={!this.state.isCurrentYear} onClick={this.changeYear.bind(this, 'up')}>
+          arrow_right
+        </IconButton>
+      </Grid>
     )
   };
 }

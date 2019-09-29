@@ -1,4 +1,6 @@
 import React from 'react';
+import Box from '@material-ui/core/Box';
+import './style.scss';
 
 class CalendarDay extends React.Component {
   constructor() {
@@ -27,10 +29,10 @@ class CalendarDay extends React.Component {
     const targetDate = date ? new Date(date).getDate() : '';
 
     return (
-      <div onClick={this.setAsHoliday} className={`m-1 w-25 h5 font-weight-normal ${this.props.isHoliday ? 'bg-info' : ''} ${targetDate && !this.isWeekend(date) ? 'c-pointer list-group-item-action' : ''} ${this.isWeekend(date) ? 'bg-success' : ''} ${type ? 'card' : ''}`}>
-        <div className={`card-body text-center ${this.isWeekend(date) || this.props.isHoliday ? 'text-light' : ''}`}>
+      <div onClick={this.setAsHoliday} className={`day-container ${targetDate && !this.isWeekend(date) ? 'c-pointer' : ''} ${this.isWeekend(date) ? 'weekend-bgr' : ''} ${this.props.type === 'public' ? 'public-holiday' : ''}`}>
+        <Box component="span" className={` ${this.isWeekend(date) || this.props.isHoliday ? 'weekend-text-color' : 'day'} ${this.props.isHoliday ? 'selected-holiday' : ''}`}>
           { targetDate }
-        </div>
+        </Box>
       </div>
     );
   }
