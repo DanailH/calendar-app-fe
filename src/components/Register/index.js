@@ -1,13 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DoneIcon from '@material-ui/icons/Done';
+import Logo from '../Logo/Logo';
+import './style.scss';
 
 class Register extends React.Component {
-  handleRegister(event) {
+  state = {
+    isRegisterSuccessful: false
+  }
+
+  handleRegister = (event) => {
     event.preventDefault();
 
     const elements = event.target.elements;
-
     const formData = {
+      name: elements.name.value,
+      surname: elements.surname.value,
       email: elements.email.value,
       password: elements.password.value,
       passwordRe: elements.passwordRe.value
@@ -20,32 +36,88 @@ class Register extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
-    .catch(error => console.error('Error:', error));
+      .then(res => res.json())
+      .then(response => {
+        this.setState({
+          isRegisterSuccessful: true
+        });
+
+        console.log('Success:', JSON.stringify(response))
+      })
+      .catch(error => console.error('Error:', error));
   }
 
   render() {
     return (
-      <div className="col-5 mt-5 mx-auto">
-        <Link to="/login">Back to login</Link>
-        <br /><br />
-        <form onSubmit={this.handleRegister}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" className="form-control" id="password" placeholder="Password" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Repeat password</label>
-            <input type="password" name="passwordRe" className="form-control" id="passwordRe" placeholder="Repeat password" />
-          </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+      <div className="user-container">
+        <Dialog open={this.state.isRegisterSuccessful} aria-labelledby="responsive-dialog-title">
+          <DialogContent className="d-flex">
+            <DoneIcon/>
+            <DialogContentText>
+              Congratulation! You are successfully register and now you can start planning you vacation days.
+          </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button type="submit" href={'/login'} variant="contained">
+              Login
+            </Button>
+          </DialogActions>
+        </Dialog>
+        <Container maxWidth="sm" className="user-form">
+          <Logo />
+          <form onSubmit={this.handleRegister}>
+            <TextField
+              id="name"
+              label="Name"
+              type="text"
+              name="name"
+              placeholder="Name"
+              margin="normal"
+              variant="outlined"
+              autoFocus
+            />
+            <TextField
+              id="surname"
+              label="Surname"
+              type="text"
+              name="surname"
+              placeholder="Surname"
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              id="passwordRe"
+              label="Repeat password"
+              type="password"
+              name="passwordRe"
+              placeholder="Repeat the password"
+              margin="normal"
+              variant="outlined"
+            />
+            <Button type="submit" variant="contained" className="user-button">
+              Register
+            </Button>
           </form>
-        </div>
+        </Container>
+      </div>
     );
   }
 }
