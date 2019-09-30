@@ -3,17 +3,31 @@
 }
 
 .weekend-bgr {
+    @extend .day;
+    color: gray;
     background: #EAEAEA;
 }
 
 .public-holiday {
     @extend .day;
+    color: white;
     background: #64B6D6;
 }
 
-.selected-holiday:hover,
 .day:hover {
+    background: #EAEAEA;
+    color: gray;
+    transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+.selected-holiday:hover {
     background: #B79C12;
+    color: white;
+    transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+.public-holiday:hover {
+    background: #4e8da6;
     color: white;
     transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;
 }
@@ -25,20 +39,17 @@
     padding: 6px 0;
 }
 
-.selected-holiday {
+.c-pointer {
     cursor: pointer;
+}
+
+.selected-holiday {
     color: white;
     background: #F0C808;
     @extend .day;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.MuiBox-root:hover,
-.MuiBox-root:active,
-.c-pointer {
-    cursor: pointer;
-
-}
 
 .day-container {
     display: flex;

@@ -1,8 +1,9 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import CalendarDay from '../calendarDay';
-import weekDays from '../calendarMain';
 import './style.scss';
+
+const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 class CalendarWeek extends React.Component {
   printCalendarDays() {
@@ -27,7 +28,7 @@ class CalendarWeek extends React.Component {
       switch (weekDays[new Date(day).getDay()]) {
         case 'Saturday':
           return <Grid item sm key={i} className="week-container"><CalendarDay key={i} type={'weekend'} date={day} /></Grid>
-        case 'Sunday':
+          case 'Sunday':
           return <Grid item sm key={i} className="week-container"><CalendarDay key={i} type={'weekend'} date={day} /></Grid>
         default:
           return <Grid item sm key={i} className="week-container"><CalendarDay useHoliday={this.props.useHoliday} isHoliday={isHoliday > -1 ? true : false} canUseHolidays={this.props.canUseHolidays} key={i} type={dateType} date={day} /></Grid>

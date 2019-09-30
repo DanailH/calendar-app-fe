@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import CalendarWeek from '../calendarWeek';
 import './style.scss';
 
-export const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const getWeeksArray = (year, month) => {
   if (!year || !month) return [];

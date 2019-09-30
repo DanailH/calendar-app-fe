@@ -28,10 +28,10 @@ class CalendarDay extends React.Component {
   render() {
     const { date, type } = this.props;
     const targetDate = date ? new Date(date).getDate() : '';
-
+    console.log(type)
     return (
-      <div onClick={this.setAsHoliday} className={`day-container ${targetDate && !this.isWeekend(date) ? 'c-pointer' : ''} ${this.isWeekend(date) ? 'weekend-bgr' : ''} `}>
-        <Box component="span" className={`${this.isWeekend(date) || this.props.isHoliday ? 'weekend-text-color' : 'day'} ${this.props.isHoliday ? 'selected-holiday' : ''} ${this.props.type === 'public' ? 'public-holiday' : ''}`}>
+      <div onClick={this.setAsHoliday} className="day-container">
+        <Box component="span" className={`${type ? 'day' : ''} ${type !== 'weekend' && type ? 'c-pointer' : ''} ${this.isWeekend(date) || this.props.isHoliday ? 'weekend-text-color' : ''} ${this.isWeekend(date) ? 'weekend-bgr' : ''} ${this.props.isHoliday ? 'selected-holiday' : ''} ${this.props.type === 'public' ? 'public-holiday' : ''}`}>
           { targetDate }
         </Box>
       </div>
