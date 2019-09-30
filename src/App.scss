@@ -7,17 +7,17 @@
     height: 100vh;
 }
 
-.MuiButton-root {
+.account-container .MuiButton-root {
     float: right;
     margin-left: 24px !important;
 }
 
 .menu-container {
-    background: #DED6D6;
+    background: #d8d9f7;
 }
 
 .months-container {
-    background: #FFF1D0;
+    background: #f2f2ff;
     display: flex;
 }
 
@@ -26,20 +26,18 @@
 }
 
 .effect-container {
-    // border: 70px solid white;
     border-top-left-radius: 200%;
     border-bottom-left-radius: 200%;    
 }
 
 .main-calendar {
-    // padding: 36px 0;
     position: relative;
 }
 
 .curve-container {
     overflow: hidden;
     position: relative;
-    background: #FFF1D0;
+    background: #f2f2ff;
 }
 
 .curve {
@@ -50,13 +48,6 @@
     top: 50%;
     transform: translate(0,-50%);
     background: white;
-}
-
-.img-container {
-    height: 12%;
-    margin: 0 auto;
-    display: block;
-    margin-top: 16px;
 }
 
 .account-container {

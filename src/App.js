@@ -5,12 +5,12 @@ import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
 import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
+import Logo from './components/Logo/Logo';
 import './App.scss';
 import './styles/base.scss';
 
@@ -175,10 +175,7 @@ class App extends React.Component {
       <div className="main-container">
         <Grid container>
           <Grid item xs={2} className="menu-container">
-            <img src='./logo.png' alt="" className="img-container" />
-            <Typography variant="h5" className="header">
-              Set up
-            </Typography>
+            <Logo/>
             <MenuList>
               <MenuItem>
                 <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />

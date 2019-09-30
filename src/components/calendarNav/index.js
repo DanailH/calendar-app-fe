@@ -1,5 +1,4 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import YearSelector from '../yearSelector';
 import MonthSelector from '../monthSelector';
 
@@ -30,9 +29,6 @@ class CalendarNav extends React.Component {
   render() {
     return (
       <div>
-        <Typography variant="h5" className="header">
-          Calendar
-      </Typography>
         <YearSelector resetSelectedMonth={this.resetMonth} selectYear={this.props.selectYear} />
         <MonthSelector selectMonth={this.props.selectMonth} setMonthIndex={this.setMonthIndex} activeMonthIndex={this.state.activeMonthIndex} />
       </div>
