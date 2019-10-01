@@ -15,28 +15,36 @@
 }
 
 .day:hover {
-    background: #EAEAEA;
-    color: gray;
-    transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;
+    border: 3px solid #F0C808;
+    line-height: 30px;
 }
 
 .selected-holiday:hover {
+    border: none;
+    line-height: 36px;
     background: #B79C12;
     color: white;
-    transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;
 }
 
 .public-holiday:hover {
+    border: none;
+    line-height: 36px;
     background: #4e8da6;
     color: white;
-    transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+.weekend-bgr:hover {
+    border: none;
+    line-height: 36px;
 }
 
 .day {
+    box-sizing: border-box;
     border-radius: 50%;
     width: 36px;
     text-align: center;
-    padding: 6px 0;
+    line-height: 36px;
+    height: 36px;
 }
 
 .c-pointer {
@@ -44,9 +52,9 @@
 }
 
 .selected-holiday {
+    @extend .day;
     color: white;
     background: #F0C808;
-    @extend .day;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
