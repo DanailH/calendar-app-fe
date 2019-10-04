@@ -1,6 +1,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import IconButton from '@material-ui/core/IconButton';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import './style.scss';
 
 class SetHolidays extends React.Component {
@@ -40,19 +42,25 @@ class SetHolidays extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <form onBlur={this.setHolidaysNumber}>
+      <form className="input-group">
         <TextField
           id="outlined-name"
           label="Holidays per year"
-          placeholder="Add the number of your holidays"
+          placeholder="Add holidays"
           name="holidays"
           type="number"
-          value={this.state.holidaysValue}
+          value={this.state.holidaysValue > 0 ? this.state.holidaysValue : ''}
           onChange={this.handleHolidaysChange}
+          className = "nav-fields"
           margin="normal"
           variant="outlined"
           InputProps={{
-            startAdornment: <CalendarTodayIcon/>,
+            startAdornment: <CalendarTodayIcon />,
+            endAdornment: (
+              <IconButton onClick={this.setHolidaysNumber} size="small" aria-label="directions">
+                <ChevronRightIcon fontSize="inherit" />
+              </IconButton>
+            )
           }}
         />
       </form>

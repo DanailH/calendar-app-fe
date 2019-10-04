@@ -12,13 +12,13 @@
 }
 
 .MuiListItemText-root {
-    text-align: center;
+  text-align: center;
 }
 
 .MuiListItemText-root .MuiTypography-root.MuiTypography-body1 {
-    font-size: 0.7rem;
-    line-height: 1.8rem;
-    opacity: 0.6;
+  font-size: 0.7rem;
+  line-height: 1.8rem;
+  opacity: 0.6;
 }
 
 .Mui-selected .MuiTypography-body1 {
@@ -32,13 +32,20 @@
 }
 
 .MuiListItem-button:hover .MuiTypography-body1 {
-    animation: SELECT-MONTH-ANIMATION 0.2s ease;
-    font-size: 1.3rem;
-    line-height: 1.8rem;
-    opacity: 1;
+  animation: SELECT-MONTH-ANIMATION 0.2s ease;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  opacity: 1;
 }
 
-.months .MuiListItem-root.Mui-selected, .months .MuiListItem-root.Mui-selected:hover {
-  border-radius: 25px;
-  background: #d8d9f7;
+.months {
+  .MuiListItem-root.Mui-selected, 
+  .MuiListItem-root.Mui-selected:hover {
+    border-radius: 25px;
+    background-color: #d8d9f7 !important;
+  }
+}
+
+.months.MuiList-padding {
+  padding-left: 4px;
 }

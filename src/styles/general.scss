@@ -1,59 +1,67 @@
 .MuiList-root .MuiSvgIcon-root {
-    font-size: 1.4rem !important;
-    opacity: 0.8;
+	font-size: 1.3rem !important;
+	opacity: 0.8;
 }
 
 .MuiMenuItem-gutters {
-    padding: 0 8px !important;
+	padding: 0 8px !important;
 }
 
 .user-container {
-    background: #f2f2ff;
-    height: 100vh;
+	background: #f2f2ff;
+	height: 100vh;
 
-    .MuiContainer-maxWidthSm {
-        max-width: 550px
-    }
+	.MuiContainer-maxWidthSm {
+		max-width: 550px
+	}
 
-    .user-form {
-        background: white;
-        border-radius: 25px;
-        padding-bottom: 46px;
-        position: absolute;
-        top: 48%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        box-shadow: 0px 0px 2px -1px rgba(0, 0, 0, 0.2), 0px 6px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 22px 0px rgba(0, 0, 0, 0.12);
+	.user-form {
+		background: white;
+		border-radius: 25px;
+		padding-bottom: 46px;
+		position: absolute;
+		top: 48%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		box-shadow: 0px 0px 2px -1px rgba(0, 0, 0, 0.2), 0px 6px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 22px 0px rgba(0, 0, 0, 0.12);
 
-        .img-container {
-            padding: 32px 0 18px;
-        }
+		.img-container {
+			padding: 32px 0 18px;
+		}
 
-        .user-link {
-            text-align: right;
-            padding-top: 16px;
-        }
-    }
+		.user-link {
+			text-align: right;
+			padding-top: 16px;
+		}
+  }
 }
 
 .MuiButton-contained,
 a .MuiButton-contained  {
-    border-radius: 25px !important;
-    background: linear-gradient(to right, #eb7873, #ee9578);
-    padding: 2% 16% !important;
-    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12) !important;
+	border-radius: 25px !important;
+	background: linear-gradient(to right, #eb7873, #ee9578);
+	padding: 2% 16% !important;
+	box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12) !important;
 
-   &:hover {
-       background: linear-gradient(to right, #b35c58, #d68469);
-   }
+	&:hover {
+		background: linear-gradient(to right, #b35c58, #d68469);
+	}
 
-   &:active {
-       box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2), 0px 12px 17px 2px rgba(0,0,0,0.14), 0px 5px 22px 4px rgba(0,0,0,0.12) !important;
-   }
+	&:active {
+		box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2), 0px 12px 17px 2px rgba(0,0,0,0.14), 0px 5px 22px 4px rgba(0,0,0,0.12) !important;
+	}
 
-    .MuiButton-label {
-        color: white
-    }
+	.MuiButton-label {
+		color: white
+	}
+}
+
+.input-group {
+	padding: 0 8px;
+
+	input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #d8d9f7 inset !important;
+	}
 }
 
 a:hover {
@@ -62,9 +70,30 @@ a:hover {
 
 .MuiButton-contained.user-button,
 a .user-button {
-    position: relative;
-    bottom: -65px;
-    display: block;
-    margin: 0 auto !important;
+	position: relative;
+	bottom: -65px;
+	display: block;
+	margin: 0 auto !important;
 }
 
+// remove up/down arrow from inputs 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.nav-fields {
+	.MuiOutlinedInput-adornedEnd,
+	.MuiOutlinedInput-adornedStart {
+		padding: 0 8px;
+
+		.MuiOutlinedInput-inputAdornedStart {
+			padding-left: 8px;
+		}
+	}
+}
+    

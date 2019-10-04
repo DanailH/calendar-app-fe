@@ -1,16 +1,12 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
-import Avatar from '@material-ui/core/Avatar';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
 import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
 import Logo from './components/Logo/Logo';
+import Logout from './components/Logout/Logout.jsx';
 import './App.scss';
 import './styles/base.scss';
 
@@ -23,8 +19,6 @@ class App extends React.Component {
     numberOfUsedHolidays: 0,
     listOfUsedHolidays: [],
     publicHolidays: [],
-    isAuth: true,
-    userId: localStorage.getItem('_id')
   }
 
   constructor() {
@@ -34,7 +28,6 @@ class App extends React.Component {
     this.selectMonth = this.selectMonth.bind(this);
     this.setHolidays = this.setHolidays.bind(this);
     this.useHoliday = this.useHoliday.bind(this);
-    this.handleLogOut = this.handleLogOut.bind(this);
     this.setCountry = this.setCountry.bind(this);
   }
 
@@ -137,13 +130,6 @@ class App extends React.Component {
       .catch(error => console.error('Error:', error));
   }
 
-  handleLogOut() {
-    fetch('/auth/logout')
-      .then(localStorage.removeItem('_id'))
-      .then(this.setState({ isAuth: false }))
-      .catch(error => console.error('Error:', error));
-  }
-
   componentDidMount() {
     fetch(`/holiday/holidays?userId=${this.state.userId}`)
       .then(res => res.json())
@@ -167,23 +153,14 @@ class App extends React.Component {
   render() {
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
     console.log(this.state)
-    if (!this.state.isAuth) {
-      return <Redirect to='/' />
-    }
 
     return (
       <div className="main-container">
         <Grid container>
           <Grid item xs={2} className="menu-container">
             <Logo/>
-            <MenuList>
-              <MenuItem>
                 <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
-              </MenuItem>
-              <MenuItem>
                 <SetCountry country={this.state.country} setCountry={this.setCountry} />
-              </MenuItem>
-            </MenuList>
           </Grid>
 
           <Grid item xs={2} className="months-container d-flex">
@@ -197,12 +174,7 @@ class App extends React.Component {
           </Grid>
 
           <Grid item xs={7} className="main-calendar">
-            <div className="d-flex account-container">
-              <Avatar>DH</Avatar>
-              <Button variant="outlined" size="small" color="secondary" onClick={this.handleLogOut}>
-                Log out
-              </Button>
-            </div>
+            <Logout/>
 
             <div className="center-block w-100">
               <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />

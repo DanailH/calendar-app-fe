@@ -4,7 +4,7 @@ import './style.scss';
 class Logo extends React.Component {
 	render() {
 		return (
-			<img src='./logo.png' className="img-container" />
+			<img src='./logo.png' alt="logo" className="img-container" />
 		)
 	}
 }

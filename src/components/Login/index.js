@@ -62,6 +62,7 @@ class Login extends React.Component {
               margin="normal"
               variant="outlined"
               autoFocus
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               id="password"
@@ -71,6 +72,7 @@ class Login extends React.Component {
               placeholder="Enter your password"
               margin="normal"
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <div className="user-link">
               <Link to="/register">Register an account</Link>

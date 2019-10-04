@@ -48,16 +48,18 @@ class SetCountry extends React.Component {
   }
 
   render() {
+    console.log(this.state.country)
     return (
-      <form onBlur={this.setCountryCode} className="input-group">
+      <form onBlur={ this.setCountryCode } className="input-group">
         <TextField
           id="outlined-select-currency"
           select
           label="Country"
           name="countryCode"
-          value={this.state.country}
-          onChange={this.handleCountryChange}
+          value={ this.state.country !== null ? this.state.country : '' }
+          onChange={ this.handleCountryChange }
           placeholder="Please select your country"
+          className="nav-fields"
           margin="normal"
           variant="outlined"
           InputProps={{
