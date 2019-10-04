@@ -67,6 +67,7 @@ class MonthSelector extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <List component="nav" className="months">
         { this.renderMonths() }

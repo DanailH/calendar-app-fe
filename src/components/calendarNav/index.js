@@ -10,7 +10,7 @@ class CalendarNav extends React.Component {
     this.setMonthIndex = this.setMonthIndex.bind(this);
 
     this.state = {
-      activeMonthIndex: 0
+      activeMonthIndex: new Date().getMonth() - 1
     };
   }
 

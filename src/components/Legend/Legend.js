@@ -35,15 +35,8 @@ class Legend extends React.Component {
 
     render() {
         return (
-            <Grid container justify="space-between" alignItems="center" className="legend-container totals-container">
-                <div>
-                    <span className="totals">Remaining days:</span> {this.props.remainingHolidays}
-                    <div>
-                        {`Total number of holidays: ${this.props.totalNumberHolidays}`}
-                    </div>
-                </div>
-
-                <div>
+            <div>
+                <div className="f-right">
                     <Tooltip title={holidayInfo} aria-label="add">
                         <Fab size="small" color="primary" aria-label="add">
                             <Badge
@@ -84,7 +77,8 @@ class Legend extends React.Component {
                         message={<span id="message-id">I love snacks</span>}
                     />
                 </div>
-            </Grid>
+            </div>
+            
         )
     }
 }
