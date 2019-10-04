@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import MenuItem from '@material-ui/core/MenuItem';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
@@ -7,13 +8,14 @@ import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
 import Logo from './components/Logo/Logo';
 import Logout from './components/Logout/Logout.jsx';
+import Donut from './components/donutChart/Donut'
 import './App.scss';
 import './styles/base.scss';
 
 class App extends React.Component {
   state = {
     selectedYear: new Date().getFullYear(),
-    selectedMonth: 1,
+    selectedMonth: new Date().getMonth(),
     holidays: 0,
     country: '',
     numberOfUsedHolidays: 0,
@@ -145,22 +147,35 @@ class App extends React.Component {
             listOfUsedHolidays: userData.selectedHolidays,
             numberOfUsedHolidays: userData.selectedHolidays.length
           }))
-          .catch(error => console.error('Error:', error))
+          .catch(error => {
+            this.setState({
+              holidays: userData.holidaysCount,
+              listOfUsedHolidays: userData.selectedHolidays,
+              numberOfUsedHolidays: userData.selectedHolidays.length
+            })
+
+            console.error('Error:', error)
+          })
       })
       .catch(error => console.error('Error:', error));
   }
 
   render() {
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
-    console.log(this.state)
 
     return (
       <div className="main-container">
         <Grid container>
           <Grid item xs={2} className="menu-container">
-            <Logo/>
+              <Logo/>
                 <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
                 <SetCountry country={this.state.country} setCountry={this.setCountry} />
+              <MenuItem>
+                <Donut remaining={this.state.numberOfUsedHolidays} total={this.state.holidays} />
+              </MenuItem>
+              <MenuItem>
+                <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
+              </MenuItem>
           </Grid>
 
           <Grid item xs={2} className="months-container d-flex">
