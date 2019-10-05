@@ -80,7 +80,6 @@ class App extends React.Component {
       holidaysCount: this.state.holidays,
       selectedHolidays: this.state.listOfUsedHolidays
     };
-    console.log(data)
     fetch('/holiday/holidays', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -137,30 +136,37 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/holiday/holidays?userId=${this.state.userId}`)
+    fetch(`/users/user?userId=${this.state.userId}`)
       .then(res => res.json())
       .then(res => {
-        const userData = res;
-        fetch(`/holiday/public?countryCode=${res.country}`)
+        const userInfo = res;
+        fetch(`/holiday/holidays?userId=${this.state.userId}`)
           .then(res => res.json())
-          .then(res => this.setState({
-            country: res.countryCode,
-            publicHolidays: res.publicHolidays.map(holiday => holiday.split('T')[0]),
-            holidays: userData.holidaysCount,
-            listOfUsedHolidays: userData.selectedHolidays,
-            numberOfUsedHolidays: userData.selectedHolidays.length,
-            isLoading: false
-          }))
-          .catch(error => {
-            this.setState({
-              holidays: userData.holidaysCount,
-              listOfUsedHolidays: userData.selectedHolidays,
-              numberOfUsedHolidays: userData.selectedHolidays.length,
-              isLoading: false
-            })
+          .then(res => {
+            const userData = res;
+            fetch(`/holiday/public?countryCode=${res.country}`)
+              .then(res => res.json())
+              .then(res => this.setState({
+                country: res.countryCode,
+                publicHolidays: res.publicHolidays.map(holiday => holiday.split('T')[0]),
+                holidays: userData.holidaysCount,
+                listOfUsedHolidays: userData.selectedHolidays,
+                numberOfUsedHolidays: userData.selectedHolidays.length,
+                isLoading: false,
+                user: userInfo
+              }))
+              .catch(error => {
+                this.setState({
+                  holidays: userData.holidaysCount,
+                  listOfUsedHolidays: userData.selectedHolidays,
+                  numberOfUsedHolidays: userData.selectedHolidays.length,
+                  isLoading: false
+                })
 
-            console.error('Error:', error)
+                console.error('Error:', error)
+              })
           })
+          .catch(error => console.error('Error:', error));
       })
       .catch(error => console.error('Error:', error));
   }
@@ -174,6 +180,14 @@ class App extends React.Component {
           </div>
         </div>
       )
+    }
+  }
+
+  renderUsageOverlay() {
+    if (!this.state.country || !this.state.holidays) {
+      return (<div className="usage-overlay">
+        <p className="absolute-center">{`Hi ${this.state.user && this.state.user.firstName} to use the app please fill your holidays and select your country!`}</p>
+      </div>)
     }
   }
 
@@ -206,8 +220,8 @@ class App extends React.Component {
               </div>
               
               <div className="feedback-box">
-                <Link target="_blank" href='https://forms.gle/KpsPQXvCdJY6G43L7'>
-                  Leave a feedback
+                <Link target="_blank" href='https://www.surveymonkey.com/r/3XKR6YW'>
+                  Leave feedback
                 </Link>
                 <Button variant="outlined" size="small" className="account-menu" disabled>
                   Version Alpha 1.0.0
@@ -215,23 +229,29 @@ class App extends React.Component {
               </div>
             </Grid>
 
-            <Grid item xs={2} className="months-container d-flex">
-              <Grid container justify="center" alignItems="center">
-                <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+            <Grid item xs={10}>
+              <Grid container className="h-100 position-relative">
+                {this.renderUsageOverlay()}
+
+                <Grid item xs={2} className="months-container d-flex">
+                  <Grid container justify="center" alignItems="center">
+                    <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+                  </Grid>
+                </Grid>
+
+                <Grid item xs={1} className="curve-container">
+                  <div className="curve"></div>
+                </Grid>
+
+                <Grid item xs={9} className="main-calendar">
+                  <Logout user={this.state.user} />
+
+                  <div className="center-calendar-block w-100">
+                    <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+                    <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
+                  </div>
+                </Grid>
               </Grid>
-            </Grid>
-
-            <Grid item xs={1} className="curve-container">
-              <div className="curve"></div>
-            </Grid>
-
-            <Grid item xs={7} className="main-calendar">
-              <Logout userId={this.state.userId} />
-
-              <div className="center-calendar-block w-100">
-                <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
-                <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
-              </div>
             </Grid>
           </Grid>
         </div>

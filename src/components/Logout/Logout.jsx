@@ -9,14 +9,6 @@ class Logout extends React.Component {
     isAuth: true,
   }
 
-  componentDidMount() {
-    fetch(`/users/user?userId=${this.props.userId}`)
-      .then(res => res.json())
-      .then(res => this.setState({
-        user: res
-      }))
-  }
-
   handleLogOut = () => {
     fetch('/auth/logout')
       .then(localStorage.removeItem('_id'))
@@ -25,8 +17,8 @@ class Logout extends React.Component {
   }
 
   setInitials() {
-    if (this.state.user && this.state.user.firstName && this.state.user.lastName) {
-      return `${this.state.user.firstName.charAt(0)}${this.state.user.lastName.charAt(0)}`;
+    if (this.props.user && this.props.user.firstName && this.props.user.lastName) {
+      return `${this.props.user.firstName.charAt(0)}${this.props.user.lastName.charAt(0)}`;
     }
 
     return 'JD';

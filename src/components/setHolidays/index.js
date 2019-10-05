@@ -49,6 +49,7 @@ class SetHolidays extends React.Component {
         type="number"
         value={this.state.holidaysValue > 0 ? this.state.holidaysValue : ''}
         onChange={this.handleHolidaysChange}
+        onBlur={this.setHolidaysNumber}
         className = "nav-fields"
         margin="normal"
         variant="outlined"
