@@ -7,7 +7,6 @@ import './style.scss';
 class Logout extends React.Component {
 	state = {
 		isAuth: true,
-		userId: localStorage.getItem('_id')
 	}
 
 	handleLogOut = () => {

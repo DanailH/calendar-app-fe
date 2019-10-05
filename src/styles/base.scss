@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.center-block {
+.center-calendar-block {
     position: absolute;
     left: -5%;
     top: 50%;
@@ -15,4 +15,24 @@
 
 .f-right {
     float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.absolute-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.clearfix:after {
+    content: " ";
+    /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
 }

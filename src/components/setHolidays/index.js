@@ -40,30 +40,27 @@ class SetHolidays extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
-      <form className="input-group">
-        <TextField
-          id="outlined-name"
-          label="Holidays per year"
-          placeholder="Add holidays"
-          name="holidays"
-          type="number"
-          value={this.state.holidaysValue > 0 ? this.state.holidaysValue : ''}
-          onChange={this.handleHolidaysChange}
-          className = "nav-fields"
-          margin="normal"
-          variant="outlined"
-          InputProps={{
-            startAdornment: <CalendarTodayIcon />,
-            endAdornment: (
-              <IconButton onClick={this.setHolidaysNumber} size="small" aria-label="directions">
-                <ChevronRightIcon fontSize="inherit" />
-              </IconButton>
-            )
-          }}
-        />
-      </form>
+      <TextField
+        id="outlined-name"
+        label="Holidays per year"
+        placeholder="Add holidays"
+        name="holidays"
+        type="number"
+        value={this.state.holidaysValue > 0 ? this.state.holidaysValue : ''}
+        onChange={this.handleHolidaysChange}
+        className = "nav-fields"
+        margin="normal"
+        variant="outlined"
+        InputProps={{
+          startAdornment: <CalendarTodayIcon />,
+          endAdornment: (
+            <IconButton onClick={this.setHolidaysNumber} size="small" aria-label="directions">
+              <ChevronRightIcon fontSize="inherit" />
+            </IconButton>
+          )
+        }}
+      />
     )
   };
 }

@@ -19,7 +19,6 @@ class CalendarDay extends React.Component {
   }
 
   setAsHoliday() {
-    console.log(this.props)
     if (!this.props.canUseHolidays && !this.props.isHoliday || this.props.type === 'public') return;
 
     this.props.useHoliday(this.props.date, !this.props.isHoliday)
@@ -28,7 +27,7 @@ class CalendarDay extends React.Component {
   render() {
     const { date, type } = this.props;
     const targetDate = date ? new Date(date).getDate() : '';
-    console.log(type)
+    
     return (
       <div onClick={this.setAsHoliday} className="day-container">
         <Box component="span" className={`${type ? 'day' : ''} ${type !== 'weekend' && type ? 'c-pointer' : ''} ${this.isWeekend(date) || this.props.isHoliday ? 'weekend-text-color' : ''} ${this.isWeekend(date) ? 'weekend-bgr' : ''} ${this.props.isHoliday ? 'selected-holiday' : ''} ${this.props.type === 'public' ? 'public-holiday' : ''}`}>

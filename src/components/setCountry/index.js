@@ -15,6 +15,7 @@ const countries = [
     label: 'Bulgaria',
   },
 ];
+
 class SetCountry extends React.Component {
   state = {
     country: ''
@@ -24,19 +25,14 @@ class SetCountry extends React.Component {
     super();
 
     this.handleCountryChange = this.handleCountryChange.bind(this);
-    this.setCountryCode = this.setCountryCode.bind(this);
   }
 
   handleCountryChange(event) {
+    this.props.setCountry(event.target.value);
+
     this.setState({
       country: event.target.value
     });
-  }
-
-  setCountryCode(event) {
-    event.preventDefault();
-
-    this.props.setCountry(this.state.country);
   }
 
   componentDidUpdate(nextProps) {
@@ -48,9 +44,7 @@ class SetCountry extends React.Component {
   }
 
   render() {
-    console.log(this.state.country)
     return (
-      <form onBlur={ this.setCountryCode } className="input-group">
         <TextField
           id="outlined-select-currency"
           select
@@ -72,7 +66,6 @@ class SetCountry extends React.Component {
             </MenuItem>
           ))}
         </TextField>
-      </form>
     )
   };
 }

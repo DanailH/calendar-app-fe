@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
@@ -14,6 +15,7 @@ import './styles/base.scss';
 
 class App extends React.Component {
   state = {
+    userId: localStorage.getItem('_id'),
     selectedYear: new Date().getFullYear(),
     selectedMonth: new Date().getMonth(),
     holidays: 0,
@@ -21,6 +23,7 @@ class App extends React.Component {
     numberOfUsedHolidays: 0,
     listOfUsedHolidays: [],
     publicHolidays: [],
+    isLoading: true
   }
 
   constructor() {
@@ -69,14 +72,13 @@ class App extends React.Component {
   }
 
   setCountry(country) {
-    console.log(country)
     const data = {
       userId: this.state.userId,
       country: country,
       holidaysCount: this.state.holidays,
       selectedHolidays: this.state.listOfUsedHolidays
     };
-
+    console.log(data)
     fetch('/holiday/holidays', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -84,7 +86,7 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-      .then(
+    .then(
       fetch(`/holiday/public?countryCode=${country}`)
         .then(res => res.json())
         .then(res => this.setState({
@@ -92,8 +94,8 @@ class App extends React.Component {
           publicHolidays: res.publicHolidays.map(holiday => holiday.split('T')[0])
         }))
         .catch(error => console.error('Error:', error))
-      )
-      .catch(error => console.error('Error:', error));
+    )
+    .catch(error => console.error('Error:', error));
 
   }
 
@@ -137,7 +139,6 @@ class App extends React.Component {
       .then(res => res.json())
       .then(res => {
         const userData = res;
-        console.log(userData)
         fetch(`/holiday/public?countryCode=${res.country}`)
           .then(res => res.json())
           .then(res => this.setState({
@@ -145,13 +146,15 @@ class App extends React.Component {
             publicHolidays: res.publicHolidays.map(holiday => holiday.split('T')[0]),
             holidays: userData.holidaysCount,
             listOfUsedHolidays: userData.selectedHolidays,
-            numberOfUsedHolidays: userData.selectedHolidays.length
+            numberOfUsedHolidays: userData.selectedHolidays.length,
+            isLoading: false
           }))
           .catch(error => {
             this.setState({
               holidays: userData.holidaysCount,
               listOfUsedHolidays: userData.selectedHolidays,
-              numberOfUsedHolidays: userData.selectedHolidays.length
+              numberOfUsedHolidays: userData.selectedHolidays.length,
+              isLoading: false
             })
 
             console.error('Error:', error)
@@ -160,11 +163,25 @@ class App extends React.Component {
       .catch(error => console.error('Error:', error));
   }
 
+  isLoading() {
+    if (this.state.isLoading) {
+      return (
+        <div className="loader-overlay">
+          <div className="absolute-center">
+            <CircularProgress size={100} thickness={3} />
+          </div>
+        </div>
+      )
+    }
+  }
+
   render() {
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
 
     return (
       <div className="main-container">
+        {this.isLoading()}
+
         <Grid container>
           <Grid item xs={2} className="menu-container">
             <Logo />
@@ -173,6 +190,8 @@ class App extends React.Component {
               <SetCountry country={this.state.country} setCountry={this.setCountry} />
               <Box>
                 <Donut remaining={this.state.numberOfUsedHolidays} total={this.state.holidays} />
+              </Box>
+              <Box className="text-center">
                 <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
               </Box>
             </div>
@@ -191,7 +210,7 @@ class App extends React.Component {
           <Grid item xs={7} className="main-calendar">
             <Logout />
 
-            <div className="center-block w-100">
+            <div className="center-calendar-block w-100">
               <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
               <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
             </div>

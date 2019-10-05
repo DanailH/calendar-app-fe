@@ -34,8 +34,8 @@ class Legend extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="f-right">
+            <div className="clearfix">
+                <div className="calendar-legend-wrapper f-right">
                     <Tooltip title={holidayInfo} aria-label="add">
                         <Fab size="small" color="primary" aria-label="add">
                             <Badge
@@ -67,13 +67,13 @@ class Legend extends React.Component {
                     </Tooltip>
                 </div>
                 <div className="position-bottom">
-                    <Snackbar
+                    <Snackbar                    
                         open={this.state.isSnackBarOpen}
                         TransitionComponent={this.TransitionUp}
                         ContentProps={{
                             'aria-describedby': 'message-id',
                         }}
-                        message={<span id="message-id">I love snacks</span>}
+                        message={<span id="message-id">You are out of holidays!</span>}
                     />
                 </div>
             </div>
