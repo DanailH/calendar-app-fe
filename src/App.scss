@@ -13,6 +13,7 @@
 }
 
 .menu-container {
+	position: relative;
 	background: #d8d9f7;
 	padding: 0 8px;
 
@@ -71,5 +72,7 @@
 }
 
 .feedback-box {
-	margin-top: 86px;
+	position: absolute;
+	bottom: 10px;
+	margin: 0 auto;
 }

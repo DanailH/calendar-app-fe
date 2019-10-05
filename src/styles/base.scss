@@ -1,38 +1,76 @@
+.mobile-overlay {
+  display: none;
+}
+
 .d-flex {
-    display: flex;
+  display: flex;
 }
 
 .center-calendar-block {
-    position: absolute;
-    left: -5%;
-    top: 50%;
-    transform: translate(0, -50%);
+  position: absolute;
+  left: -5%;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
 .w-100 {
-    width: 100%;
+  width: 100%;
 }
 
 .f-right {
-    float: right;
+  float: right;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .absolute-center {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .clearfix:after {
-    content: " ";
-    /* Older browser do not support empty content */
-    visibility: hidden;
+  content: " ";
+  /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+@media only screen and (orientation:portrait) {
+  body {
+    height: 100vw;
+    transform: rotate(90deg);
+  }
+
+  .main-container,
+  .user-container {
+    width: 100vh;
+  }
+}
+
+@media only screen and (max-device-width: 767px) {
+  body {
+    transform: rotate(0deg);
+  }
+
+  .main-container, .user-container {
+    display: none;
+  }
+
+  .mobile-overlay {
     display: block;
-    height: 0;
-    clear: both;
+    margin-top: 15%;
+    text-align: center;
+
+    p {
+      margin-top: 20%;
+      padding: 0 15%;
+      font-size: 1.2rem;
+    }
+  }
 }

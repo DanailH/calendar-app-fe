@@ -181,52 +181,60 @@ class App extends React.Component {
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
 
     return (
-      <div className="main-container">
-        {this.isLoading()}
+      <div>      
+        <div className="mobile-overlay">
+          <Logo />
 
-        <Grid container>
-          <Grid item xs={2} className="menu-container">
-            <Logo />
-            <div className="menu-box">
-              <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
-              <SetCountry country={this.state.country} setCountry={this.setCountry} />
-              <Box>
-                <Donut remaining={this.state.numberOfUsedHolidays} total={this.state.holidays} />
-              </Box>
-              <Box className="text-center">
-                <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
-              </Box>
-            </div>
-            
-            <div className="feedback-box">
-              <Link href=''>
-                Leave a feedback
-      	      </Link>
-              <Button variant="outlined" size="small" className="account-menu" disabled>
-                Version Alpha 1.0.0
-				      </Button>
-            </div>
-          </Grid>
+          <p>Sorry, our app is currently not available for mobile devices!</p>
+        </div>
+        
+        <div className="main-container">
+          {this.isLoading()}
 
-          <Grid item xs={2} className="months-container d-flex">
-            <Grid container justify="center" alignItems="center">
-              <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+          <Grid container>
+            <Grid item xs={2} className="menu-container">
+              <Logo />
+              <div className="menu-box">
+                <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
+                <SetCountry country={this.state.country} setCountry={this.setCountry} />
+                <Box>
+                  <Donut remaining={this.state.numberOfUsedHolidays} total={this.state.holidays} />
+                </Box>
+                <Box className="text-center">
+                  <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
+                </Box>
+              </div>
+              
+              <div className="feedback-box">
+                <Link target="_blank" href='https://forms.gle/KpsPQXvCdJY6G43L7'>
+                  Leave a feedback
+                </Link>
+                <Button variant="outlined" size="small" className="account-menu" disabled>
+                  Version Alpha 1.0.0
+                </Button>
+              </div>
+            </Grid>
+
+            <Grid item xs={2} className="months-container d-flex">
+              <Grid container justify="center" alignItems="center">
+                <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
+              </Grid>
+            </Grid>
+
+            <Grid item xs={1} className="curve-container">
+              <div className="curve"></div>
+            </Grid>
+
+            <Grid item xs={7} className="main-calendar">
+              <Logout userId={this.state.userId} />
+
+              <div className="center-calendar-block w-100">
+                <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+                <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
+              </div>
             </Grid>
           </Grid>
-
-          <Grid item xs={1} className="curve-container">
-            <div className="curve"></div>
-          </Grid>
-
-          <Grid item xs={7} className="main-calendar">
-            <Logout userId={this.state.userId} />
-
-            <div className="center-calendar-block w-100">
-              <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
-              <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
-            </div>
-          </Grid>
-        </Grid>
+        </div>
       </div>
     )
   };
