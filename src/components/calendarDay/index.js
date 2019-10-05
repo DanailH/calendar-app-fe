@@ -19,7 +19,7 @@ class CalendarDay extends React.Component {
   }
 
   setAsHoliday() {
-    if (!this.props.canUseHolidays && !this.props.isHoliday || this.props.type === 'public') return;
+    if ((!this.props.canUseHolidays && !this.props.isHoliday) || this.props.type === 'public') return;
 
     this.props.useHoliday(this.props.date, !this.props.isHoliday)
   }
