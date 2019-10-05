@@ -63,15 +63,18 @@ input:-internal-autofill-previewed {
 }
 
 a:hover {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .MuiButton-contained.user-button,
 a .user-button {
 	position: relative;
-	bottom: -65px;
 	display: block;
 	margin: 0 auto !important;
+}
+
+.MuiButton-contained.user-button {
+	bottom: -65px;
 }
 
 // remove up/down arrow from inputs 
@@ -92,6 +95,11 @@ input[type=number] {
 		.MuiOutlinedInput-inputAdornedStart {
 			padding-left: 8px;
 		}
+	}
+
+	.MuiSvgIcon-root {
+		opacity: 0.8;
+		width: 0.8em;
 	}
 }
     

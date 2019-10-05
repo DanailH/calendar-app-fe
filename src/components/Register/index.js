@@ -66,7 +66,7 @@ class Register extends React.Component {
           </DialogContent>
           <DialogActions>
             <Link to="/login">
-              <Button type="submit" variant="contained" className="user-button">
+              <Button type="submit" variant="contained" className="form-button">
               Login
             </Button>
             </Link>
