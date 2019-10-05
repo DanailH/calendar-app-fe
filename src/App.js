@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
@@ -8,6 +9,7 @@ import SetHolidays from './components/setHolidays';
 import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
 import Logo from './components/Logo/Logo';
+import Link from '@material-ui/core/Link';
 import Logout from './components/Logout/Logout.jsx';
 import Donut from './components/donutChart/Donut'
 import './App.scss';
@@ -86,7 +88,7 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(
+      .then(
       fetch(`/holiday/public?countryCode=${country}`)
         .then(res => res.json())
         .then(res => this.setState({
@@ -94,8 +96,8 @@ class App extends React.Component {
           publicHolidays: res.publicHolidays.map(holiday => holiday.split('T')[0])
         }))
         .catch(error => console.error('Error:', error))
-    )
-    .catch(error => console.error('Error:', error));
+      )
+      .catch(error => console.error('Error:', error));
 
   }
 
@@ -194,6 +196,15 @@ class App extends React.Component {
               <Box className="text-center">
                 <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
               </Box>
+            </div>
+            
+            <div className="feedback-box">
+              <Link href=''>
+                Leave a feedback
+      	      </Link>
+              <Button variant="outlined" size="small" className="account-menu" disabled>
+                Version Alpha 1.0.0
+				      </Button>
             </div>
           </Grid>
 

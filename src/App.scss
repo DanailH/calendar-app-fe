@@ -18,7 +18,7 @@
 
 	.menu-box,
 	.MuiBox-root {
-		margin-top: 15%;
+		margin-top: 10%;
 	}
 }
 
@@ -68,4 +68,8 @@
 
 .loader-overlay .MuiCircularProgress-colorPrimary {
 	color: rgb(244, 99, 116);
+}
+
+.feedback-box {
+	margin-top: 86px;
 }

@@ -9,11 +9,13 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DoneIcon from '@material-ui/icons/Done';
 import Logo from '../Logo/Logo';
+import FormError from '../FormError/FormError';
 import './style.scss';
 
 class Register extends React.Component {
   state = {
-    isRegisterSuccessful: false
+    isRegisterSuccessful: false,
+    error: false
   }
 
   handleRegister = (event) => {
@@ -43,7 +45,13 @@ class Register extends React.Component {
 
         console.log('Success:', JSON.stringify(response))
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        this.setState({
+          error: true
+        });
+
+        console.error('Error:', error)
+      });
   }
 
   render() {
@@ -76,6 +84,7 @@ class Register extends React.Component {
               margin="normal"
               variant="outlined"
               autoFocus
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               id="lastName"
@@ -85,6 +94,7 @@ class Register extends React.Component {
               placeholder="Last name"
               margin="normal"
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               id="email"
@@ -94,6 +104,7 @@ class Register extends React.Component {
               placeholder="Enter email"
               margin="normal"
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               id="password"
@@ -103,6 +114,7 @@ class Register extends React.Component {
               placeholder="Enter your password"
               margin="normal"
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               id="passwordRe"
@@ -112,7 +124,11 @@ class Register extends React.Component {
               placeholder="Repeat the password"
               margin="normal"
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
+            
+            { this.state.error && <FormError registerError={true} /> }
+            
             <Button type="submit" variant="contained" className="user-button">
               Register
             </Button>

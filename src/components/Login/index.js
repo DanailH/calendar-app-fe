@@ -4,10 +4,12 @@ import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Logo from '../Logo/Logo';
+import FormError from '../FormError/FormError';
 
 class Login extends React.Component {
   state = {
-    isAuth: false
+    isAuth: false,
+    error: false
   }
 
   constructor() {
@@ -40,7 +42,13 @@ class Login extends React.Component {
           isAuth: true
         })
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        this.setState({
+          error: true
+        })
+
+        console.error('Error:', error)
+      });
   }
 
   render() {
@@ -77,6 +85,9 @@ class Login extends React.Component {
             <div className="user-link">
               <Link to="/register">Register an account</Link>
             </div>
+
+            {this.state.error && <FormError loginError={true} />}
+
             <Button type="submit" variant="contained" className="user-button">
               Login
             </Button>
