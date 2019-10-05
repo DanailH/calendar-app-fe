@@ -18,31 +18,35 @@ const Donut = ({
   total = 0,
   prefix = PREFIX
   
-}) => (
-	<div className={getClassName(prefix, remaining < 0 ? ' is--negative' : '')}>
-		<svg
-			className={getClassName(prefix, '__canvas')}
-			width={SIZE}
-			height={SIZE}
-			viewBox={`0 0 ${SIZE} ${SIZE}`}
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<circle
-				className={getClassName(prefix, '__frame')}
-				{...circleProps}
-			/>
+}) => { 
+	const strokeVal = total ? (remaining / total) * 100 : 0;
 
-			<circle
-				className={getClassName(prefix, '__circle')}
-				strokeDasharray={`${Math.abs((remaining / total) * 100)} 100`}
-				{...circleProps}
-			/>
-		</svg>
+	return (
+		<div className={getClassName(prefix, remaining < 0 ? ' is--negative' : '')}>
+			<svg
+				className={getClassName(prefix, '__canvas')}
+				width={SIZE}
+				height={SIZE}
+				viewBox={`0 0 ${SIZE} ${SIZE}`}
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<circle
+					className={getClassName(prefix, '__frame')}
+					{...circleProps}
+				/>
 
-    <div className={getClassName(prefix, '__text')}>
-      {`${remaining}/${total}`}
-    </div>
-	</div>
-);
+				<circle
+					className={getClassName(prefix, '__circle')}
+					strokeDasharray={`${Math.abs(strokeVal)} 100`}
+					{...circleProps}
+				/>
+			</svg>
+
+			<div className={getClassName(prefix, '__text')}>
+				{`${remaining}/${total}`}
+			</div>
+		</div>
+	)
+};
 
 export default Donut;
