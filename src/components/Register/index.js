@@ -21,8 +21,8 @@ class Register extends React.Component {
 
     const elements = event.target.elements;
     const formData = {
-      name: elements.name.value,
-      surname: elements.surname.value,
+      firstName: elements.firstName.value,
+      lastName: elements.lastName.value,
       email: elements.email.value,
       password: elements.password.value,
       passwordRe: elements.passwordRe.value
@@ -68,21 +68,21 @@ class Register extends React.Component {
           <Logo />
           <form onSubmit={this.handleRegister}>
             <TextField
-              id="name"
-              label="Name"
+              id="firstName"
+              label="First name"
               type="text"
-              name="name"
-              placeholder="Name"
+              name="firstName"
+              placeholder="First name"
               margin="normal"
               variant="outlined"
               autoFocus
             />
             <TextField
-              id="surname"
-              label="Surname"
+              id="lastName"
+              label="Last name"
               type="text"
-              name="surname"
-              placeholder="Surname"
+              name="lastName"
+              placeholder="Last name"
               margin="normal"
               variant="outlined"
             />
