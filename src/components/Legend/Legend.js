@@ -1,5 +1,4 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import StarsIcon from '@material-ui/icons/Stars';
 import Tooltip from '@material-ui/core/Tooltip';

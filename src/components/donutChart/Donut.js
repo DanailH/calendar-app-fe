@@ -1,8 +1,6 @@
 import React from 'react';
 import './donut.scss';
 
-let rotateAngle = 0;
-
 const SIZE = 34;
 const PREFIX = 'donut';
 

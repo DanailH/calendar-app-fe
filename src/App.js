@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import MenuItem from '@material-ui/core/MenuItem';
+import Box from '@material-ui/core/Box';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
@@ -167,15 +167,15 @@ class App extends React.Component {
       <div className="main-container">
         <Grid container>
           <Grid item xs={2} className="menu-container">
-              <Logo/>
-                <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
-                <SetCountry country={this.state.country} setCountry={this.setCountry} />
-              <MenuItem>
+            <Logo />
+            <div className="menu-box">
+              <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
+              <SetCountry country={this.state.country} setCountry={this.setCountry} />
+              <Box>
                 <Donut remaining={this.state.numberOfUsedHolidays} total={this.state.holidays} />
-              </MenuItem>
-              <MenuItem>
                 <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
-              </MenuItem>
+              </Box>
+            </div>
           </Grid>
 
           <Grid item xs={2} className="months-container d-flex">
@@ -189,7 +189,7 @@ class App extends React.Component {
           </Grid>
 
           <Grid item xs={7} className="main-calendar">
-            <Logout/>
+            <Logout />
 
             <div className="center-block w-100">
               <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />

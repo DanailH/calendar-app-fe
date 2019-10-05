@@ -1,51 +1,57 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .main-container,
 .menu-container {
-    height: 100vh;
+	height: 100vh;
 }
 
 .account-container .MuiButton-root {
-    float: right;
-    margin-left: 24px !important;
+	float: right;
+	margin-left: 24px !important;
 }
 
 .menu-container {
-    background: #d8d9f7;
+	background: #d8d9f7;
+	padding: 0 8px;
+
+	.menu-box,
+	.MuiBox-root {
+		margin-top: 15%;
+	}
 }
 
 .months-container {
-    background: #f2f2ff;
-    display: flex;
+	background: #f2f2ff;
+	display: flex;
 }
 
 .months.MuiList-root .MuiListItem-button:hover {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 .effect-container {
-    border-top-left-radius: 200%;
-    border-bottom-left-radius: 200%;    
+	border-top-left-radius: 200%;
+	border-bottom-left-radius: 200%;    
 }
 
 .main-calendar {
-    position: relative;
+	position: relative;
 }
 
 .curve-container {
-    overflow: hidden;
-    position: relative;
-    background: #f2f2ff;
+	overflow: hidden;
+	position: relative;
+	background: #f2f2ff;
 }
 
 .curve {
-    border-radius: 50%;
-    padding: 900%;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translate(0,-50%);
-    background: white;
+	border-radius: 50%;
+	padding: 900%;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translate(0,-50%);
+	background: white;
 }
