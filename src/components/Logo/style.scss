@@ -1,6 +1,12 @@
-.img-container {
-    height: 14%;
-    margin: 0 auto;
-    display: block;
-    margin-top: 24px;
+.logo-container {
+	text-align: center;
+
+	.img-container {
+		margin-top: 24px;
+		padding: 12px 0 18px;
+		height: 14%;
+		width: 60%;
+		display: block;
+		margin: 0 auto;
+	}
 }

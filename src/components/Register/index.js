@@ -76,6 +76,7 @@ class Register extends React.Component {
               margin="normal"
               variant="outlined"
               autoFocus
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               id="surname"
@@ -94,6 +95,7 @@ class Register extends React.Component {
               placeholder="Enter email"
               margin="normal"
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               id="password"
@@ -103,6 +105,7 @@ class Register extends React.Component {
               placeholder="Enter your password"
               margin="normal"
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               id="passwordRe"
@@ -112,6 +115,7 @@ class Register extends React.Component {
               placeholder="Repeat the password"
               margin="normal"
               variant="outlined"
+              InputLabelProps={{ shrink: true }}
             />
             <Button type="submit" variant="contained" className="user-button">
               Register
