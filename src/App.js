@@ -219,7 +219,7 @@ class App extends React.Component {
           </Grid>
 
           <Grid item xs={7} className="main-calendar">
-            <Logout />
+            <Logout userId={this.state.userId} />
 
             <div className="center-calendar-block w-100">
               <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
