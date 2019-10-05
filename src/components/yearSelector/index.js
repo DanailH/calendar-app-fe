@@ -46,7 +46,7 @@ class YearSelector extends React.Component {
 
   render() {
     return (
-      <Grid container direction="row" alignItems="center" justify="center">
+      <Grid className="year-selector" container direction="row" alignItems="center" justify="center">
         <IconButton className="material-icons" disabled={this.state.isCurrentYear} onClick={this.changeYear.bind(this, 'down')}>
           arrow_left
         </IconButton>
