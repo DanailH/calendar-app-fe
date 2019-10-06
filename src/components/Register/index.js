@@ -11,6 +11,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import Logo from '../Logo/Logo';
 import FormError from '../FormError/FormError';
 import './style.scss';
+import { BaseUrl } from '../../config';
 
 class Register extends React.Component {
   state = {
@@ -31,7 +32,7 @@ class Register extends React.Component {
       passwordRe: elements.passwordRe.value
     }
 
-    fetch('/auth/register', {
+    fetch(`${BaseUrl}/auth/register`, {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {

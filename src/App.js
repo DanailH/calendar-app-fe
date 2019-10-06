@@ -14,6 +14,7 @@ import Logout from './components/Logout/Logout';
 import Donut from './components/donutChart/Donut'
 import './App.scss';
 import './styles/base.scss';
+import { BaseUrl } from './config';
 
 class App extends React.Component {
   state = {
@@ -59,7 +60,7 @@ class App extends React.Component {
       selectedHolidays: this.state.listOfUsedHolidays
     };
 
-    fetch('/holiday/holidays', {
+    fetch(`${BaseUrl}/holiday/holidays`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -80,7 +81,7 @@ class App extends React.Component {
       holidaysCount: this.state.holidays,
       selectedHolidays: this.state.listOfUsedHolidays
     };
-    fetch('/holiday/holidays', {
+    fetch(`${BaseUrl}/holiday/holidays`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -88,7 +89,7 @@ class App extends React.Component {
       }
     })
       .then(
-      fetch(`/holiday/public?countryCode=${country}`)
+      fetch(`${BaseUrl}/holiday/public?countryCode=${country}`)
         .then(res => res.json())
         .then(res => this.setState({
           country: res.countryCode,
@@ -120,7 +121,7 @@ class App extends React.Component {
       selectedHolidays: holidaysArr
     };
 
-    fetch('/holiday/holidays', {
+    fetch(`${BaseUrl}/holiday/holidays`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -136,15 +137,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/users/user?userId=${this.state.userId}`)
+    fetch(`${BaseUrl}/users/user?userId=${this.state.userId}`)
       .then(res => res.json())
       .then(res => {
         const userInfo = res;
-        fetch(`/holiday/holidays?userId=${this.state.userId}`)
+        fetch(`${BaseUrl}/holiday/holidays?userId=${this.state.userId}`)
           .then(res => res.json())
           .then(res => {
             const userData = res;
-            fetch(`/holiday/public?countryCode=${res.country}`)
+            fetch(`${BaseUrl}/holiday/public?countryCode=${res.country}`)
               .then(res => res.json())
               .then(res => this.setState({
                 country: res.countryCode,

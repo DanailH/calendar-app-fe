@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import './style.scss';
+import { BaseUrl } from '../../config';
 
 class Logout extends React.Component {
   state = {
@@ -10,7 +11,7 @@ class Logout extends React.Component {
   }
 
   handleLogOut = () => {
-    fetch('/auth/logout')
+    fetch(`${BaseUrl}/auth/logout`)
       .then(localStorage.removeItem('_id'))
       .then(this.setState({ isAuth: false }))
       .catch(error => console.error('Error:', error));

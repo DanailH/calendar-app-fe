@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Logo from '../Logo/Logo';
 import FormError from '../FormError/FormError';
+import { BaseUrl } from '../../config';
 
 class Login extends React.Component {
   state = {
@@ -27,7 +28,7 @@ class Login extends React.Component {
       password: elements.password.value
     }
 
-    fetch('/auth/login', {
+    fetch(`${BaseUrl}/auth/login`, {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {
