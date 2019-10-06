@@ -24,7 +24,7 @@ class App extends React.Component {
     country: '',
     numberOfUsedHolidays: 0,
     listOfUsedHolidays: [],
-    publicHolidays: [],
+    publicHolidays: {},
     isLoading: true
   }
 
@@ -92,7 +92,7 @@ class App extends React.Component {
         .then(res => res.json())
         .then(res => this.setState({
           country: res.countryCode,
-          publicHolidays: res.publicHolidays.map(holiday => holiday.split('T')[0])
+          publicHolidays: res.publicHolidays
         }))
         .catch(error => console.error('Error:', error))
       )
@@ -148,7 +148,7 @@ class App extends React.Component {
               .then(res => res.json())
               .then(res => this.setState({
                 country: res.countryCode,
-                publicHolidays: res.publicHolidays.map(holiday => holiday.split('T')[0]),
+                publicHolidays: res.publicHolidays,
                 holidays: userData.holidaysCount,
                 listOfUsedHolidays: userData.selectedHolidays,
                 numberOfUsedHolidays: userData.selectedHolidays.length,
@@ -193,9 +193,10 @@ class App extends React.Component {
 
   render() {
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
-
+    const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => holiday.split('T')[0]) : [];
+  
     return (
-      <div>      
+      <div>
         <div className="mobile-overlay">
           <Logo />
 
@@ -247,7 +248,7 @@ class App extends React.Component {
                   <Logout user={this.state.user} />
 
                   <div className="center-calendar-block w-100">
-                    <CalendarMain useHoliday={this.useHoliday} publicHolidays={this.state.publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+                    <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
                     <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
                   </div>
                 </Grid>

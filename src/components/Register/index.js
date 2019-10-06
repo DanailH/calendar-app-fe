@@ -15,7 +15,8 @@ import './style.scss';
 class Register extends React.Component {
   state = {
     isRegisterSuccessful: false,
-    error: false
+    error: false,
+    errorMessage: ''
   }
 
   handleRegister = (event) => {
@@ -37,21 +38,21 @@ class Register extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => res.json())
-      .then(response => {
+    .then(res => {
+      if (res.status !== 200) {
+        this.setState({
+          error: true,
+          errorMessage: res.statusText
+        });
+      } else {
         this.setState({
           isRegisterSuccessful: true
         });
-
-        console.log('Success:', JSON.stringify(response))
-      })
-      .catch(error => {
-        this.setState({
-          error: true
-        });
-
-        console.error('Error:', error)
-      });
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error)
+    });
   }
 
   render() {
@@ -134,7 +135,7 @@ class Register extends React.Component {
                 InputLabelProps={{ shrink: true }}
               />
               
-              { this.state.error && <FormError registerError={true} /> }
+              { this.state.error && <FormError message={this.state.errorMessage} registerError={true} /> }
               
               <Button type="submit" variant="contained" className="user-button">
                 Register
