@@ -160,7 +160,8 @@ class App extends React.Component {
                   holidays: userData.holidaysCount,
                   listOfUsedHolidays: userData.selectedHolidays,
                   numberOfUsedHolidays: userData.selectedHolidays.length,
-                  isLoading: false
+                  isLoading: false,
+                  user: userInfo
                 })
 
                 console.error('Error:', error)
