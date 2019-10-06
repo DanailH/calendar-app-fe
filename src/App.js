@@ -10,7 +10,7 @@ import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
 import Logo from './components/Logo/Logo';
 import Link from '@material-ui/core/Link';
-import Logout from './components/Logout/Logout.jsx';
+import Logout from './components/Logout/Logout';
 import Donut from './components/donutChart/Donut'
 import './App.scss';
 import './styles/base.scss';
