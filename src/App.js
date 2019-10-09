@@ -234,7 +234,7 @@ class App extends React.Component {
 
             <Grid item xs={10}>
               <Grid container className="h-100 position-relative">
-                {this.renderUsageOverlay()}
+                { this.state.isLoading && this.renderUsageOverlay()}
 
                 <Grid item xs={2} className="months-container d-flex">
                   <Grid container justify="center" alignItems="center">
