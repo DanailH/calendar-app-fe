@@ -2,59 +2,67 @@
 	box-sizing: border-box;
 }
 
-.main-container,
-.menu-container {
-	height: 100vh;
+.main-container {
+	flex: 2;
+	width: 94%;
+	background: #f7f7f7;
 }
 
 .account-container .MuiButton-root {
-	float: right;
 	margin-left: 24px !important;
 }
 
 .menu-container {
-	position: relative;
-	background: #d8d9f7;
-	padding: 0 8px;
+	height: 100vh;
+	max-width: 6%;
 
-	.menu-box,
-	.MuiBox-root {
-		margin-top: 10%;
+	.menu-box {
+		display: none
+	}
+
+	.MuiToolbar-gutters {
+		padding: 0;
+	}
+
+	.toolbar {
+		display: block;
 	}
 }
 
-.months-container {
-	background: #f2f2ff;
-	display: flex;
-}
-
-.months.MuiList-root .MuiListItem-button:hover {
-	background-color: transparent;
-}
-
-.effect-container {
-	border-top-left-radius: 200%;
-	border-bottom-left-radius: 200%;    
-}
-
 .main-calendar {
-	position: relative;
-}
+	display: flex;
 
-.curve-container {
-	overflow: hidden;
-	position: relative;
-	background: #f2f2ff;
-}
+	.calendar-container {
+		width: 75%;
+	}
 
-.curve {
-	border-radius: 50%;
-	padding: 900%;
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translate(0,-50%);
-	background: white;
+	.months.MuiList-root .MuiListItem-button:hover {
+		background-color: transparent;
+	}
+
+	.content-container {
+		flex: 2;
+		display: flex;
+		flex-direction: column;
+		width: 25%;
+
+		.dashboard-box {
+			padding-bottom: 24px;
+		}
+
+		.content-header {
+			color: #737373;
+			text-transform: uppercase;
+			font-size: 0.9rem;
+			font-weight: 600;
+		}
+
+		.content-box {
+			flex: 1;
+			background: white;
+			box-shadow: 0 7px 15px 0 rgba(0,0,0,.04);
+		}
+	}
 }
 
 .loader-overlay {
@@ -71,12 +79,6 @@
 	color: rgb(244, 99, 116);
 }
 
-.feedback-box {
-	position: absolute;
-	bottom: 10px;
-	margin: 0 auto;
-}
-
 .usage-overlay {
 	position: absolute;
 	z-index: 1;
@@ -89,4 +91,24 @@
 	font-size: 2rem;
 	font-weight: bold;
 	color: #eb7873;
+}
+
+// Tablet screen
+
+@media only screen and (max-device-width: 768px) {
+	.main-calendar {
+		display: block;
+
+		.calendar-container {
+			width: 100%;
+		}
+
+		.content-container {
+			flex-direction: row;
+
+			.dashboard-box {
+				padding-bottom: 0;
+			}
+		}
+	}
 }

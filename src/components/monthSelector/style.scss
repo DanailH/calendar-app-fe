@@ -39,6 +39,10 @@
 }
 
 .months {
+  width: 80%;
+  overflow-x: scroll;
+  display: flex;
+  
   .MuiListItem-root.Mui-selected, 
   .MuiListItem-root.Mui-selected:hover {
     border-radius: 25px;

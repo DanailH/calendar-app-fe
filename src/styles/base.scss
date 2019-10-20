@@ -1,16 +1,5 @@
-.mobile-overlay {
-  display: none;
-}
-
 .d-flex {
   display: flex;
-}
-
-.center-calendar-block {
-  position: absolute;
-  left: -5%;
-  top: 50%;
-  transform: translate(0, -50%);
 }
 
 .w-100 {
@@ -47,38 +36,4 @@
 
 .position-relative {
   position: relative;
-}
-
-@media only screen and (orientation:portrait) {
-  body {
-    height: 100vw;
-    transform: rotate(90deg);
-  }
-
-  .main-container,
-  .user-container {
-    width: 100vh;
-  }
-}
-
-@media only screen and (max-device-width: 767px) {
-  body {
-    transform: rotate(0deg);
-  }
-
-  .main-container, .user-container {
-    display: none;
-  }
-
-  .mobile-overlay {
-    display: block;
-    margin-top: 15%;
-    text-align: center;
-
-    p {
-      margin-top: 20%;
-      padding: 0 15%;
-      font-size: 2rem;
-    }
-  }
 }

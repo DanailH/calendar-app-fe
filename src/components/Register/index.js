@@ -39,111 +39,103 @@ class Register extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => {
-      if (res.status !== 200) {
-        this.setState({
-          error: true,
-          errorMessage: res.statusText
-        });
-      } else {
-        this.setState({
-          isRegisterSuccessful: true
-        });
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error)
-    });
+      .then(res => {
+        if (res.status !== 200) {
+          this.setState({
+            error: true,
+            errorMessage: res.statusText
+          });
+        } else {
+          this.setState({
+            isRegisterSuccessful: true
+          });
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error)
+      });
   }
 
   render() {
     return (
-      <div>
-        <div className="mobile-overlay">
-          <Logo />
-
-          <p>Sorry, our app is currently not available for mobile devices!</p>
-        </div>
-
-        <div className="user-container">
-          <Dialog open={this.state.isRegisterSuccessful} aria-labelledby="responsive-dialog-title">
-            <DialogContent className="d-flex">
-              <DoneIcon/>
-              <DialogContentText>
-                Congratulation! You are successfully register and now you can start planning you vacation days.
+      <div className="user-container">
+        <Dialog open={this.state.isRegisterSuccessful} aria-labelledby="responsive-dialog-title">
+          <DialogContent className="d-flex">
+            <DoneIcon/>
+            <DialogContentText>
+              Congratulation! You are successfully register and now you can start planning you vacation days.
             </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Link to="/login">
-                <Button type="submit" variant="contained" className="user-form">
+          </DialogContent>
+          <DialogActions>
+            <Link to="/login">
+              <Button type="submit" variant="contained" className="user-form">
                 Login
               </Button>
-              </Link>
-            </DialogActions>
-          </Dialog>
-          <Container maxWidth="sm" className="user-form">
-            <Logo />
-            <form onSubmit={this.handleRegister}>
-              <TextField
-                id="firstName"
-                label="First name"
-                type="text"
-                name="firstName"
-                placeholder="First name"
-                margin="normal"
-                variant="outlined"
-                autoFocus
-                InputLabelProps={{ shrink: true }}
-              />
-              <TextField
-                id="lastName"
-                label="Last name"
-                type="text"
-                name="lastName"
-                placeholder="Last name"
-                margin="normal"
-                variant="outlined"
-                InputLabelProps={{ shrink: true }}
-              />
-              <TextField
-                id="email"
-                label="Email"
-                type="email"
-                name="email"
-                placeholder="Enter email"
-                margin="normal"
-                variant="outlined"
-                InputLabelProps={{ shrink: true }}
-              />
-              <TextField
-                id="password"
-                label="Password"
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                margin="normal"
-                variant="outlined"
-                InputLabelProps={{ shrink: true }}
-              />
-              <TextField
-                id="passwordRe"
-                label="Repeat password"
-                type="password"
-                name="passwordRe"
-                placeholder="Repeat the password"
-                margin="normal"
-                variant="outlined"
-                InputLabelProps={{ shrink: true }}
-              />
-              
-              { this.state.error && <FormError message={this.state.errorMessage} registerError={true} /> }
-              
-              <Button type="submit" variant="contained" className="user-button">
-                Register
+            </Link>
+          </DialogActions>
+        </Dialog>
+        <Container maxWidth="sm" className="user-form">
+          <Logo name="FOIZ" />
+          <form onSubmit={this.handleRegister}>
+            <TextField
+              id="firstName"
+              label="First name"
+              type="text"
+              name="firstName"
+              placeholder="First name"
+              margin="normal"
+              variant="outlined"
+              autoFocus
+              InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+              id="lastName"
+              label="Last name"
+              type="text"
+              name="lastName"
+              placeholder="Last name"
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+              id="passwordRe"
+              label="Repeat password"
+              type="password"
+              name="passwordRe"
+              placeholder="Repeat the password"
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+            />
+
+            {this.state.error && <FormError message={this.state.errorMessage} registerError={true} />}
+
+            <Button type="submit" variant="contained" className="user-button">
+              Register
               </Button>
-            </form>
-          </Container>
-        </div>
+          </form>
+        </Container>
       </div>
     );
   }

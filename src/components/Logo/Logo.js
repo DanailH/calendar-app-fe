@@ -9,8 +9,8 @@ class Logo extends React.Component {
 			<Box className="logo-container">
 				<img src='./logo.png' alt="logo" className="img-container" />
 				<Typography variant="h5">
-					FOIZ
-      	</Typography>
+					{this.props.name}
+				</Typography>
 			</Box>
 		)
 	}

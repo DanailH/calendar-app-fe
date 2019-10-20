@@ -58,50 +58,42 @@ class Login extends React.Component {
     }
 
     return (
-      <div>
-        <div className="mobile-overlay">
-          <Logo />
+      <div className="user-container">
+        <Container maxWidth="sm" className="user-form">
+          <Logo name="FOIZ"/>
+          <form onSubmit={this.handleLogin}>
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              margin="normal"
+              variant="outlined"
+              autoFocus
+              InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+            />
+            <div className="user-link">
+              <Link to="/register">Register an account</Link>
+            </div>
 
-          <p>Sorry, our app is currently not available for mobile devices!</p>
-        </div>
-      
-        <div className="user-container">
-          <Container maxWidth="sm" className="user-form">
-            <Logo />
-            <form onSubmit={this.handleLogin}>
-              <TextField
-                id="email"
-                label="Email"
-                type="email"
-                name="email"
-                placeholder="Enter email"
-                margin="normal"
-                variant="outlined"
-                autoFocus
-                InputLabelProps={{ shrink: true }}
-              />
-              <TextField
-                id="password"
-                label="Password"
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                margin="normal"
-                variant="outlined"
-                InputLabelProps={{ shrink: true }}
-              />
-              <div className="user-link">
-                <Link to="/register">Register an account</Link>
-              </div>
+            {this.state.error && <FormError loginError={true} />}
 
-              {this.state.error && <FormError loginError={true} />}
-
-              <Button type="submit" variant="contained" className="user-button">
-                Login
+            <Button type="submit" variant="contained" className="user-button">
+              Login
               </Button>
-            </form>
-          </Container>
-        </div>
+          </form>
+        </Container>
       </div>
     );
   }

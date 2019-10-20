@@ -1,8 +1,9 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
@@ -196,67 +197,61 @@ class App extends React.Component {
   render() {
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
     const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => holiday.split('T')[0]) : [];
-  
+
     return (
-      <div>
-        <div className="mobile-overlay">
-          <Logo />
+      <div className="d-flex">
+        {this.isLoading()}
+        {!this.state.isLoading && this.renderUsageOverlay()}
 
-          <p>Sorry, our app is currently not available for mobile devices!</p>
-        </div>
-        
+        <AppBar position="static" className="menu-container">
+          <Toolbar className="toolbar">
+            <Logo />
+            <div className="menu-box">
+              <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
+              <SetCountry country={this.state.country} setCountry={this.setCountry} />
+            </div>
+          </Toolbar>
+        </AppBar>
+
         <div className="main-container">
-          {this.isLoading()}
+          <Logout user={this.state.user} />
 
-          <Grid container>
-            <Grid item xs={2} className="menu-container">
-              <Logo />
-              <div className="menu-box">
-                <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
-                <SetCountry country={this.state.country} setCountry={this.setCountry} />
-                <Box>
-                  <Donut remaining={this.state.numberOfUsedHolidays} total={this.state.holidays} />
-                </Box>
-                <Box className="text-center">
-                  <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
-                </Box>
+          <div className="main-calendar">
+
+            <div className="calendar-container">
+              <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} />
+              <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+            </div>
+
+            <div className="content-container">
+              <div className="dashboard-box">
+                <div className="content-header">DASHBOARD</div>
+                <div className="content-box">
+                  <Box>
+                    <Donut remaining={this.state.numberOfUsedHolidays} total={this.state.holidays} />
+                  </Box>
+                  <Box className="text-center">
+                    <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
+                  </Box>
+                </div>
               </div>
-              
-              <div className="feedback-box">
-                <Link target="_blank" href='https://www.surveymonkey.com/r/3XKR6YW'>
-                  Leave feedback
-                </Link>
-                <Button variant="outlined" size="small" className="account-menu" disabled>
-                  Version Alpha 1.0.0
-                </Button>
-              </div>
-            </Grid>
 
-            <Grid item xs={10}>
-              <Grid container className="h-100 position-relative">
-                { !this.state.isLoading && this.renderUsageOverlay()}
-
-                <Grid item xs={2} className="months-container d-flex">
-                  <Grid container justify="center" alignItems="center">
-                    <CalendarNav selectYear={this.selectYear} selectMonth={this.selectMonth} />
-                  </Grid>
-                </Grid>
-
-                <Grid item xs={1} className="curve-container">
-                  <div className="curve"></div>
-                </Grid>
-
-                <Grid item xs={9} className="main-calendar">
-                  <Logout user={this.state.user} />
-
-                  <div className="center-calendar-block w-100">
-                    <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
-                    <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
+              <div>
+                <div className="content-header">ADDITIONAL</div>
+                <div className="content-box">
+                  <div className="feedback-box">
+                    <Link target="_blank" href='https://www.surveymonkey.com/r/3XKR6YW'>
+                      Leave feedback
+                  </Link>
+                    <Button variant="outlined" size="small" className="account-menu" disabled>
+                      Version Alpha 1.0.0
+                  </Button>
                   </div>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
+                  <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )
