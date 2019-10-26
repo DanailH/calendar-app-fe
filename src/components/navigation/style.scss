@@ -1,9 +1,9 @@
-.menu-container {
+.navigation-container {
 	height: 100vh;
 	max-width: 6%;
 
-	.menu-box {
-		display: none
+	.navigation-box {
+		padding: 16px;
 	}
 
 	.MuiToolbar-gutters {
@@ -13,5 +13,10 @@
 	.toolbar {
 		display: block;
 		text-align: center;
+
+		.drawer {
+			margin-left: 6% !important;
+			padding: 16px !important;
+		}
 	}
 }
