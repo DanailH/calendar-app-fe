@@ -195,8 +195,11 @@ class App extends React.Component {
 
   render() {
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
-    const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => holiday.split('T')[0]) : [];
-  
+    const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => ({
+      date: holiday.date.split('T')[0],
+      info: holiday.info
+    })) : [];
+
     return (
       <div>
         <div className="mobile-overlay">
@@ -204,7 +207,7 @@ class App extends React.Component {
 
           <p>Sorry, our app is currently not available for mobile devices!</p>
         </div>
-        
+
         <div className="main-container">
           {this.isLoading()}
 
@@ -221,7 +224,7 @@ class App extends React.Component {
                   <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
                 </Box>
               </div>
-              
+
               <div className="feedback-box">
                 <Link target="_blank" href='https://www.surveymonkey.com/r/3XKR6YW'>
                   Leave feedback
