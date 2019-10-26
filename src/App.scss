@@ -89,6 +89,10 @@
 
 // Tablet screen
 @media only screen and (max-device-width: 768px) {
+	.navigation-container {
+		height: auto;
+	}
+
 	.menu-container {
 		height: auto;
 	}
@@ -134,6 +138,15 @@
 
 // Phone screen
 @media only screen and (max-device-width: 480px) {
+	.navigation-container {
+		height: auto;
+		max-width: 10%;
+
+		button {
+			padding: 0;
+		}
+	}
+
 	.weekdays {
 		font-size: 0.5rem;
 	}
