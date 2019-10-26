@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,6 +17,15 @@ const drawerStyles = {
 	},
 	drawer: {
 		padding: '16px',
+		marginLeft: '6%',
+		width: '350px'
+	},
+	drawerHeader: {
+		fontSize: '1.4rem',
+		fontWeight: '600',
+		borderBottom: '1px solid #e6e6e6',
+		padding: '8px 0',
+		marginBottom: '16px'
 	}
 };
 
@@ -32,7 +42,6 @@ class Navigation extends Component {
 
 	render() {
 		const { classes } = this.props;
-		console.log(this.state.isDrawerOpen)
 		return (
 			<AppBar position="static" className="navigation-container">
 				<Toolbar className="toolbar">
@@ -45,20 +54,19 @@ class Navigation extends Component {
 						<DateRangeIcon />
 					</IconButton>
 					<Drawer
-					 classes={{
+						classes={{
 							paper: classes.drawer,
-          }}
+						}}
 						open={this.state.isDrawerOpen}
 						ModalProps={{ onBackdropClick: this.toggleDrawer, onEscapeKeyDown: this.toggleDrawer }}
-						// onClose={toggleDrawer('left', false)}
-						// onOpen={toggleDrawer('left', true)}
 					>
-						<div className="navigation-box" onClick={() => this.toggleDrawer()}
-							onKeyDown={() => this.toggleDrawer()}>
-						<SetHolidays count={this.props.holidayCount} setHolidays={this.props.setHolidays} />
-						<SetCountry country={this.props.country} setCountry={this.props.setCountry} />
-					</div>
-					TEST
+						<div className="navigation-box">
+							<div className={clsx(classes.drawerHeader)}>
+								Setting up
+							</div>
+							<SetHolidays count={this.props.holidayCount} setHolidays={this.props.setHoliday} />
+							<SetCountry country={this.props.country} setCountry={this.props.setCountry} />
+						</div>
 					</Drawer>
 				</Toolbar>
 			</AppBar>

@@ -25,7 +25,7 @@ class SetHolidays extends React.Component {
   }
 
   setHolidaysNumber(event) {
-    if (this.props.count !== this.state.holidaysValue) {
+    if (this.state.holidaysValue !== 0 && (this.props.count !== this.state.holidaysValue)) {
       event.preventDefault();
       this.props.setHolidays(this.state.holidaysValue);
     }

@@ -206,7 +206,7 @@ class App extends React.Component {
         {!this.state.isLoading && this.renderUsageOverlay()}
 
         <Navigation
-          holidayCount={this.state.holidays}
+          count={this.state.holidays}
           setHoliday={this.setHolidays}
           country={this.state.country}
           setCountry={this.setCountry}

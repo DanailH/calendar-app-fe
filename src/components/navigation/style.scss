@@ -2,10 +2,6 @@
 	height: 100vh;
 	max-width: 6%;
 
-	.navigation-box {
-		padding: 16px;
-	}
-
 	.MuiToolbar-gutters {
 		padding: 0;
 	}
@@ -13,6 +9,10 @@
 	.toolbar {
 		display: block;
 		text-align: center;
+
+		.MuiButtonBase-root {
+			margin-top: 8px;
+		}
 
 		.drawer {
 			margin-left: 6% !important;
