@@ -50,7 +50,7 @@ class SetCountry extends React.Component {
           select
           label="Country"
           name="countryCode"
-          value={ this.state.country !== null ? this.state.country : '' }
+          value={ this.props.country !== null ? this.props.country : '' }
           onChange={ this.handleCountryChange }
           placeholder="Please select your country"
           className="nav-fields"

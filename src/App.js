@@ -207,8 +207,8 @@ class App extends React.Component {
 
         <Navigation
           count={this.state.holidays}
-          setHoliday={this.setHolidays}
           country={this.state.country}
+          setHoliday={this.setHolidays}
           setCountry={this.setCountry}
         />
 

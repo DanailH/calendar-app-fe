@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import Drawer from '@material-ui/core/Drawer';
+import CloseIcon from '@material-ui/icons/Close';
 import Logo from '../Logo/Logo';
 import SetHolidays from '../setHolidays/index';
 import SetCountry from '../setCountry/index';
@@ -20,12 +21,24 @@ const drawerStyles = {
 		marginLeft: '6%',
 		width: '350px'
 	},
+	drawerHeaderBox: {
+		borderBottom: '1px solid #e6e6e6',
+		paddingBottom: '8px',
+		marginBottom: '16px',
+		justifyContent: 'space-between',
+		alignItems: 'center'
+	},
 	drawerHeader: {
 		fontSize: '1.4rem',
 		fontWeight: '600',
-		borderBottom: '1px solid #e6e6e6',
-		padding: '8px 0',
-		marginBottom: '16px'
+	},
+	closeBtn: {
+		'&:hover': {
+			background: 'transparent'
+		}
+	},
+	closeBtnIcon: {
+		fontSize: '1rem',
 	}
 };
 
@@ -61,10 +74,18 @@ class Navigation extends Component {
 						ModalProps={{ onBackdropClick: this.toggleDrawer, onEscapeKeyDown: this.toggleDrawer }}
 					>
 						<div className="navigation-box">
-							<div className={clsx(classes.drawerHeader)}>
-								Setting up
+							<div className={`d-flex ${clsx(classes.drawerHeaderBox)}`}>
+								<span className={clsx(classes.drawerHeader)}>Setting up</span>
+									<IconButton
+									aria-label="close drawer"
+									onClick={this.toggleDrawer}
+									color="inherit"
+									className={clsx(classes.closeBtn)}
+								>
+									<CloseIcon className={clsx(classes.closeBtnIcon)}/>
+								</IconButton>
 							</div>
-							<SetHolidays count={this.props.holidayCount} setHolidays={this.props.setHoliday} />
+							<SetHolidays count={this.props.count} setHolidays={this.props.setHoliday} />
 							<SetCountry country={this.props.country} setCountry={this.props.setCountry} />
 						</div>
 					</Drawer>

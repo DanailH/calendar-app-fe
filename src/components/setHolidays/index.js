@@ -31,6 +31,12 @@ class SetHolidays extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.setState({
+      holidaysValue: this.props.count
+    });
+  }
+
   componentDidUpdate(nextProps) {
     if (this.props.count !== nextProps.count) {
       this.setState({
