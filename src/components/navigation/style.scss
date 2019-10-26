@@ -1,0 +1,17 @@
+.menu-container {
+	height: 100vh;
+	max-width: 6%;
+
+	.menu-box {
+		display: none
+	}
+
+	.MuiToolbar-gutters {
+		padding: 0;
+	}
+
+	.toolbar {
+		display: block;
+		text-align: center;
+	}
+}

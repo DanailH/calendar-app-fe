@@ -14,23 +14,6 @@
 	width: 100%;
 }
 
-.menu-container {
-	height: 100vh;
-	max-width: 6%;
-
-	.menu-box {
-		display: none
-	}
-
-	.MuiToolbar-gutters {
-		padding: 0;
-	}
-
-	.toolbar {
-		display: block;
-	}
-}
-
 .main-calendar {
 	display: flex;
 	justify-content: space-between;

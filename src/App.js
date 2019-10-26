@@ -2,17 +2,15 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import Link from '@material-ui/core/Link';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
 import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
-import Logo from './components/Logo/Logo';
-import Link from '@material-ui/core/Link';
 import Logout from './components/Logout/Logout';
-import Donut from './components/donutChart/Donut'
+import Donut from './components/donutChart/Donut';
+import Navigation from './components/navigation/Navigation';
 import './App.scss';
 import './styles/base.scss';
 import { BaseUrl } from './config';
@@ -155,7 +153,8 @@ class App extends React.Component {
                 listOfUsedHolidays: userData.selectedHolidays,
                 numberOfUsedHolidays: userData.selectedHolidays.length,
                 isLoading: false,
-                user: userInfo
+                user: userInfo,
+                drawerIsOpen: false
               }))
               .catch(error => {
                 this.setState({
@@ -205,16 +204,13 @@ class App extends React.Component {
       <div className="d-flex">
         {this.isLoading()}
         {!this.state.isLoading && this.renderUsageOverlay()}
-
-        <AppBar position="static" className="menu-container">
-          <Toolbar className="toolbar">
-            <Logo />
-            <div className="menu-box">
-              <SetHolidays count={this.state.holidays} setHolidays={this.setHolidays} />
-              <SetCountry country={this.state.country} setCountry={this.setCountry} />
-            </div>
-          </Toolbar>
-        </AppBar>
+        
+        <Navigation 
+          holidayCount={this.state.holidays}
+          setHoliday={this.setHolidays}
+          country={this.state.country}
+          setCountry={this.setCountry}
+          />
 
         <div className="main-container">
           <Logout user={this.state.user} />
