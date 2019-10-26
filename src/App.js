@@ -221,9 +221,11 @@ class App extends React.Component {
 
           <div className="main-calendar">
 
-            <div className="calendar-container">
-              <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} />
-              <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+            <div className="calendar-container position-relative">
+              <div className="absolute-center w-100">
+                <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} />
+                <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+              </div>
             </div>
 
             <div className="content-container">
