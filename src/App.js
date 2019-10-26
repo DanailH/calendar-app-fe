@@ -204,13 +204,13 @@ class App extends React.Component {
       <div className="d-flex">
         {this.isLoading()}
         {!this.state.isLoading && this.renderUsageOverlay()}
-        
-        <Navigation 
+
+        <Navigation
           holidayCount={this.state.holidays}
           setHoliday={this.setHolidays}
           country={this.state.country}
           setCountry={this.setCountry}
-          />
+        />
 
         <div className="main-container">
           <Logout user={this.state.user} />
@@ -218,7 +218,7 @@ class App extends React.Component {
           <div className="main-calendar">
 
             <div className="calendar-container position-relative">
-              <div className="absolute-center w-100">
+              <div className="absolute-center calendar-wrapper w-100">
                 <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} />
                 <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
               </div>

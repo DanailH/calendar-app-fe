@@ -88,35 +88,77 @@
 }
 
 // Tablet screen
-
 @media only screen and (max-device-width: 768px) {
+	.menu-container {
+		height: auto;
+	}
+
+	.account-container, .main-calendar {
+		height: auto;
+	}
+
+	.main-container {
+		width: 94%;
+	}
+
 	.main-calendar {
 		display: block;
 
 		.calendar-container {
-			width: 100%;
+			width: 98%;
+			margin: 1%;
+
+			.calendar-wrapper {
+				position: static;
+				top: 0;
+				left: 0;
+				transform: translate(0, 0);
+			}
 		}
 
 		.content-container {
-			flex-direction: row;
-			padding: 0 16px 0;
 			width: 100%;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-around;
+			margin: 0;
 
 			.content-box {
-				margin-bottom: 0;
+				flex: none;
+				width: 40%;
+			}
+		}
+	}
+
+}
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+	.weekdays {
+		font-size: 0.5rem;
+	}
+
+	.MuiGrid-justify-xs-center {
+		justify-content: space-between !important;
+	}
+
+	.menu-container {
+		max-width: 10%;
+	}
+
+	.main-container {
+		width: 90%;
+	}
+
+	.main-calendar {
+		.content-container {
+			display: block;
+
+			.content-box {
+				flex: none;
+				width: 80%;
+				margin: 15px auto;
 			}
 		}
 	}
 }
-
-// Phone screen
-
-// @media only screen and (max-device-width: 480px) {
-// 	.content-container {
-// 		flex-direction: row;
-
-// 		.dashboard-box {
-// 			padding-bottom: 0;
-// 		}
-// 	}
-// }
