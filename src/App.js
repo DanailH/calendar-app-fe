@@ -196,7 +196,10 @@ class App extends React.Component {
 
   render() {
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
-    const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => holiday.split('T')[0]) : [];
+    const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => ({
+      date: holiday.date.split('T')[0],
+      info: holiday.info
+    })) : [];
 
     return (
       <div className="d-flex">
@@ -224,9 +227,9 @@ class App extends React.Component {
             </div>
 
             <div className="content-container">
-              <div className="dashboard-box">
+              <div className="content-box">
                 <div className="content-header">DASHBOARD</div>
-                <div className="content-box">
+                <div className="text-box">
                   <Box>
                     <Donut remaining={this.state.numberOfUsedHolidays} total={this.state.holidays} />
                   </Box>
@@ -236,9 +239,9 @@ class App extends React.Component {
                 </div>
               </div>
 
-              <div>
+              <div className="content-box">
                 <div className="content-header">ADDITIONAL</div>
-                <div className="content-box">
+                <div className="text-box">
                   <div className="feedback-box">
                     <Link target="_blank" href='https://www.surveymonkey.com/r/3XKR6YW'>
                       Leave feedback

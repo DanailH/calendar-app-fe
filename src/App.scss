@@ -31,6 +31,7 @@
 
 .main-calendar {
 	display: flex;
+	height: 90vh;
 
 	.calendar-container {
 		width: 75%;
@@ -42,9 +43,10 @@
 
 	.content-container {
 		flex: 2;
+		width: 25%;
+		margin-right: 16px;
 		display: flex;
 		flex-direction: column;
-		width: 25%;
 
 		.dashboard-box {
 			padding-bottom: 24px;
@@ -59,6 +61,8 @@
 
 		.content-box {
 			flex: 1;
+			margin-bottom: 16px;
+			padding: 16px;
 			background: white;
 			box-shadow: 0 7px 15px 0 rgba(0,0,0,.04);
 		}
@@ -105,10 +109,24 @@
 
 		.content-container {
 			flex-direction: row;
+			padding: 0 16px 0;
+			width: 100%;
 
-			.dashboard-box {
-				padding-bottom: 0;
+			.content-box {
+				margin-bottom: 0;
 			}
 		}
 	}
 }
+
+// Phone screen
+
+// @media only screen and (max-device-width: 480px) {
+// 	.content-container {
+// 		flex-direction: row;
+
+// 		.dashboard-box {
+// 			padding-bottom: 0;
+// 		}
+// 	}
+// }
