@@ -54,7 +54,6 @@ class App extends React.Component {
 
   setHolidays(numberOfHolidays) {
     const data = {
-      userId: this.state.userId,
       country: this.state.country,
       holidaysCount: numberOfHolidays,
       selectedHolidays: this.state.listOfUsedHolidays
@@ -136,12 +135,26 @@ class App extends React.Component {
       .catch(error => console.error('Error:', error));
   }
 
+  // TODO: Refactor
+  componentWillMount() {
+    fetch(`${BaseUrl}/auth/isAuth`)
+      .then((res) => {
+        if(res.status === 401) {
+          localStorage.removeItem('_id');
+          window.location.href = '/login';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error)
+      })
+  }
+
   componentDidMount() {
-    fetch(`${BaseUrl}/users/user?userId=${this.state.userId}`)
+    fetch(`${BaseUrl}/users/user`)
       .then(res => res.json())
       .then(res => {
         const userInfo = res;
-        fetch(`${BaseUrl}/holiday/holidays?userId=${this.state.userId}`)
+        fetch(`${BaseUrl}/holiday/holidays`)
           .then(res => res.json())
           .then(res => {
             const userData = res;
