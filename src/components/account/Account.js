@@ -2,19 +2,20 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
+import UserService from '../../services/account.service';
 import './style.scss';
-import { BaseUrl } from '../../config';
 
-class Logout extends React.Component {
+class Account extends React.Component {
   state = {
     isAuth: true,
   }
 
   handleLogOut = () => {
-    fetch(`${BaseUrl}/auth/logout`)
+    return UserService.logoutUser()
       .then(localStorage.removeItem('_id'))
-      .then(this.setState({ isAuth: false }))
-      .catch(error => console.error('Error:', error));
+      .then(() =>
+        this.setState({ isAuth: false })
+       )
   }
 
   setInitials() {
@@ -40,4 +41,4 @@ class Logout extends React.Component {
   }
 }
 
-export default Logout;
+export default Account;

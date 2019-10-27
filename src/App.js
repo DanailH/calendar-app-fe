@@ -8,7 +8,7 @@ import CalendarMain from './components/calendarMain';
 import SetHolidays from './components/setHolidays';
 import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
-import Logout from './components/Logout/Logout';
+import Account from './components/account/Account';
 import Donut from './components/donutChart/Donut';
 import Navigation from './components/navigation/Navigation';
 import './App.scss';
@@ -213,7 +213,7 @@ class App extends React.Component {
         />
 
         <div className="main-container">
-          <Logout user={this.state.user} />
+          <Account user={this.state.user} />
 
           <div className="main-calendar">
 
