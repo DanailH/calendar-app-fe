@@ -1,13 +1,37 @@
 import React from 'react';
+import clsx from 'clsx';
 import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import { withStyles } from '@material-ui/core/styles'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import PeopleIcon from '@material-ui/icons/People';
 import UserService from '../../services/account.service';
+import ShareCalendar from '../shareCalendar/ShareCalendar';
 import './style.scss';
 
+const styles = {
+  root: {
+    height: 100,
+  },
+  menu: {
+    width: '200px',
+    border: '1px solid #d9d9d9',
+    boxShadow: '0 6px 20px rgba(0, 0, 0, 0.04), -6px 8px 15px rgba(0, 0, 0, 0.04), 6px 8px 15px rgba(0, 0, 0, 0.04)',
+  },
+  menuItem: {
+    fontSize: '0.9rem',
+  },
+  menuIcon: {
+    marginRight: '8px',
+  }
+};
 class Account extends React.Component {
   state = {
     isAuth: true,
+    anchorEl: null
   }
 
   handleLogOut = () => {
@@ -15,8 +39,22 @@ class Account extends React.Component {
       .then(localStorage.removeItem('_id'))
       .then(() =>
         this.setState({ isAuth: false })
-       )
+      )
   }
+
+  // shareCalendar() {
+  //   shareCalendar
+  // }
+
+  toggleMenu = (event) => {
+    this.setState({
+      anchorEl: event.currentTarget
+    })
+  }
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
 
   setInitials() {
     if (this.props.user && this.props.user.firstName && this.props.user.lastName) {
@@ -27,18 +65,32 @@ class Account extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     if (!this.state.isAuth) {
       return <Redirect to='/' />
     }
     return (
       <div className="d-flex account-container">
-        <Avatar>{this.setInitials()}</Avatar>
-        <Button variant="outlined" size="small" className="account-menu" onClick={this.handleLogOut}>
-          Log out
-              </Button>
+        <ShareCalendar/>
+        <Avatar onClick={this.toggleMenu}>{this.setInitials()}</Avatar>
+        <Menu
+          open={Boolean(this.state.anchorEl)}
+          anchorEl={this.state.anchorEl}
+          onClose={this.handleClose}
+          PopoverClasses={{
+            paper: classes.menu
+          }}
+        >
+          <MenuItem
+            onClick={this.handleLogOut}
+            className={clsx(classes.menuItem)}>
+            <ExitToAppIcon className={clsx(classes.menuIcon)} />
+            Log out
+          </MenuItem>
+        </Menu>
       </div>
     )
   }
 }
 
-export default Account;
+export default withStyles(styles)(Account);

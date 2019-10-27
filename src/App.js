@@ -5,8 +5,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Link from '@material-ui/core/Link';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
-import SetHolidays from './components/setHolidays';
-import SetCountry from './components/setCountry';
 import Legend from './components/Legend/Legend';
 import Account from './components/account/Account';
 import Donut from './components/donutChart/Donut';

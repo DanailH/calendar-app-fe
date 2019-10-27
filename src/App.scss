@@ -2,14 +2,6 @@
 	box-sizing: border-box;
 }
 
-.account-container {
-	height: 10%;
-}
-
-.account-container .MuiButton-root {
-	margin-left: 24px !important;
-}
-
 .main-container {
 	width: 100%;
 }
@@ -97,7 +89,7 @@
 		height: auto;
 	}
 
-	.account-container, .main-calendar {
+	.main-calendar {
 		height: auto;
 	}
 
