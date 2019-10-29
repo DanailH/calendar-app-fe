@@ -1,89 +1,89 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .main-container {
-	width: 100%;
+  width: 100%;
 }
 
 .main-calendar {
-	background: #fafafa;
-	display: flex;
-	justify-content: space-between;
-	height: 90%;
+  background: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  height: 90%;
 
-	.calendar-container {
-		margin-left: 1%;
-		width: 72%;
-	}
+  .calendar-container {
+    margin-left: 1%;
+    width: 72%;
+  }
 
-	.months.MuiList-root .MuiListItem-button:hover {
-		background-color: transparent;
-	}
+  .months.MuiList-root .MuiListItem-button:hover {
+    background-color: transparent;
+  }
 
-	.content-container {
-		width: 23%;
-		margin-right: 16px;
-		display: flex;
-		flex-direction: column;
-	}
+  .content-container {
+    width: 23%;
+    margin-right: 16px;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .loader-overlay {
-	position: absolute;
-	z-index: 5;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(248, 248, 255, 0.9);
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(248, 248, 255, 0.9);
 }
 
 .loader-overlay .MuiCircularProgress-colorPrimary {
-	color: rgb(244, 99, 116);
+  color: rgb(244, 99, 116);
 }
 
 // Tablet screen
 @media only screen and (max-device-width: 768px) {
-	.navigation-container {
-		height: auto;
-	}
+  .navigation-container {
+    height: auto;
+  }
 
-	.menu-container {
-		height: auto;
-	}
+  .menu-container {
+    height: auto;
+  }
 
-	.main-calendar {
-		height: auto;
-	}
+  .main-calendar {
+    height: auto;
+  }
 
-	.main-container {
-		width: 94%;
-	}
+  .main-container {
+    width: 94%;
+  }
 
-	.main-calendar {
-		display: block;
+  .main-calendar {
+    display: block;
 
-		.calendar-container {
-			width: 98%;
-			margin: 1%;
+    .calendar-container {
+      width: 98%;
+      margin: 1%;
 
-			.calendar-wrapper {
-				position: static;
-				top: 0;
-				left: 0;
-				transform: translate(0, 0);
-			}
-		}
+      .calendar-wrapper {
+        position: static;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+      }
+    }
 
-		.content-container {
-			width: 100%;
-			flex-direction: row;
-			align-items: center;
-			justify-content: space-around;
-			margin: 0;
-		}
-	}
+    .content-container {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      margin: 0;
+    }
+  }
 }
 
 .usage-overlay {
@@ -99,34 +99,34 @@
 
 // Phone screen
 @media only screen and (max-device-width: 480px) {
-	.navigation-container {
-		height: auto;
-		max-width: 10%;
+  .navigation-container {
+    height: auto;
+    max-width: 10%;
 
-		button {
-			padding: 0;
-		}
-	}
+    button {
+      padding: 0;
+    }
+  }
 
-	.weekdays {
-		font-size: 0.5rem;
-	}
+  .weekdays {
+    font-size: 0.5rem;
+  }
 
-	.MuiGrid-justify-xs-center {
-		justify-content: space-between !important;
-	}
+  .MuiGrid-justify-xs-center {
+    justify-content: space-between !important;
+  }
 
-	.menu-container {
-		max-width: 10%;
-	}
+  .menu-container {
+    max-width: 10%;
+  }
 
-	.main-container {
-		width: 90%;
-	}
+  .main-container {
+    width: 90%;
+  }
 
-	.main-calendar {
-		.content-container {
-			display: block;
-		}
-	}
+  .main-calendar {
+    .content-container {
+      display: block;
+    }
+  }
 }

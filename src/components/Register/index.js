@@ -39,21 +39,21 @@ class Register extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => {
-        if (res.status !== 200) {
-          this.setState({
-            error: true,
-            errorMessage: res.statusText
-          });
-        } else {
-          this.setState({
-            isRegisterSuccessful: true
-          });
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error)
-      });
+    .then(res => {
+      if (res.status !== 200) {
+        this.setState({
+          error: true,
+          errorMessage: res.statusText
+        });
+      } else {
+        this.setState({
+          isRegisterSuccessful: true
+        });
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error)
+    });
   }
 
   render() {

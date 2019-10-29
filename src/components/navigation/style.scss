@@ -1,58 +1,59 @@
 .navigation-container {
-	height: 100vh;
-	max-width: 6%;
+  height: 100vh;
+  max-width: 6%;
 
-	.MuiToolbar-gutters {
-		padding: 0;
-	}
+  .MuiToolbar-gutters {
+    padding: 0;
+  }
 
-	.toolbar {
-		display: block;
-		text-align: center;
+  .toolbar {
+    display: block;
+    text-align: center;
 
-		.MuiButtonBase-root {
-			margin-top: 8px;
-		}
+    .MuiButtonBase-root {
+      margin-top: 8px;
+    }
 
-		.drawer {
-			margin-left: 6% !important;
-			padding: 16px !important;
-		}
+    .drawer {
+      margin-left: 6% !important;
+      padding: 16px !important;
+    }
 
-		
 
-		.MuiBadge-anchorOriginBottomRightCircle {
-			color: #de3232;
-			right: -8%;
-			top: -88%;
 
-			.MuiSvgIcon-root {
-				border-radius: 50%;
-				background: #fff;
-				font-size: 1.2rem;
-			}
-		}
-	}
+    .MuiBadge-anchorOriginBottomRightCircle {
+      color: #de3232;
+      right: -8%;
+      top: -88%;
+
+      .MuiSvgIcon-root {
+        border-radius: 50%;
+        background: #fff;
+        font-size: 1.2rem;
+      }
+    }
+  }
 
 }
-.navigation-box {
-	.MuiDivider-root {
-		margin: 12px 0 18px;
-	}
 
-	.missing-user-info {
-		// background: #dcdada;
-		background: #eb7873;
-		padding: 6px 12px;
-		font-size: 0.9rem;
-		color: white;
-		border-radius: 12px;
-	}
+.navigation-box {
+  .MuiDivider-root {
+    margin: 12px 0 18px;
+  }
+
+  .missing-user-info {
+    // background: #dcdada;
+    background: #eb7873;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    color: white;
+    border-radius: 12px;
+  }
 }
 
 // Tablet screen
 @media only screen and (max-device-width: 768px) {
-	.navigation-container .toolbar .MuiBadge-anchorOriginBottomRightCircle {
-		right: 10%;
-	}
+  .navigation-container .toolbar .MuiBadge-anchorOriginBottomRightCircle {
+    right: 10%;
+  }
 }

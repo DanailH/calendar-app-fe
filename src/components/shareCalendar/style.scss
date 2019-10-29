@@ -1,80 +1,74 @@
-.account-container{
-	.share-btn {
-		color: #fff;
-		border: 1px solid #F0C808;
-		background: #F0C808;
-		margin-right: 24px;
-		padding: 4px 16px;
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+.account-container {
+  .share-btn {
+    color: #fff;
+    border: 1px solid #F0C808;
+    background: #F0C808;
+    margin-right: 24px;
+    padding: 4px 16px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
 
-		&:hover {
-			background: #e4bd00;
-			border: 1px solid #e4bd00;
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
-		}
+    &:hover {
+      background: #e4bd00;
+      border: 1px solid #e4bd00;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
+    }
 
-		.MuiSvgIcon-root {
-			margin-right: 8px;
-		}
-	}
+    .MuiSvgIcon-root {
+      margin-right: 8px;
+    }
+  }
 }
 
 .send-box {
-		padding: 16px;
-		width: 350px;
-		left: 600px;
-		
-		.to-text {
-			font-size: 0.9rem;
-			padding-right: 8px;
-			color: #4a4a4a;
-		}
+    padding: 16px;
+    width: 350px;
+    left: 600px;
+    
+    .to-text {
+      font-size: 0.9rem;
+      padding-right: 8px;
+      color: #4a4a4a;
+    }
 
-	.share-box {
-		align-items: baseline;
+  .share-box {
+    align-items: baseline;
 
-		
-		.MuiFormLabel-root {
-			font-size: 0.8rem !important;
-			font-style: italic;
-		}
+    
+    .MuiFormLabel-root {
+      font-size: 0.8rem !important;
+      font-style: italic;
+    }
 
-		.MuiInput-underline:hover:not(.Mui-disabled):before{
-			border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
-		}
+    .to-text {
+      padding-right: 8px;
+      color: #4a4a4a;
+    }
 
-		.Mui-focused {
-			color: rgba(0, 0, 0, 0.54);
-		}
-	}
+    .MuiFormLabel-root {
+      font-size: 0.8rem !important;
+      font-style: italic;
+    }
 
-	.error-box {
-		.MuiDivider-root {
-			margin-top: 50px;
-		}
-	}
+    .error-box {
+      .MuiDivider-root {
+        margin-top: 50px;
+      }
+    }
 
-	.msg-box {
-		align-items: center;
+    .msg-box {
+      align-items: center;
 
-		.MuiSvgIcon-root {
-			color: green;
-			margin-right: 8px;
-			font-size: 2rem;
-		}
-		span {
-			font-size: 0.9rem;
-			color: #4a4a4a;
-		}
-	}
+      .Mui-focused {
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
 
-	.MuiDivider-root {
-		margin: 16px 0;
-	}
+    .msg-box {
+      align-items: center;
 
-	.send-btn {
-		float: right;
-		clear: both;
+      .send-btn {
+        float: right;
+        clear: both;
         margin: 16px 0;
         background: linear-gradient(to right, #eb7873, #ee9578);
         border: #eb7873;
@@ -82,8 +76,10 @@
         box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 
         &:hover {
-            background: linear-gradient(to right, #f36660, #ec825f);
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
+          background: linear-gradient(to right, #f36660, #ec825f);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
         }
-	}
+      }
+    }
+  }
 }

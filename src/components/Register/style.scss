@@ -1,21 +1,22 @@
 .MuiDialogContent-root .MuiSvgIcon-root {
-    color: green;
-    font-size: 3rem;
-    margin-right: 16px;
+  color: green;
+  font-size: 3rem;
+  margin-right: 16px;
 }
 
 .MuiDialogActions-root {
-    display: block !important;
-    text-align: center;
+  display: block !important;
+  text-align: center;
 }
+
 .MuiDialogActions-root .MuiButtonBase-root {
-    margin: 0 auto 24px !important;
+  margin: 0 auto 24px !important;
 }
 
 .MuiDialog-paper {
-    border-radius: 25px !important;
+  border-radius: 25px !important;
 }
 
 .MuiDialogContent-root:first-child {
-    padding-top: 24px;
+  padding-top: 24px;
 }
