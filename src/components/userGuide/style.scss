@@ -1,6 +1,5 @@
 .guide-container {
     max-width: 350px;
-    // background: #dcdada;
     background: #fff;
     border-radius: 25px;
     padding: 24px;
@@ -16,7 +15,7 @@
         box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 
         &:hover {
-            background: #dc6f6a;
+            background: linear-gradient(to right, #f36660, #ec825f);
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
         }
     }

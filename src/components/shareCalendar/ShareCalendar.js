@@ -32,11 +32,17 @@ class ShareCalendar extends Component {
 		e.preventDefault();
 
 		UserService.shareCalendar(this.state.sharedEmail)
-			.then(() =>
+			.then(res => {
+				if(res.status === 404) {
 				this.setState({
-					sharedEmailSuccess: true
+					sharedEmailFailed: true 
 				})
-			)
+			} else {
+					this.setState({
+						sharedEmailSuccess: true
+					})
+				}
+			})
 			.catch(err => {
 				this.setState({ sharedEmailFailed: true })
 			})
@@ -75,7 +81,7 @@ class ShareCalendar extends Component {
 					}}
 				>
 					<div className="send-box">
-						{!this.state.sharedEmailSuccess ? (
+						{(!this.state.sharedEmailSuccess || this.state.sharedEmail !== '') ? (
 							<Fragment>
 								<form onSubmit={this.sendEmail}>
 								<div className="d-flex share-box">
@@ -85,25 +91,26 @@ class ShareCalendar extends Component {
 										label="Enter email"
 										type="email"
 										value={this.state.sharedEmail}
-										// onBlur={this.handleEmailChange}
 										onChange={this.handleEmailChange}
-									// className={classes.textField}
 									/>
 								</div>
 								<Divider />
-								<div className="to-text">Share your calendar with family </div>
+								<div className="to-text">
+									Now you can share your calendar with someone, with just one click.
+									Fill the email of the person that you would like to share with and start planning
+									and tracking together your yearly vacation days.</div>
 								<Button variant="outlined" size="small" type="submit" className="send-btn">
 									Send
 								</Button>
 								</form>
 								{this.state.sharedEmailFailed && (
-									<Fragment>
+									<div className="error-box">
 										<Divider />
 										<div className="d-flex msg-box">
 											<ErrorIcon color="error" />
 											<span>Something went wrong! Please try again</span>
 										</div>
-									</Fragment>
+									</div>
 								)}
 							</Fragment>
 						)

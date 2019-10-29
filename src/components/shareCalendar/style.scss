@@ -21,17 +21,19 @@
 
 .send-box {
 		padding: 16px;
-		width: 250px;
+		width: 350px;
 		left: 600px;
 		
+		.to-text {
+			font-size: 0.9rem;
+			padding-right: 8px;
+			color: #4a4a4a;
+		}
 
 	.share-box {
 		align-items: baseline;
 
-		.to-text {
-			padding-right: 8px;
-			color: #4a4a4a;
-		}
+		
 		.MuiFormLabel-root {
 			font-size: 0.8rem !important;
 			font-style: italic;
@@ -43,6 +45,12 @@
 
 		.Mui-focused {
 			color: rgba(0, 0, 0, 0.54);
+		}
+	}
+
+	.error-box {
+		.MuiDivider-root {
+			margin-top: 50px;
 		}
 	}
 
@@ -67,7 +75,15 @@
 	.send-btn {
 		float: right;
 		clear: both;
-		margin-bottom: 16px;
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+        margin: 16px 0;
+        background: linear-gradient(to right, #eb7873, #ee9578);
+        border: #eb7873;
+        color: #fff;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+
+        &:hover {
+            background: linear-gradient(to right, #f36660, #ec825f);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
+        }
 	}
 }
