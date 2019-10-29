@@ -1,14 +1,11 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Link from '@material-ui/core/Link';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
-import Legend from './components/Legend/Legend';
 import Account from './components/account/Account';
-import Donut from './components/donutChart/Donut';
 import Navigation from './components/navigation/Navigation';
+import DashboardBox from './components/box/DashboardBox';
+import AdditionalBox from './components/box/AdditionalBox';
 import './App.scss';
 import './styles/base.scss';
 import { BaseUrl } from './config';
@@ -205,6 +202,10 @@ class App extends React.Component {
   }
 
   render() {
+    const dates = this.state.listOfUsedHolidays.map(date => new Date(date).toLocaleDateString()).sort()
+    const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) == i)
+
+    console.log(months)
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
     const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => ({
       date: holiday.date.split('T')[0],
@@ -230,38 +231,18 @@ class App extends React.Component {
 
             <div className="calendar-container position-relative">
               <div className="absolute-center calendar-wrapper w-100">
-                <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} />
+                <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
                 <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
               </div>
             </div>
 
             <div className="content-container">
-              <div className="content-box">
-                <div className="content-header">DASHBOARD</div>
-                <div className="text-box">
-                  <Box>
-                    <Donut remaining={this.state.numberOfUsedHolidays} total={this.state.holidays} />
-                  </Box>
-                  <Box className="text-center">
-                    <span className="totals">Remaining days:&nbsp;</span> {remainingHolidays}
-                  </Box>
-                </div>
-              </div>
-
-              <div className="content-box">
-                <div className="content-header">ADDITIONAL</div>
-                <div className="text-box">
-                  <div className="feedback-box">
-                    <Link target="_blank" href='https://www.surveymonkey.com/r/3XKR6YW'>
-                      Leave feedback
-                  </Link>
-                    <Button variant="outlined" size="small" className="account-menu" disabled>
-                      Version Alpha 1.0.0
-                  </Button>
-                  </div>
-                  <Legend remainingHolidays={remainingHolidays} totalNumberHolidays={this.state.holidays} />
-                </div>
-              </div>
+              <DashboardBox
+                remaining={this.state.numberOfUsedHolidays} 
+                total={this.state.holidays}
+                remainingHolidays={remainingHolidays}
+              />
+              <AdditionalBox/>
             </div>
           </div>
         </div>

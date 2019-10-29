@@ -31,7 +31,7 @@ class CalendarNav extends React.Component {
     return (
       <div className="calendar-nav-container">
         <YearSelector resetSelectedMonth={this.resetMonth} selectYear={this.props.selectYear} />
-        <MonthSelector selectMonth={this.props.selectMonth} setMonthIndex={this.setMonthIndex} activeMonthIndex={this.state.activeMonthIndex} />
+        <MonthSelector holidayMonths={this.props.holidayMonths} selectMonth={this.props.selectMonth} setMonthIndex={this.setMonthIndex} activeMonthIndex={this.state.activeMonthIndex} />
       </div>
     )
   };

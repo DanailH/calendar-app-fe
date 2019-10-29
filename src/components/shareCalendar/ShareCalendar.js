@@ -1,40 +1,43 @@
-import React from 'react';
-import clsx from 'clsx';
-import { Redirect } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import PeopleIcon from '@material-ui/icons/People';
+import ErrorIcon from '@material-ui/icons/Error';
+import CheckIcon from '@material-ui/icons/Check';
+import TextField from '@material-ui/core/TextField';
+import Divider from '@material-ui/core/Divider';
 import UserService from '../../services/account.service';
-// import './style.scss';
+import './style.scss';
 
-// const styles = {
-// 	root: {
-// 		height: 100,
-// 	},
-// 	menu: {
-// 		width: '200px',
-// 		border: '1px solid #d9d9d9',
-// 		boxShadow: '0 6px 20px rgba(0, 0, 0, 0.04), -6px 8px 15px rgba(0, 0, 0, 0.04), 6px 8px 15px rgba(0, 0, 0, 0.04)',
-// 	},
-// 	menuItem: {
-// 		fontSize: '0.9rem',
-// 	},
-// 	menuIcon: {
-// 		marginRight: '8px',
-// 	}
-// };
-class Account extends React.Component {
+class ShareCalendar extends Component {
 	state = {
 		isAuth: true,
-		anchorEl: null
+		anchorEl: null,
+		sharedEmail: '',
+		sharedEmailSuccess: false,
+		sharedEmailFailed: false
 	}
 
-	handleLogOut = () => {
-		return UserService.logoutUser()
-			.then(localStorage.removeItem('_id'))
+
+	handleEmailChange = (event) => {
+		const email = event.target.value;
+		console.log(email)
+		event.preventDefault();
+		this.setState({
+			sharedEmail: email
+		});
+	}
+
+	sendEmail = (email) => {
+		UserService.shareCalendar(this.state.email)
 			.then(() =>
-				this.setState({ isAuth: false })
+				this.setState({
+					sharedEmailSuccess: true
+				})
 			)
+			.catch(err => {
+				this.setState({ sharedEmailFailed: true })
+			})
 	}
 
 	toggleShareMenu = (event) => {
@@ -48,17 +51,15 @@ class Account extends React.Component {
 	};
 
 	render() {
-		const { classes } = this.props;
-		// const id = open ? 'simple-popover' : undefined;
-
+		console.log(this.state.sharedEmail)
 		return (
+
 			<div className="d-flex account-container">
 				<Button variant="outlined" size="small" className="share-btn" onClick={this.toggleShareMenu}>
 					<PeopleIcon />
 					Share
-         </Button>
+         		</Button>
 				<Popover
-					// id={id}
 					open={Boolean(this.state.anchorEl)}
 					anchorEl={this.state.anchorEl}
 					onClose={this.handleClose}
@@ -71,10 +72,50 @@ class Account extends React.Component {
 						horizontal: 'center',
 					}}
 				>
+					<div className="send-box">
+						{!this.state.sharedEmailSuccess ? (
+							<Fragment>
+								<form onSubmit={this.sendEmail}>
+								<div className="d-flex share-box">
+									<span className="to-text">To:</span>
+									<TextField
+										id="standard-name"
+										label="Enter email"
+										type="email"
+										value={this.state.sharedEmail}
+										// onBlur={this.handleEmailChange}
+										onChange={this.handleEmailChange}
+									// className={classes.textField}
+									/>
+								</div>
+								<Divider />
+								<div className="to-text">Share your calendar with family </div>
+								<Button variant="outlined" size="small" type="submit" className="send-btn">
+									Send
+								</Button>
+								</form>
+								{this.state.sharedEmailFailed && (
+									<Fragment>
+										<Divider />
+										<div className="d-flex msg-box">
+											<ErrorIcon color="error" />
+											<span>Something went wrong! Please try again</span>
+										</div>
+									</Fragment>
+								)}
+							</Fragment>
+						)
+							: (
+								<div className="d-flex msg-box">
+									<CheckIcon />
+									<span>The invitation has been sent successfully and it's on its way.</span>
+								</div>
+							)}
+					</div>
 				</Popover>
 			</div>
 		)
 	}
 }
 
-export default Account;
+export default ShareCalendar;

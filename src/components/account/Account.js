@@ -1,13 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Redirect } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import PeopleIcon from '@material-ui/icons/People';
 import UserService from '../../services/account.service';
 import ShareCalendar from '../shareCalendar/ShareCalendar';
 import './style.scss';
@@ -41,10 +39,6 @@ class Account extends React.Component {
         this.setState({ isAuth: false })
       )
   }
-
-  // shareCalendar() {
-  //   shareCalendar
-  // }
 
   toggleMenu = (event) => {
     this.setState({

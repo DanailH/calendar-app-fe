@@ -1,15 +1,7 @@
 import React from 'react';
-import Fab from '@material-ui/core/Fab';
-import StarsIcon from '@material-ui/icons/Stars';
-import Tooltip from '@material-ui/core/Tooltip';
-import Badge from '@material-ui/core/Badge';
-import HelpIcon from '@material-ui/icons/Help';
 import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
 import './style.scss';
-
-const holidayInfo = 'Selected days off';
-const publicHolidayInfo = 'Public Holidays for the selected year';
 
 class Legend extends React.Component {
 	state = {
@@ -35,37 +27,6 @@ class Legend extends React.Component {
 	render() {
 		return (
 			<div className="clearfix">
-				<div className="calendar-legend-wrapper f-right">
-					<Tooltip title={holidayInfo} aria-label="add">
-						<Fab size="small" color="primary" aria-label="add">
-							<Badge
-								overlap="circle"
-								anchorOrigin={{
-									vertical: 'top',
-									horizontal: 'right',
-								}}
-								badgeContent={<HelpIcon />}
-							>
-								<StarsIcon />
-							</Badge>
-						</Fab>
-					</Tooltip>
-
-					<Tooltip title={publicHolidayInfo} aria-label="add">
-						<Fab size="small" color="secondary" aria-label="add">
-							<Badge
-								overlap="circle"
-								anchorOrigin={{
-									vertical: 'top',
-									horizontal: 'right',
-								}}
-								badgeContent={<HelpIcon />}
-							>
-								<StarsIcon />
-							</Badge>
-						</Fab>
-					</Tooltip>
-				</div>
 				<div className="position-bottom">
 					<Snackbar
 						open={this.state.isSnackBarOpen}

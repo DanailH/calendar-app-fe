@@ -42,6 +42,9 @@ const Donut = ({
 				/>
 			</svg>
 
+			<div className={getClassName(prefix, '__details')}>
+				Taken / Total
+			</div>
 			<div className={getClassName(prefix, '__text')}>
 				{`${remaining}/${total}`}
 			</div>

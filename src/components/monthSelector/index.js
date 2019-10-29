@@ -52,25 +52,32 @@ class MonthSelector extends React.Component {
 
   renderMonths() {
     return months.map(
-      (month, i) => (
-        <ListItem button
-          key={i}
-          selected={this.state.activeMonthIndex === i}
-          onClick={this.activateMonth.bind(this, month)}
-        >
-          <ListItemText>
-            {month}
-          </ListItemText>
-        </ListItem>
-      )
+      (month, i) => {
+        const isHolidayMonth = this.props.holidayMonths.indexOf(i);
+
+        return (
+          <ListItem button
+            className={isHolidayMonth > -1 ? 'has-holidays' : ''}
+            key={i}
+            selected={this.state.activeMonthIndex === i}
+            onClick={this.activateMonth.bind(this, month)}
+          >
+            <ListItemText>
+              {month}
+            </ListItemText>
+          </ListItem>
+        )
+      }
     );
   }
 
   render() {
     return (
-      <List component="nav" className="months">
-        { this.renderMonths() }
-      </List>
+      <div>
+        <List component="nav" className="months">
+          { this.renderMonths() }
+        </List>
+      </div>
     )
   };
 }

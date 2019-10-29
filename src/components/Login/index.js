@@ -91,7 +91,7 @@ class Login extends React.Component {
 
             <Button type="submit" variant="contained" className="user-button">
               Login
-              </Button>
+            </Button>
           </form>
         </Container>
       </div>

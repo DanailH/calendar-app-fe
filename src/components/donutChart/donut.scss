@@ -68,6 +68,20 @@
   transform: translateY(-50%);
   animation: text-slideup 1.5s linear;
 }
+.donut__details {
+  font-family: "Helvetica Neue",
+    sans-serif;
+  font-size: 0.7rem;
+  color: #737373;
+  text-align: center;
+  position: absolute;
+  top: 28%;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  transform: translateY(-50%);
+  animation: text-slideup 1.5s linear;
+}
 
 .donut.is--negative .donut__circle {
   transform: rotate(-90deg) scaleY(-1);
