@@ -5,9 +5,12 @@
 		background: #F0C808;
 		margin-right: 24px;
 		padding: 4px 16px;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 
 		&:hover {
-			color: #606060;
+			background: #e4bd00;
+			border: 1px solid #e4bd00;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
 		}
 
 		.MuiSvgIcon-root {
@@ -20,6 +23,7 @@
 		padding: 16px;
 		width: 250px;
 		left: 600px;
+		
 
 	.share-box {
 		align-items: baseline;
@@ -64,5 +68,6 @@
 		float: right;
 		clear: both;
 		margin-bottom: 16px;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 	}
 }

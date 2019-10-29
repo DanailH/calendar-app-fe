@@ -42,7 +42,6 @@
   height: 100%;
   display: block;
   position: relative;
-  z-index: 2;
 }
 
 .donut__circle {
@@ -61,10 +60,9 @@
   letter-spacing: -0.15rem;
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 52%;
   right: 0;
   left: 0;
-  z-index: 3;
   transform: translateY(-50%);
   animation: text-slideup 1.5s linear;
 }
@@ -75,10 +73,9 @@
   color: #737373;
   text-align: center;
   position: absolute;
-  top: 28%;
+  top: 31%;
   right: 0;
   left: 0;
-  z-index: 3;
   transform: translateY(-50%);
   animation: text-slideup 1.5s linear;
 }
