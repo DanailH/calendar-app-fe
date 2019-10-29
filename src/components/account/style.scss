@@ -1,17 +1,17 @@
 .account-container {
-	padding: 2%;
-	justify-content: flex-end;
-	height: 10%;
-	align-items: center;
+  padding: 2%;
+  justify-content: flex-end;
+  height: 10%;
+  align-items: center;
 
-	.MuiAvatar-root {
-		cursor: pointer;
-	}
+  .MuiAvatar-root {
+    cursor: pointer;
+  }
 }
 
 // Tablet screen
 @media only screen and (max-device-width: 768px) {
-	.account-container {
-		height: auto;
-	}
+  .account-container {
+    height: auto;
+  }
 }

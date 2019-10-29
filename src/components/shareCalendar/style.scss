@@ -1,68 +1,70 @@
-.account-container{
-	.share-btn {
-		color: #fff;
-		border: 1px solid #F0C808;
-		background: #F0C808;
-		margin-right: 24px;
-		padding: 4px 16px;
+.account-container {
+  .share-btn {
+    color: #fff;
+    border: 1px solid #F0C808;
+    background: #F0C808;
+    margin-right: 24px;
+    padding: 4px 16px;
 
-		&:hover {
-			color: #606060;
-		}
+    &:hover {
+      color: #606060;
+    }
 
-		.MuiSvgIcon-root {
-			margin-right: 8px;
-		}
-	}
+    .MuiSvgIcon-root {
+      margin-right: 8px;
+    }
+  }
 }
 
 .send-box {
-		padding: 16px;
-		width: 250px;
-		left: 600px;
+  padding: 16px;
+  width: 250px;
+  left: 600px;
 
-	.share-box {
-		align-items: baseline;
+  .share-box {
+    align-items: baseline;
 
-		.to-text {
-			padding-right: 8px;
-			color: #4a4a4a;
-		}
-		.MuiFormLabel-root {
-			font-size: 0.8rem !important;
-			font-style: italic;
-		}
+    .to-text {
+      padding-right: 8px;
+      color: #4a4a4a;
+    }
 
-		.MuiInput-underline:hover:not(.Mui-disabled):before{
-			border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
-		}
+    .MuiFormLabel-root {
+      font-size: 0.8rem !important;
+      font-style: italic;
+    }
 
-		.Mui-focused {
-			color: rgba(0, 0, 0, 0.54);
-		}
-	}
+    .MuiInput-underline:hover:not(.Mui-disabled):before {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+    }
 
-	.msg-box {
-		align-items: center;
+    .Mui-focused {
+      color: rgba(0, 0, 0, 0.54);
+    }
+  }
 
-		.MuiSvgIcon-root {
-			color: green;
-			margin-right: 8px;
-			font-size: 2rem;
-		}
-		span {
-			font-size: 0.9rem;
-			color: #4a4a4a;
-		}
-	}
+  .msg-box {
+    align-items: center;
 
-	.MuiDivider-root {
-		margin: 16px 0;
-	}
+    .MuiSvgIcon-root {
+      color: green;
+      margin-right: 8px;
+      font-size: 2rem;
+    }
 
-	.send-btn {
-		float: right;
-		clear: both;
-		margin-bottom: 16px;
-	}
+    span {
+      font-size: 0.9rem;
+      color: #4a4a4a;
+    }
+  }
+
+  .MuiDivider-root {
+    margin: 16px 0;
+  }
+
+  .send-btn {
+    float: right;
+    clear: both;
+    margin-bottom: 16px;
+  }
 }

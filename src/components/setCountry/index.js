@@ -45,27 +45,27 @@ class SetCountry extends React.Component {
 
   render() {
     return (
-        <TextField
-          id="outlined-select-currency"
-          select
-          label="Country"
-          name="countryCode"
-          value={ this.props.country !== null ? this.props.country : '' }
-          onChange={ this.handleCountryChange }
-          placeholder="Please select your country"
-          className="nav-fields"
-          margin="normal"
-          variant="outlined"
-          InputProps={{
-            startAdornment: <PublicIcon />,
-          }}
-        >
-          {countries.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+      <TextField
+        id="outlined-select-currency"
+        select
+        label="Country"
+        name="countryCode"
+        value={ this.props.country !== null ? this.props.country : '' }
+        onChange={ this.handleCountryChange }
+        placeholder="Please select your country"
+        className="nav-fields"
+        margin="normal"
+        variant="outlined"
+        InputProps={{
+          startAdornment: <PublicIcon />,
+        }}
+      >
+        {countries.map(option => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
     )
   };
 }
