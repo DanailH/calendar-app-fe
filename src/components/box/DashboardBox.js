@@ -16,7 +16,7 @@ class DashboardBox extends Component {
 
 	render() {
 		return (
-			<div className="content-box">
+			<div className="content-box dashboard-box">
 				<div className="d-flex justify-space ">
 					<div className="content-header">DASHBOARD</div>
 					<span className="more-text">More ></span>
@@ -27,7 +27,8 @@ class DashboardBox extends Component {
 					</div>
 					<div className="text-center flex-1">
 						<span className="remaining-text">Remaining days:&nbsp;</span> 
-						<div className="remaining-number">{this.props.remainingHolidays}
+						<div className={`remaining-number ${this.props.remainingHolidays === 0 ? 'error' : ''}`}>
+							{this.props.remainingHolidays}
 						</div>
 					</div>
 				</div>

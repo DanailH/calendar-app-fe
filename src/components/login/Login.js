@@ -83,8 +83,9 @@ class Login extends React.Component {
               variant="outlined"
               InputLabelProps={{ shrink: true }}
             />
-            <div className="user-link">
-              <Link to="/register">Register an account</Link>
+            <div className="create-login-user">
+              <div className="user-text">Don't have an account?</div>
+              <Link to="/register">Create account</Link>
             </div>
 
             {this.state.error && <FormError loginError={true} />}

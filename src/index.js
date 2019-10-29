@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 import './index.css';
 import App from './App';
-import Login from './components/Login';
+import Login from './components/login/Login';
 import Register from './components/Register';
 import PrivateRoute from './privateRoute';
 import * as serviceWorker from './serviceWorker';

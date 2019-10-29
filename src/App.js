@@ -193,17 +193,9 @@ class App extends React.Component {
     }
   }
 
-  renderUsageOverlay() {
-    if (!this.state.country || !this.state.holidays) {
-      return (<div className="usage-overlay">
-        <p className="absolute-center">{`Hi ${this.state.user && this.state.user.firstName} to use the app please fill your holidays and select your country!`}</p>
-      </div>)
-    }
-  }
-
   render() {
     const dates = this.state.listOfUsedHolidays.map(date => new Date(date).toLocaleDateString()).sort()
-    const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) == i)
+    const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) === i)
 
     console.log(months)
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
@@ -215,8 +207,6 @@ class App extends React.Component {
     return (
       <div className="d-flex">
         {this.isLoading()}
-        {!this.state.isLoading && this.renderUsageOverlay()}
-
         <Navigation
           count={this.state.holidays}
           country={this.state.country}

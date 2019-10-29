@@ -129,6 +129,11 @@ class Register extends React.Component {
               InputLabelProps={{ shrink: true }}
             />
 
+            <div className="create-login-user">
+              <div className="user-text">Already have an account?</div>
+              <Link to="/login">Log in</Link>
+            </div>
+
             {this.state.error && <FormError message={this.state.errorMessage} registerError={true} />}
 
             <Button type="submit" variant="contained" className="user-button">

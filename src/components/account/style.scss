@@ -3,19 +3,9 @@
 	justify-content: flex-end;
 	height: 10%;
 	align-items: center;
-	
-	.menu-container {
-		position: absolute;
-		top: 36px;
-		background: #fff;
-		width: 200px;
-		height: 150px;
-		border: 1px solid #d9d9d9;
-		border-radius: 4px;
-		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04), -6px 8px 15px rgba(0, 0, 0, 0.04), 6px 8px 15px rgba(0, 0, 0, 0.04);
-		z-index: 4;
-		padding: 16px;
-		transition: opacity 0.1s ease-in, transform 0.1s ease-in;
+
+	.MuiAvatar-root {
+		cursor: pointer;
 	}
 }
 

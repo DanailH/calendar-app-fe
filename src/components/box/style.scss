@@ -4,9 +4,14 @@
 	margin-bottom: 12px;
 }
 
+.dashboard-box {
+	flex: 2;
+}
+
 .content-box {
 	flex: 1;
 	margin-top: 16px;
+	border-radius: 8px;
 	padding: 16px;
 	background: white;
 	box-shadow: 0 7px 15px 0 rgba(0,0,0,.04);
@@ -41,6 +46,10 @@
 	.content-box {
 		flex: none;
 		width: 40%;
+	}
+
+	.dashboard-box {
+		flex: 1;
 	}
 }
 
