@@ -62,7 +62,10 @@ class App extends React.Component {
     })
       .then(res => res.json())
       .then(res => this.setState({
-        holidays: res.holidaysCount
+        holidays: res.holidaysCount,
+        user: {
+          isNewUser: false
+        }
       }))
       .catch(error => console.error('Error:', error));
   }
@@ -86,7 +89,10 @@ class App extends React.Component {
         .then(res => res.json())
         .then(res => this.setState({
           country: res.countryCode,
-          publicHolidays: res.publicHolidays
+          publicHolidays: res.publicHolidays,
+          user: {
+            isNewUser: false
+          }
         }))
         .catch(error => console.error('Error:', error))
       )
@@ -193,11 +199,19 @@ class App extends React.Component {
     }
   }
 
+  renderUsageOverlay() {
+    if (this.state.user && this.state.user.isNewUser) {
+      return (
+        <div className="usage-overlay"></div>
+      )
+    }
+  }
+
+
   render() {
     const dates = this.state.listOfUsedHolidays.map(date => new Date(date).toLocaleDateString()).sort()
     const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) === i)
-
-    console.log(months)
+    console.log(this.state.user)
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
     const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => ({
       date: holiday.date.split('T')[0],
@@ -212,11 +226,12 @@ class App extends React.Component {
           country={this.state.country}
           setHoliday={this.setHolidays}
           setCountry={this.setCountry}
+          user={this.state.user}
         />
-
         <div className="main-container">
-          <Account user={this.state.user} />
+          <Account/>
 
+          {this.renderUsageOverlay()}
           <div className="main-calendar">
 
             <div className="calendar-container position-relative">

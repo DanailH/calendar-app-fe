@@ -1,0 +1,23 @@
+.guide-container {
+  max-width: 350px;
+  // background: #dcdada;
+  background: #fff;
+  border-radius: 25px;
+  padding: 24px;
+  z-index: 2;
+  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.16);
+
+  .next-btn {
+    float: right;
+    margin-top: 36px;
+    background: linear-gradient(to right, #eb7873, #ee9578);
+    border: #eb7873;
+    color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+
+    &:hover {
+      background: #dc6f6a;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
+    }
+  }
+}
