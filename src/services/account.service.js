@@ -7,7 +7,6 @@ class UserService {
 	}
 
 	shareCalendar(email) {
-		console.log(email)
 		return fetch(`${BaseUrl}/users/shareCalendar`, {
 			method: 'POST',
 			body: JSON.stringify({targetUserEmail: email}),

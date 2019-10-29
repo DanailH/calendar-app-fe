@@ -28,8 +28,10 @@ class ShareCalendar extends Component {
 		});
 	}
 
-	sendEmail = (email) => {
-		UserService.shareCalendar(this.state.email)
+	sendEmail = (e) => {
+		e.preventDefault();
+
+		UserService.shareCalendar(this.state.sharedEmail)
 			.then(() =>
 				this.setState({
 					sharedEmailSuccess: true
