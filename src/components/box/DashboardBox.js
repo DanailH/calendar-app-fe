@@ -60,7 +60,7 @@ class DashboardBox extends Component {
           </div>
           <div className="text-center flex-1">
             <span className="remaining-text">Remaining days:&nbsp;</span>
-            <div className={`remaining-number ${this.props.remainingHolidays === 0 ? 'error' : ''}`}>
+            <div className={`remaining-number ${this.props.remainingHolidays <= 0 ? 'error' : ''}`}>
               {this.props.remainingHolidays}
             </div>
           </div>

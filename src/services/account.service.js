@@ -18,8 +18,6 @@ class UserService {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => res.json())
-    .catch(error => console.error('Error: Logout user', error));
   }
 }
 

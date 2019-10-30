@@ -20,13 +20,33 @@
 }
 
 .send-box {
-  padding: 16px;
-  width: 250px;
-  left: 600px;
+    padding: 16px;
+    width: 350px;
+    left: 600px;
 
+    .close-btn {
+      float: right;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    
+    .to-text {
+      font-size: 0.9rem;
+      padding-right: 8px;
+      color: #4a4a4a;
+    }
+
+    .MuiDivider-root {
+      margin: 16px 0 10px;
+    }
 
   .share-box {
     align-items: baseline;
+
+    .MuiFormLabel-root {
+      font-size: 0.8rem !important;
+      font-style: italic;
+    }
 
     .to-text {
       padding-right: 8px;
@@ -38,29 +58,47 @@
       font-style: italic;
     }
 
-    .MuiInput-underline:hover:not(.Mui-disabled):before {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
-    }
-
-    .Mui-focused {
-      color: rgba(0, 0, 0, 0.54);
+    .error-box {
+      .MuiDivider-root {
+        margin-top: 50px;
+      }
     }
   }
 
   .msg-box {
     align-items: center;
 
-    .MuiSvgIcon-root {
-      color: green;
-      margin-right: 8px;
-      font-size: 2rem;
+    .Mui-focused {
+      color: rgba(0, 0, 0, 0.54);
     }
 
-    .send-btn {
-      float: right;
-      clear: both;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+    .MuiSvgIcon-root {
+      color: green;
+      font-size: 2.2rem;
+      margin-right: 16px;
+    }
+
+    .MuiSvgIcon-colorError {
+      color: #f44336 !important;
+    }
+
+    span {
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+  }
+
+  .send-btn {
+    display: inline-block;
+    margin: 16px 0;
+    background: linear-gradient(to right, #eb7873, #ee9578);
+    border: #eb7873;
+    color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+
+    &:hover {
+      background: linear-gradient(to right, #f36660, #ec825f);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
     }
   }
 }
