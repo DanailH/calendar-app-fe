@@ -6,6 +6,7 @@ import ErrorIcon from '@material-ui/icons/Error';
 import CheckIcon from '@material-ui/icons/Check';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
+import CloseIcon from '@material-ui/icons/Close';
 import UserService from '../../services/account.service';
 import './style.scss';
 
@@ -15,16 +16,16 @@ class ShareCalendar extends Component {
     anchorEl: null,
     sharedEmail: '',
     sharedEmailSuccess: false,
-    sharedEmailFailed: false
+    sharedEmailFailed: false,
+    closePopover: false
   }
-
 
   handleEmailChange = (event) => {
     const email = event.target.value;
-    console.log(email)
     event.preventDefault();
     this.setState({
-      sharedEmail: email
+      sharedEmail: email,
+      sharedEmailFailed: false,
     });
   }
 
@@ -33,13 +34,15 @@ class ShareCalendar extends Component {
 
     UserService.shareCalendar(this.state.sharedEmail)
       .then(res => {
-        if(res.status === 404) {
-        this.setState({
-          sharedEmailFailed: true 
-        })
-      } else {
+        if (res.status === 404) {
           this.setState({
-            sharedEmailSuccess: true
+            sharedEmailFailed: true
+          })
+        } else {
+          this.setState({
+            sharedEmailSuccess: true,
+            sharedEmailFailed: false,
+            sharedEmail: '',
           })
         }
       })
@@ -50,23 +53,26 @@ class ShareCalendar extends Component {
 
   toggleShareMenu = (event) => {
     this.setState({
-      anchorEl: event.currentTarget
+      anchorEl: event.currentTarget,
+      closePopover: false
     })
   }
 
   handleClose = () => {
-    this.setState({ anchorEl: null });
+    this.setState({
+      anchorEl: null,
+      sharedEmailSuccess: false,
+      closePopover: true
+    });
   };
 
   render() {
-    console.log(this.state.sharedEmail)
     return (
-
       <div className="d-flex account-container">
         <Button variant="outlined" size="small" className="share-btn" onClick={this.toggleShareMenu}>
           <PeopleIcon />
           Share
-             </Button>
+        </Button>
         <Popover
           open={Boolean(this.state.anchorEl)}
           anchorEl={this.state.anchorEl}
@@ -81,29 +87,32 @@ class ShareCalendar extends Component {
           }}
         >
           <div className="send-box">
-            {(!this.state.sharedEmailSuccess || this.state.sharedEmail !== '') ? (
+            <CloseIcon className="close-btn" onClick={this.handleClose}/>
+            {((!this.state.sharedEmailSuccess && !this.state.closePopover) || this.state.sharedEmail !== '') ? (
               <Fragment>
                 <form onSubmit={this.sendEmail}>
-                <div className="d-flex share-box">
-                  <span className="to-text">To:</span>
-                  <TextField
-                    id="standard-name"
-                    label="Enter email"
-                    type="email"
-                    value={this.state.sharedEmail}
-                    onChange={this.handleEmailChange}
-                  />
-                </div>
-                <Divider />
-                <div className="to-text">
-                  Now you can share your calendar with someone, with just one click.
-                  Fill the email of the person that you would like to share with and start planning
-                  and tracking together your yearly vacation days.</div>
-                <Button variant="outlined" size="small" type="submit" className="send-btn">
-                  Send
-                </Button>
+                  <div className="d-flex share-box">
+                    <span className="to-text">To:</span>
+                    <TextField
+                      id="standard-name"
+                      label="Enter email"
+                      type="email"
+                      value={this.state.sharedEmail}
+                      onChange={this.handleEmailChange}
+                    />
+                  </div>
+                  <Divider />
+                  <div className="to-text">
+                    Now you can share your calendar with someone, with just one click.
+                    Fill the email of the person that you would like to share with and start planning
+                    and tracking together your yearly vacation days.</div>
+                  <div className="text-right">
+                    <Button variant="outlined" size="small" type="submit" className="send-btn">
+                      Send
+                    </Button>
+                  </div>
                 </form>
-                {this.state.sharedEmailFailed && (
+                {(this.state.sharedEmailFailed && this.state.sharedEmail !== '') && (
                   <div className="error-box">
                     <Divider />
                     <div className="d-flex msg-box">

@@ -23,6 +23,12 @@
     padding: 16px;
     width: 350px;
     left: 600px;
+
+    .close-btn {
+      float: right;
+      font-size: 1rem;
+      cursor: pointer;
+    }
     
     .to-text {
       font-size: 0.9rem;
@@ -30,10 +36,13 @@
       color: #4a4a4a;
     }
 
+    .MuiDivider-root {
+      margin: 16px 0 10px;
+    }
+
   .share-box {
     align-items: baseline;
 
-    
     .MuiFormLabel-root {
       font-size: 0.8rem !important;
       font-style: italic;
@@ -54,32 +63,42 @@
         margin-top: 50px;
       }
     }
+  }
 
-    .msg-box {
-      align-items: center;
+  .msg-box {
+    align-items: center;
 
-      .Mui-focused {
-        color: rgba(0, 0, 0, 0.54);
-      }
+    .Mui-focused {
+      color: rgba(0, 0, 0, 0.54);
     }
 
-    .msg-box {
-      align-items: center;
+    .MuiSvgIcon-root {
+      color: green;
+      font-size: 2.2rem;
+      margin-right: 16px;
+    }
 
-      .send-btn {
-        float: right;
-        clear: both;
-        margin: 16px 0;
-        background: linear-gradient(to right, #eb7873, #ee9578);
-        border: #eb7873;
-        color: #fff;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+    .MuiSvgIcon-colorError {
+      color: #f44336 !important;
+    }
 
-        &:hover {
-          background: linear-gradient(to right, #f36660, #ec825f);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
-        }
-      }
+    span {
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+  }
+
+  .send-btn {
+    display: inline-block;
+    margin: 16px 0;
+    background: linear-gradient(to right, #eb7873, #ee9578);
+    border: #eb7873;
+    color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+
+    &:hover {
+      background: linear-gradient(to right, #f36660, #ec825f);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
     }
   }
 }
