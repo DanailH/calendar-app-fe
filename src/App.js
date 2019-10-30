@@ -243,9 +243,10 @@ class App extends React.Component {
 
             <div className="content-container">
               <DashboardBox
-                remaining={this.state.numberOfUsedHolidays} 
+                remaining={this.state.numberOfUsedHolidays}
                 total={this.state.holidays}
                 remainingHolidays={remainingHolidays}
+                holidaysTaken={this.state.listOfUsedHolidays}
               />
               <AdditionalBox/>
             </div>
