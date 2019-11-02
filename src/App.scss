@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+.app-container {
+  height: 100vh;
+}
+
+.main-calendar,
+.dashboard-tab-container {
+  overflow-y: scroll;
+}
+
 .main-container {
   width: 100%;
 }
@@ -10,7 +19,7 @@
   background: #fafafa;
   display: flex;
   justify-content: space-between;
-  height: 90%;
+  height: 93%;
 
   .calendar-container {
     margin-left: 16px;
@@ -61,7 +70,7 @@
   }
 
   .main-calendar {
-    height: auto;
+    // height: auto;
   }
 
   .main-container {
@@ -73,7 +82,7 @@
 
     .calendar-container {
       width: 98%;
-      margin: 1%;
+      margin: 2% 1%;
 
       .calendar-wrapper {
         position: static;
@@ -103,6 +112,11 @@
 	background: rgba(202, 201, 201, 0.81);
 }
 
+@media only screen and (max-device-width: 768px) {
+  .content-container {
+    padding: 1%;
+  }
+}
 
 // Phone screen
 @media only screen and (max-device-width: 480px) {

@@ -96,6 +96,7 @@ class Navigation extends Component {
               </Badge>
             </IconButton>
             <IconButton
+              className="dashboard-btn"
               aria-label="open dashboard"
               component={Link} to="/dashboard"
               color="inherit"

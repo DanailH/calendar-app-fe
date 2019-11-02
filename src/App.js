@@ -221,7 +221,7 @@ class App extends React.Component {
     })) : [];
 
     return (
-      <div className="d-flex">
+      <div className="d-flex app-container">
         {this.isLoading()}
         <Navigation
           count={this.state.holidays}
