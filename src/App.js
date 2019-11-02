@@ -13,7 +13,7 @@ import { BaseUrl } from './config';
 
 class App extends React.Component {
   state = {
-    userId: localStorage.getItem('_id'),
+    // userId: localStorage.getItem('_id'),
     selectedYear: new Date().getFullYear(),
     selectedMonth: new Date().getMonth(),
     holidays: 0,
@@ -73,7 +73,7 @@ class App extends React.Component {
 
   setCountry(country) {
     const data = {
-      userId: this.state.userId,
+      // userId: this.state.userId,
       country: country,
       holidaysCount: this.state.holidays,
       selectedHolidays: this.state.listOfUsedHolidays
@@ -115,7 +115,7 @@ class App extends React.Component {
     }
 
     const data = {
-      userId: this.state.userId,
+      // userId: this.state.userId,
       country: this.state.country,
       holidaysCount: this.state.holidays,
       selectedHolidays: holidaysArr
@@ -138,10 +138,11 @@ class App extends React.Component {
 
   // TODO: Refactor
   componentWillMount() {
+    console.log('check if auth!')
     fetch(`${BaseUrl}/auth/isAuth`)
       .then((res) => {
         if (res.status === 401) {
-          localStorage.removeItem('_id');
+          localStorage.removeItem('auth');
           window.location.href = '/login';
         }
       })

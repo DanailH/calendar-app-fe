@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from 'react-router-dom';
 
 const isLoggedIn = () => {
-  if (localStorage.getItem('_id')) {
+  if (localStorage.getItem('auth')) {
     return true;
   }
 

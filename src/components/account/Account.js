@@ -34,7 +34,7 @@ class Account extends React.Component {
 
   handleLogOut = () => {
     return UserService.logoutUser()
-      .then(localStorage.removeItem('_id'))
+      .then(localStorage.removeItem('auth'))
       .then(() =>
         this.setState({ isAuth: false })
       )
