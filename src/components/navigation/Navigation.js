@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar';
@@ -9,6 +10,7 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import ErrorIcon from '@material-ui/icons/Error';
 import Drawer from '@material-ui/core/Drawer';
 import CloseIcon from '@material-ui/icons/Close';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import Divider from '@material-ui/core/Divider';
 import Logo from '../Logo/Logo';
 import UserGuide from '../userGuide/userGuide.js';
@@ -73,7 +75,9 @@ class Navigation extends Component {
       <Fragment>
         <AppBar position="static" className="navigation-container">
           <Toolbar className="toolbar">
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
 
             <IconButton
               aria-label="open drawer"
@@ -91,6 +95,14 @@ class Navigation extends Component {
                 <DateRangeIcon />
               </Badge>
             </IconButton>
+            <IconButton
+              aria-label="open dashboard"
+              component={Link} to="/dashboard"
+              color="inherit"
+            >
+              <DashboardIcon />
+            </IconButton>
+
             <Drawer
               classes={{
                 paper: classes.drawer,

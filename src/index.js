@@ -14,6 +14,7 @@ import * as serviceWorker from './serviceWorker';
 const Routing = (
   <Router>
     <PrivateRoute exact path="/" component={App} />
+    <PrivateRoute exact path="/dashboard" component={App} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
   </Router>

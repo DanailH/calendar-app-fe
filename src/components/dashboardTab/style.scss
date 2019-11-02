@@ -1,0 +1,79 @@
+.dashboard-tab-container {
+	background: #F4F7FE;
+	height: 90%;
+	padding: 16px;
+
+	.dashboard-container {
+		display: flex;
+		flex-direction: row;
+
+		.dashboard-boxes {
+			text-align: center;
+			flex: 1;
+			background: #fff;
+			border-radius: 8px;
+			margin: 16px;
+			padding: 20px;
+			box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.14);
+
+			&:hover {
+				box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.32);
+			}
+
+			.holiday-icon {
+				background: #f3ceb3;
+				width: 13%;
+				border-radius: 50%;
+				height: 20%;
+				margin: 0 auto;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.MuiSvgIcon-root {
+					font-size: 1.2rem;
+				}
+			}
+
+			.holiday-number {
+				font-weight: 800;
+				font-size: 1.7rem;
+				padding-top: 20px;
+			}
+
+			.MuiDivider-root {
+				margin: 24px 0 8px;
+			}
+
+			.holiday-header {
+				font-size: 0.9rem;
+				color: #3e3a3a;
+			}
+
+			.holiday-subheader {
+				font-size: 0.8rem;
+				color: #737373;
+				padding-bottom: 16px;
+			}
+		}
+	}
+
+	.dashboard-main-container {
+		background: #fff;
+		border-radius: 8px;
+		margin: 16px;
+		padding: 20px;
+		box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.14);
+
+		.donut {
+			height: 10rem;
+		}
+	}
+}
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+  .dashboard-tab-container .dashboard-container {
+		flex-direction: column;
+	}
+}

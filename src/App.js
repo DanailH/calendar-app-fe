@@ -6,6 +6,7 @@ import Account from './components/account/Account';
 import Navigation from './components/navigation/Navigation';
 import DashboardBox from './components/box/DashboardBox';
 import AdditionalBox from './components/box/AdditionalBox';
+import DashboardTab from './components/dashboardTab/DashboardTab';
 import './App.scss';
 import './styles/base.scss';
 import { BaseUrl } from './config';
@@ -139,7 +140,7 @@ class App extends React.Component {
   componentWillMount() {
     fetch(`${BaseUrl}/auth/isAuth`)
       .then((res) => {
-        if(res.status === 401) {
+        if (res.status === 401) {
           localStorage.removeItem('_id');
           window.location.href = '/login';
         }
@@ -209,6 +210,7 @@ class App extends React.Component {
 
 
   render() {
+    const route = this.props.location.pathname;
     const dates = this.state.listOfUsedHolidays.map(date => new Date(date).toLocaleDateString()).sort()
     const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) === i)
     console.log(this.state.user)
@@ -229,28 +231,43 @@ class App extends React.Component {
           user={this.state.user}
         />
         <div className="main-container">
-          <Account/>
+          <Account />
 
-          {this.renderUsageOverlay()}
-          <div className="main-calendar">
-
-            <div className="calendar-container position-relative">
-              <div className="absolute-center calendar-wrapper w-100">
-                <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
-                <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
-              </div>
-            </div>
-
-            <div className="content-container">
-              <DashboardBox
+          {(() => {
+            if (route === '/dashboard') {
+              return <DashboardTab
                 remaining={this.state.numberOfUsedHolidays}
                 total={this.state.holidays}
                 remainingHolidays={remainingHolidays}
                 holidaysTaken={this.state.listOfUsedHolidays}
-              />
-              <AdditionalBox/>
-            </div>
-          </div>
+              />;
+            }
+
+            if (route === '/') {
+              return (
+                <div className="main-calendar">
+                  {this.renderUsageOverlay()}
+
+                  <div className="calendar-container position-relative">
+                    <div className="absolute-center calendar-wrapper w-100">
+                      <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
+                      <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+                    </div>
+                  </div>
+
+                  <div className="content-container">
+                    <DashboardBox
+                      remaining={this.state.numberOfUsedHolidays}
+                      total={this.state.holidays}
+                      remainingHolidays={remainingHolidays}
+                      holidaysTaken={this.state.listOfUsedHolidays}
+                    />
+                    <AdditionalBox />
+                  </div>
+                </div>
+              );
+            }
+          })()}
         </div>
       </div>
     )

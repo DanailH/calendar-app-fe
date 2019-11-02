@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Donut from '../donutChart/Donut';
 import Divider from '@material-ui/core/Divider';
+import TakenVacationDates from './TakenVacationDates';
 import './style.scss';
-
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
 
 class DashboardBox extends Component {
   state = {
@@ -19,34 +16,6 @@ class DashboardBox extends Component {
   };
 
   render() {
-    const groupedHolidays = this.props.holidaysTaken.sort().reduce((obj, val) => {
-      const date = new Date(val);
-
-      if (date.getFullYear() in obj) {
-        const entry = obj[date.getFullYear()];
-        const entryLength = entry.length;
-        if (entry[entryLength - 1].month === date.getMonth()) {
-          entry[entryLength - 1].holidays.push(val);
-          return obj;
-        }
-
-        entry.push({
-          month: date.getMonth(),
-          holidays: [val]
-        })
-
-        return obj;
-      }
-
-      obj[date.getFullYear()] = [{
-        month: date.getMonth(),
-        holidays: [val]
-      }];
-
-      return obj;
-    }, {});
-
-    console.log(groupedHolidays)
 
     return (
       <div className="content-box dashboard-box">
@@ -66,31 +35,8 @@ class DashboardBox extends Component {
           </div>
         </div>
         <Divider/>
-        <div className="sub-menu">Taken dates:</div>
-
-        {
-          Object.keys(groupedHolidays).map((key, i) => {
-            return (
-              <div>
-                <div key={i}>{key}:</div>
-                {
-                  groupedHolidays[key].map((el, i) => {
-                    return (
-                      <div key={i}>
-                        <div key={i}>{monthNames[el.month]}:</div>
-                        <ul key={i}>
-                        {
-                          el.holidays.map((el, i) => (<li key={i}>{new Date(el).toLocaleString().split(',')[0]}</li>))
-                        }
-                        </ul>
-                      </div>
-                    );
-                  })
-                }
-              </div>
-            );
-          })
-        }
+        
+        <TakenVacationDates holidaysTaken={this.props.holidaysTaken}/>
 
       </div>
     )
