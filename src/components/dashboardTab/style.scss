@@ -1,7 +1,30 @@
 .dashboard-tab-container {
 	background: #F4F7FE;
-	height: 93%;
+	height: 92%;
 	padding: 16px;
+
+	.back-btn {
+		color:#737373;
+
+		.MuiSvgIcon-root {
+			font-size: 1rem;
+		}
+		
+		span {
+			font-size: 0.9rem;
+		}
+
+		&:hover {
+			color: #5f5353;
+			border-bottom: 1px solid #9c9c9c;
+			padding-bottom: 4px;
+		}
+	}
+
+	.MuiTypography-root {
+		margin: 24px 0 8px;
+		font-weight: 600;
+	}
 
 	.dashboard-container {
 		display: flex;
@@ -10,6 +33,7 @@
 		.dashboard-boxes {
 			text-align: center;
 			flex: 1;
+			width: 50%;
 			background: #fff;
 			border-radius: 8px;
 			margin: 16px;
@@ -20,54 +44,65 @@
 				box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.32);
 			}
 
-			.holiday-icon {
-				background: #f3ceb3;
-				width: 13%;
-				border-radius: 50%;
-				height: 20%;
-				margin: 0 auto;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-
-				.MuiSvgIcon-root {
-					font-size: 1.2rem;
-				}
-			}
-
-			.holiday-number {
-				font-weight: 800;
-				font-size: 1.7rem;
-				padding-top: 20px;
-			}
-
 			.MuiDivider-root {
 				margin: 24px 0 8px;
 			}
 
-			.holiday-header {
-				font-size: 0.9rem;
-				color: #3e3a3a;
+			.beach-icon {
+				background: #e6dce6;
+
+				.MuiSvgIcon-root {
+					color: #3f51b5;
+				}
 			}
 
-			.holiday-subheader {
-				font-size: 0.8rem;
-				color: #737373;
-				padding-bottom: 16px;
+			.date-icon {
+				background: #fff0c0;
+
+				.MuiSvgIcon-root {
+					color: #bf9e00;
+				}
+			}
+
+			.add-icon {
+				background: #d9ecd7;
+
+				.MuiSvgIcon-root {
+					color: #049a5d;
+				}
 			}
 		}
 	}
 
 	.dashboard-main-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 		background: #fff;
 		border-radius: 8px;
 		margin: 16px;
 		padding: 20px;
 		box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.14);
 
-		.donut {
-			height: 10rem;
+		.donut-container {
+			flex: 1;
+			width: 40%;
+
+			.donut {
+				height: 13rem;
+			}
 		}
+		.taken-days-container {
+			flex: 1;
+			width: 50%;
+		}
+	}
+}
+
+// Tablet screen
+@media only screen and (max-device-width: 768px) {
+  .dashboard-tab-container .dashboard-main-container .taken-days-container {
+		width: 60%
 	}
 }
 
@@ -75,5 +110,31 @@
 @media only screen and (max-device-width: 480px) {
   .dashboard-tab-container .dashboard-container {
 		flex-direction: column;
+		align-items: center;
+
+		.dashboard-boxes {
+			width: 90%;
+		}
+	}
+
+	.dashboard-tab-container .dashboard-main-container {
+		flex-direction: column;
+
+		.taken-days-container {
+			width: 100%;
+		}
+
+		.donut-container {
+			width: 100%;
+			margin-bottom: 16px;
+
+			.donut {
+				height: 6.5rem;
+			}
+
+			.donut__text {
+				font-size: 2rem;
+			}
+		}
 	}
 }

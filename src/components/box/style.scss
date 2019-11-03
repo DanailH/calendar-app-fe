@@ -25,21 +25,93 @@
   .more-text {
     color: #737373;
     font-size: 0.8rem;
+
+    &:hover {
+      border-bottom: 1px solid #9c9c9c;
+      padding-bottom: 4px;
+    }
   }
 
   .MuiDivider-root {
     margin: 12px 0;
   }
 
-  .sub-menu,
-  .remaining-text {
-    color: #737373;
-    font-size: 0.9rem;
-  }
 
   .remaining-number {
     font-size: 1.2rem;
     font-weight: 600;
+  }
+}
+
+.sub-menu {
+  color: #3e3a3a;
+  font-size: 0.9rem;
+  text-align: center;
+
+  .taken-icon {
+    width: 35px;
+    border-radius: 50%;
+    padding: 8px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .MuiSvgIcon-root {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.add-icon {
+    background: #cde4cb;
+
+    .MuiSvgIcon-root {
+      color: #049a5d;
+    }
+  }
+
+  .date-icon {
+    background: #fff0c0;
+
+    .MuiSvgIcon-root {
+      color: #bf9e00;
+    }
+  }
+
+.sub-menu-header {
+  margin: 12px 0 24px;
+}
+
+
+// TakenVacationDates component
+
+.dates-container {
+  display: flex;
+  align-items: baseline;
+  
+  font-size: 0.9rem;
+
+  .months-box {
+    font-weight: 600;
+    margin-right: 8px;
+    width: 24%;
+  }
+    .dates-wrapper {
+      width: 90%;
+      overflow-x: scroll;
+    }
+
+  .date-box {
+    padding: 10px;
+
+    .date-el {
+      background: #F0C808;
+      padding: 0 14px; 
+      text-align: center;
+      border-radius: 8px;
+      margin-right: 8px
+    }
   }
 }
 
@@ -62,22 +134,8 @@
     width: 80%;
     margin: 15px auto;
   }
-}
 
-// TakenVacationDates component
-
-.dates-container {
-  font-size: 0.9rem;
-
-  .months-box {
-    font-weight: 600;
-  }
-
-  .date-box {
-    border-radius: 50%;
-    width: 36px;
-    text-align: center;
-    line-height: 36px;
-    background: #F0C808;
+  .dates-container .months-box {
+    width: 44%;
   }
 }

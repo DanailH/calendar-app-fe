@@ -12,14 +12,14 @@
 }
 
 .main-container {
-  width: 100%;
+  width: 94%;
 }
 
 .main-calendar {
-  background: #fafafa;
+  background: #F4F7FE;
   display: flex;
   justify-content: space-between;
-  height: 93%;
+  height: 92%;
 
   .calendar-container {
     margin-left: 16px;
@@ -67,14 +67,6 @@
 
   .menu-container {
     height: auto;
-  }
-
-  .main-calendar {
-    // height: auto;
-  }
-
-  .main-container {
-    width: 94%;
   }
 
   .main-calendar {

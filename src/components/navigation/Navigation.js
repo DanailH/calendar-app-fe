@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar';
@@ -11,6 +11,7 @@ import ErrorIcon from '@material-ui/icons/Error';
 import Drawer from '@material-ui/core/Drawer';
 import CloseIcon from '@material-ui/icons/Close';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import HomeIcon from '@material-ui/icons/Home';
 import Divider from '@material-ui/core/Divider';
 import Logo from '../Logo/Logo';
 import UserGuide from '../userGuide/userGuide.js';
@@ -78,7 +79,14 @@ class Navigation extends Component {
             <Link to="/">
               <Logo />
             </Link>
-
+            <IconButton
+              className="dashboard-btn"
+              aria-label="home button"
+              component={Link} to="/"
+              color="inherit"
+            >
+              <HomeIcon />
+            </IconButton>
             <IconButton
               aria-label="open drawer"
               onClick={this.toggleDrawer}

@@ -109,3 +109,44 @@ input[type=number] {
     width: 0.8em;
   }
 }
+
+.missing-user-info {
+  background: #eb7873;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  color: white;
+  border-radius: 12px;
+}
+
+// Holiday dashboard boxes
+
+.holiday-icon {
+				width: 35px;
+				border-radius: 50%;
+				padding: 8px;
+				margin: 0 auto;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.MuiSvgIcon-root {
+					font-size: 1.2rem;
+				}
+			}
+
+			.holiday-number {
+				font-weight: 800;
+				font-size: 1.7rem;
+				padding-top: 20px;
+			}
+
+			.holiday-header {
+				font-size: 0.9rem;
+				color: #3e3a3a;
+			}
+
+			.holiday-subheader {
+				font-size: 0.8rem;
+				color: #737373;
+				padding-bottom: 16px;
+			}

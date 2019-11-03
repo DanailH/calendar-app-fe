@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import Divider from '@material-ui/core/Divider';
 import './style.scss';
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -43,24 +43,33 @@ class TakenVacationDates extends Component {
 
 		return (
 			<Fragment>
-				<div className="sub-menu">Taken dates:</div>
+
 				{Object.keys(groupedHolidays).map((key, i) => {
 					return (
 						<div>
-							<div key={i}>{key}:</div>
+							<div className="sub-menu">
+								<div className="taken-icon date-icon">
+									<DateRangeIcon />
+								</div>
+								<div key={i} className="sub-menu-header">
+									Taken dates from {key}
+								</div>
+							</div>
 							{
 								groupedHolidays[key].map((el, i) => {
 									return (
 										<div key={i} className="dates-container">
-											<div key={i} className="months-box">{monthNames[el.month]}:</div>
-													<div className="d-flex">
-											
-											{
-												el.holidays.map((el, i) => (
-														<span key={i} className="date-box">{new Date(el).getDate()}</span>
-												))
-											}
-													</div>
+											<div key={i} className="months-box">{monthNames[el.month]}</div>
+											<div className="dates-wrapper">
+												<div className="d-flex date-box">
+													{
+														el.holidays.map((el, i) => (
+															<span key={i} className="date-el">{new Date(el).getDate()}</span>
+														))
+													}
+												</div>
+												<Divider />
+											</div>
 										</div>
 									);
 								})
@@ -68,7 +77,9 @@ class TakenVacationDates extends Component {
 						</div>
 					);
 				})
-				}
+			}
+				{(Object.keys(groupedHolidays).length === 0) && <div className="missing-user-info">Oh! You haven't selected any vacation days yet.
+          Go to the settings tab in the Navigation and fill in your total number of yearly vacation days so you can start planning and tracking.</div>}
 			</Fragment>
 		)
 	}

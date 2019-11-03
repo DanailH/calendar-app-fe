@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Donut from '../donutChart/Donut';
 import Divider from '@material-ui/core/Divider';
-import TakenVacationDates from './TakenVacationDates';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import './style.scss';
 
 class DashboardBox extends Component {
@@ -9,11 +10,11 @@ class DashboardBox extends Component {
     isDrawerOpen: false
   }
 
-  toggleDrawer = () => {
+  toggleDrawer = () => { 
     this.setState({
       isDrawerOpen: !this.state.isDrawerOpen,
     });
-  };
+  }; 
 
   render() {
 
@@ -21,23 +22,30 @@ class DashboardBox extends Component {
       <div className="content-box dashboard-box">
         <div className="d-flex justify-space ">
           <div className="content-header">DASHBOARD</div>
-          <span className="more-text">More ></span>
+          <Link to="/dashboard" className="back-btn">
+            <span className="more-text">More ></span>
+          </Link>
         </div>
-        <div className="text-box d-flex">
-          <div className="flex-2">
-            <Donut remaining={this.props.remaining} total={this.props.total} />
-          </div>
-          <div className="text-center flex-1">
-            <span className="remaining-text">Remaining days:&nbsp;</span>
-            <div className={`remaining-number ${this.props.remainingHolidays <= 0 ? 'error' : ''}`}>
-              {this.props.remainingHolidays}
-            </div>
-          </div>
-        </div>
-        <Divider/>
-        
-        <TakenVacationDates holidaysTaken={this.props.holidaysTaken}/>
 
+        <Donut remaining={this.props.remaining} total={this.props.total} />
+
+        <Divider />
+
+        <div className="text-center">
+          <div className="holiday-icon add-icon">
+            <AddCircleIcon />
+          </div>
+          <div className={`holiday-number ${this.props.remainingHolidays <= 0 ? 'error' : ''}`}>
+            {this.props.remainingHolidays}
+          </div>
+          <div className="holiday-header">
+            Left days
+						</div>
+          <Divider />
+          <div className="holiday-subheader">
+            *The number of left holidays
+					</div>
+        </div>
       </div>
     )
   }
