@@ -23,8 +23,8 @@ class Login extends React.Component {
 
   handleFBLogin = () => {
     fetch(`${BaseUrl}/auth/facebook`)
-    .then(console.log)
-    .catch(console.log)
+      .then(console.log)
+      .catch(console.log)
   }
 
   handleLogin(event) {
@@ -68,19 +68,27 @@ class Login extends React.Component {
     return (
       <div className="user-container login-container">
         <Container maxWidth="sm" className="user-form">
-          <Logo name="FOIZ"/>
+          <Logo name="FOIZ" />
 
           <br />
 
           <div className="social-login-container">
-            <a href={ApiURL + '/auth/facebook'} className="fb connect">Sign in with Facebook</a>
-            <br />
-            <a href={ApiURL + '/auth/google'} className="google-btn">
-              <span className="google-icon-wrapper">
-                <img className="google-icon absolute-center" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-              </span>
-              <span className="btn-text"><b>Sign in with Google</b></span>
-            </a>
+            <div>
+              <a href={ApiURL + '/auth/facebook'} className="fb connect">
+
+                <img className="fb-icon" src='./fb-social.png' />
+                <span><b>Sign in with Facebook</b></span>
+              </a>
+            </div>
+            <br/>
+            <div className="google-wrapper">
+              <a href={ApiURL + '/auth/google'} className="google-btn">
+                <span className="google-icon-wrapper">
+                  <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                </span>
+                <span className="btn-text"><b>Sign in with Google</b></span>
+              </a>
+            </div>
           </div>
 
           <br />
