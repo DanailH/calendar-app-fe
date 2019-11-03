@@ -16,6 +16,7 @@ import Divider from '@material-ui/core/Divider';
 import Logo from '../Logo/Logo';
 import UserGuide from '../userGuide/userGuide.js';
 import SetHolidays from '../setHolidays/index';
+import SetMaxHolidaysTransfer from '../setMaxHolidaysTransfer/index';
 import SetCountry from '../setCountry/index';
 import './style.scss';
 
@@ -131,6 +132,13 @@ class Navigation extends Component {
                     <CloseIcon className={clsx(classes.closeBtnIcon)} />
                   </IconButton>
                 </div>
+                {this.props.maxHolidaysTransfer === 0 && (
+                  <div className="missing-user-info">
+                    Oh! The maximum amount of vacation days to be transfered to the next year is missing.
+                    Please fill in the number below so you can start planning.
+                  </div>
+                )}
+                <SetMaxHolidaysTransfer count={this.props.maxHolidaysTransfer} setMaxHolidaysTransfer={this.props.setMaxHolidaysTransfer} />
                 {this.props.count === 0 && (
                   <div className="missing-user-info">
                     Oh! The total number of yearly vacation days is missing.

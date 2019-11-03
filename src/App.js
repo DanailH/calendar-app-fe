@@ -17,6 +17,7 @@ class App extends React.Component {
     selectedYear: new Date().getFullYear(),
     selectedMonth: new Date().getMonth(),
     holidays: 0,
+    maxHolidaysTransfer: 0,
     country: '',
     numberOfUsedHolidays: 0,
     listOfUsedHolidays: [],
@@ -30,6 +31,7 @@ class App extends React.Component {
 
     this.selectYear = this.selectYear.bind(this);
     this.selectMonth = this.selectMonth.bind(this);
+    this.setMaxHolidaysTransfer = this.setMaxHolidaysTransfer.bind(this);
     this.setHolidays = this.setHolidays.bind(this);
     this.useHoliday = this.useHoliday.bind(this);
     this.setCountry = this.setCountry.bind(this);
@@ -48,10 +50,36 @@ class App extends React.Component {
     });
   }
 
+  setMaxHolidaysTransfer(maxHolidaysTransfer) {
+    const data = {
+      country: this.state.country,
+      holidaysCount: this.state.holidays,
+      maxHolidaysTransfer: maxHolidaysTransfer,
+      selectedHolidays: this.state.listOfUsedHolidays
+    };
+
+    fetch(`${BaseUrl}/holiday/holidays`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(res => this.setState({
+        maxHolidaysTransfer: res.maxHolidaysTransfer,
+        user: {
+          isNewUser: false
+        }
+      }))
+      .catch(error => console.error('Error:', error));
+  }
+
   setHolidays(numberOfHolidays) {
     const data = {
       country: this.state.country,
       holidaysCount: numberOfHolidays,
+      maxHolidaysTransfer: this.state.maxHolidaysTransfer,
       selectedHolidays: this.state.listOfUsedHolidays
     };
 
@@ -77,6 +105,7 @@ class App extends React.Component {
       // userId: this.state.userId,
       country: country,
       holidaysCount: this.state.holidays,
+      maxHolidaysTransfer: this.state.maxHolidaysTransfer,
       selectedHolidays: this.state.listOfUsedHolidays
     };
     fetch(`${BaseUrl}/holiday/holidays`, {
@@ -119,6 +148,7 @@ class App extends React.Component {
       // userId: this.state.userId,
       country: this.state.country,
       holidaysCount: this.state.holidays,
+      maxHolidaysTransfer: this.state.maxHolidaysTransfer,
       selectedHolidays: holidaysArr
     };
 
@@ -179,6 +209,7 @@ class App extends React.Component {
                 country: res.countryCode,
                 publicHolidays: res.publicHolidays,
                 holidays: userData.holidaysCount,
+                maxHolidaysTransfer: userData.maxHolidaysTransfer,
                 listOfUsedHolidays: userData.selectedHolidays,
                 numberOfUsedHolidays: userData.selectedHolidays.length,
                 isLoading: false,
@@ -188,6 +219,7 @@ class App extends React.Component {
               .catch(error => {
                 this.setState({
                   holidays: userData.holidaysCount,
+                  maxHolidaysTransfer: userData.maxHolidaysTransfer,
                   listOfUsedHolidays: userData.selectedHolidays,
                   numberOfUsedHolidays: userData.selectedHolidays.length,
                   isLoading: false,
@@ -238,8 +270,10 @@ class App extends React.Component {
       <div className="d-flex app-container">
         {this.isLoading()}
         <Navigation
+          maxHolidaysTransfer={this.state.maxHolidaysTransfer}
           count={this.state.holidays}
           country={this.state.country}
+          setMaxHolidaysTransfer={this.setMaxHolidaysTransfer}
           setHoliday={this.setHolidays}
           setCountry={this.setCountry}
           user={this.state.user}
