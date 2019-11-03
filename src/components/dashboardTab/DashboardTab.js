@@ -37,7 +37,7 @@ class DashboardTab extends Component {
 							{this.props.total}
 						</div>
 						<div className="holiday-header">
-							Total days
+							Total days*
 						</div>
 						<Divider />
 						<div className="holiday-subheader">
@@ -53,7 +53,7 @@ class DashboardTab extends Component {
 							{this.props.remaining}
 						</div>
 						<div className="holiday-header">
-							Taken days
+							Taken days*
 						</div>
 						<Divider />
 						<div className="holiday-subheader">
@@ -69,7 +69,7 @@ class DashboardTab extends Component {
 							{this.props.remainingHolidays}
 						</div>
 						<div className="holiday-header">
-							Left days
+							Left days*
 						</div>
 						<Divider />
 						<div className="holiday-subheader">

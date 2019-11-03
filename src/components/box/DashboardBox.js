@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Donut from '../donutChart/Donut';
 import Divider from '@material-ui/core/Divider';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import './style.scss';
 
 class DashboardBox extends Component {
@@ -32,14 +31,11 @@ class DashboardBox extends Component {
         <Divider />
 
         <div className="text-center">
-          <div className="holiday-icon add-icon">
-            <AddCircleIcon />
-          </div>
           <div className={`holiday-number ${this.props.remainingHolidays <= 0 ? 'error' : ''}`}>
             {this.props.remainingHolidays}
           </div>
           <div className="holiday-header">
-            Left days
+            Left days*
 						</div>
           <Divider />
           <div className="holiday-subheader">

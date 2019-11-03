@@ -76,7 +76,7 @@ class Login extends React.Component {
             <div>
               <a href={ApiURL + '/auth/facebook'} className="fb connect">
 
-                <img className="fb-icon" src='./fb-social.png' />
+                <img className="fb-icon" alt="facebook-icon" src='./fb-social.png' />
                 <span><b>Sign in with Facebook</b></span>
               </a>
             </div>
@@ -84,7 +84,7 @@ class Login extends React.Component {
             <div className="google-wrapper">
               <a href={ApiURL + '/auth/google'} className="google-btn">
                 <span className="google-icon-wrapper">
-                  <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                  <img className="google-icon" alt="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
                 </span>
                 <span className="btn-text"><b>Sign in with Google</b></span>
               </a>

@@ -138,7 +138,6 @@ class App extends React.Component {
 
   // TODO: Refactor
   componentWillMount() {
-    console.log('check if auth!')
     fetch(`${BaseUrl}/auth/isAuth`)
       .then((res) => {
         if (res.status === 401) {
@@ -156,6 +155,18 @@ class App extends React.Component {
       .then(res => res.json())
       .then(res => {
         const userInfo = res;
+        console.log(userInfo.sharedUsers)
+        const sharedUsersId = userInfo.sharedUsers.map((element) => {
+          console.log(element)
+          return element;
+        })
+        console.log(sharedUsersId)
+        fetch(`${BaseUrl}/users/user?${sharedUsersId}`)
+          .then(res => res.json())
+          .then(res => {
+            const sharedUsersData = res;
+          })
+          .catch(error => console.error('Error:', error));
         fetch(`${BaseUrl}/holiday/holidays`)
           .then(res => res.json())
           .then(res => {
@@ -214,7 +225,6 @@ class App extends React.Component {
     const route = this.props.location.pathname;
     const dates = this.state.listOfUsedHolidays.map(date => new Date(date).toLocaleDateString()).sort()
     const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) === i)
-    console.log(this.state.user)
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
     const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => ({
       date: holiday.date.split('T')[0],
@@ -232,7 +242,7 @@ class App extends React.Component {
           user={this.state.user}
         />
         <div className="main-container">
-          <Account />
+          <Account user={this.state.user} />
 
           {(() => {
             if (route === '/dashboard') {

@@ -63,6 +63,10 @@
   }
 }
 
+.dashboard-box .holiday-number {
+  padding-top: 0;
+}
+
 .add-icon {
     background: #cde4cb;
 
@@ -120,10 +124,6 @@
   .content-box {
     flex: none;
     width: 45%;
-  }
-
-  .dashboard-box {
-    // flex: 1;
   }
 }
 
