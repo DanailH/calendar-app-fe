@@ -8,10 +8,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DoneIcon from '@material-ui/icons/Done';
+import Divider from '@material-ui/core/Divider';
 import Logo from '../Logo/Logo';
 import FormError from '../FormError/FormError';
+import { BaseUrl, ApiURL } from '../../config';
 import './style.scss';
-import { BaseUrl } from '../../config';
+import '../login/style.scss';
 
 class Register extends React.Component {
   state = {
@@ -76,6 +78,24 @@ class Register extends React.Component {
         </Dialog>
         <Container maxWidth="sm" className="user-form">
           <Logo name="FOIZ" />
+
+          <br />
+
+          <div className="social-login-container">
+            <a href={ApiURL + '/auth/facebook'} className="fb connect">Sign in with Facebook</a>
+            <br />
+            <a href={ApiURL + '/auth/google'} className="google-btn">
+              <span className="google-icon-wrapper">
+                <img className="google-icon absolute-center" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+              </span>
+              <span className="btn-text"><b>Sign in with Google</b></span>
+            </a>
+          </div>
+
+          <br />
+          <Divider />
+          <br />
+
           <form onSubmit={this.handleRegister}>
             <TextField
               id="firstName"

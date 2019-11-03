@@ -9,12 +9,14 @@ import App from './App';
 import Login from './components/login/Login';
 import Register from './components/Register';
 import PrivateRoute from './privateRoute';
+import CheckIfAuth from './checkIfAuth';
 import * as serviceWorker from './serviceWorker';
 
 const Routing = (
   <Router>
     <PrivateRoute exact path="/" component={App} />
     <PrivateRoute exact path="/dashboard" component={App} />
+    <Route path="/socialLoginSuccess" component={CheckIfAuth} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
   </Router>

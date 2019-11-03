@@ -5,7 +5,9 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Logo from '../Logo/Logo';
 import FormError from '../FormError/FormError';
-import { BaseUrl } from '../../config';
+import { BaseUrl, ApiURL } from '../../config';
+import Divider from '@material-ui/core/Divider';
+import './style.scss';
 
 class Login extends React.Component {
   state = {
@@ -17,6 +19,12 @@ class Login extends React.Component {
     super();
 
     this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleFBLogin = () => {
+    fetch(`${BaseUrl}/auth/facebook`)
+    .then(console.log)
+    .catch(console.log)
   }
 
   handleLogin(event) {
@@ -37,7 +45,7 @@ class Login extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        localStorage.setItem('_id', res._id);
+        localStorage.setItem('auth', true);
 
         this.setState({
           isAuth: true
@@ -58,9 +66,27 @@ class Login extends React.Component {
     }
 
     return (
-      <div className="user-container">
+      <div className="user-container login-container">
         <Container maxWidth="sm" className="user-form">
           <Logo name="FOIZ"/>
+
+          <br />
+
+          <div className="social-login-container">
+            <a href={ApiURL + '/auth/facebook'} className="fb connect">Sign in with Facebook</a>
+            <br />
+            <a href={ApiURL + '/auth/google'} className="google-btn">
+              <span className="google-icon-wrapper">
+                <img className="google-icon absolute-center" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+              </span>
+              <span className="btn-text"><b>Sign in with Google</b></span>
+            </a>
+          </div>
+
+          <br />
+          <Divider />
+          <br />
+
           <form onSubmit={this.handleLogin}>
             <TextField
               id="email"
