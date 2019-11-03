@@ -224,7 +224,6 @@ class App extends React.Component {
 
 
   render() {
-    console.log(this.state)
     const route = this.props.location.pathname;
     const dates = this.state.listOfUsedHolidays.map(date => new Date(date).toLocaleDateString()).sort()
     const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) === i)
@@ -276,7 +275,7 @@ class App extends React.Component {
                       remainingHolidays={remainingHolidays}
                       holidaysTaken={this.state.listOfUsedHolidays}
                     />
-                    <AdditionalBox />
+                    <AdditionalBox sharedUsersData={this.state.sharedUsersData}/>
                   </div>
                 </div>
               );

@@ -8,6 +8,10 @@
 
 .dashboard-box {
   flex: 2;
+
+  .MuiDivider-root {
+    margin: 12px 0;
+  }
 }
 
 .content-box {
@@ -31,11 +35,6 @@
       padding-bottom: 4px;
     }
   }
-
-  .MuiDivider-root {
-    margin: 12px 0;
-  }
-
 
   .remaining-number {
     font-size: 1.2rem;
