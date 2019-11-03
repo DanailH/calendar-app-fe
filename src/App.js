@@ -21,7 +21,8 @@ class App extends React.Component {
     numberOfUsedHolidays: 0,
     listOfUsedHolidays: [],
     publicHolidays: {},
-    isLoading: true
+    isLoading: true,
+    sharedUsersData: []
   }
 
   constructor() {
@@ -155,18 +156,19 @@ class App extends React.Component {
       .then(res => res.json())
       .then(res => {
         const userInfo = res;
-        console.log(userInfo.sharedUsers)
-        const sharedUsersId = userInfo.sharedUsers.map((element) => {
-          console.log(element)
-          return element;
-        })
-        console.log(sharedUsersId)
-        fetch(`${BaseUrl}/users/user?${sharedUsersId}`)
-          .then(res => res.json())
-          .then(res => {
-            const sharedUsersData = res;
-          })
+        if(userInfo.sharedUsers && userInfo.sharedUsers.length) {
+          const sharedUsersData = userInfo.sharedUsers.map(id =>
+            fetch(`${BaseUrl}/users/user?userId=${id}`)
+            .then(res => res.json())
+          );
+
+          Promise.all(sharedUsersData)
+          .then(data => this.setState({
+            sharedUsersData: data
+          }))
           .catch(error => console.error('Error:', error));
+        }
+
         fetch(`${BaseUrl}/holiday/holidays`)
           .then(res => res.json())
           .then(res => {
@@ -222,6 +224,7 @@ class App extends React.Component {
 
 
   render() {
+    console.log(this.state)
     const route = this.props.location.pathname;
     const dates = this.state.listOfUsedHolidays.map(date => new Date(date).toLocaleDateString()).sort()
     const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) === i)
