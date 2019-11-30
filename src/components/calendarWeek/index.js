@@ -21,19 +21,24 @@ class CalendarWeek extends React.Component {
       const prepDayForPHolidayCheck = day ? day.split('T')[0] : undefined;
       const isHoliday = this.props.listOfUsedHolidays.indexOf(day);
       const isPublicHoliday = this.props.publicHolidays
-      .map(holiday => holiday.date)
-      .indexOf(prepDayForPHolidayCheck);
+        .map(holiday => holiday.date)
+        .indexOf(prepDayForPHolidayCheck);
       const dateType = isPublicHoliday > -1 ? 'public' : 'weekday';
+      const holidayInfo = this.props.publicHolidays
+        .filter(holiday => holiday.date === prepDayForPHolidayCheck)
+        .pop();
 
       if (!day) return <Grid item sm key={i} className="week-container"><CalendarDay key={i} type={undefined} date={day} /></Grid>;
-
+      let type;
       switch (weekDays[new Date(day).getDay()]) {
         case 'Saturday':
-          return <Grid item sm key={i} className="week-container"><CalendarDay key={i} type={'weekend'} date={day} /></Grid>
+          type = dateType === 'public' ? 'public' : 'weekday';
+          return <Grid item sm key={i} className="week-container"><CalendarDay key={i} type={type} date={day} /></Grid>
           case 'Sunday':
-          return <Grid item sm key={i} className="week-container"><CalendarDay key={i} type={'weekend'} date={day} /></Grid>
+          type = dateType === 'public' ? 'public' : 'weekday';
+          return <Grid item sm key={i} className="week-container"><CalendarDay key={i} type={type} date={day} /></Grid>
         default:
-          return <Grid item sm key={i} className="week-container"><CalendarDay useHoliday={this.props.useHoliday} isHoliday={isHoliday > -1 ? true : false} canUseHolidays={this.props.canUseHolidays} key={i} type={dateType} date={day} /></Grid>
+          return <Grid item sm key={i} className="week-container"><CalendarDay holidayInfo={holidayInfo ? holidayInfo.info : ''} useHoliday={this.props.useHoliday} isHoliday={isHoliday > -1 ? true : false} canUseHolidays={this.props.canUseHolidays} key={i} type={dateType} date={day} /></Grid>
       }
     });
   }

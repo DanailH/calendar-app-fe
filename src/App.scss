@@ -6,7 +6,7 @@
   height: 100vh;
 }
 
-.main-calendar,
+.main-content,
 .dashboard-tab-container {
   overflow-y: scroll;
 }
@@ -15,21 +15,23 @@
   width: 94%;
 }
 
-.main-calendar {
-  background: #F4F7FE;
+.main-content {
+  background: #f2f2ff;
   display: flex;
   justify-content: space-between;
   height: 92%;
 
-  .calendar-container {
-    margin-left: 16px;
-    width: 72%;
+  .main-calendar {
+    margin: 0 16px;
+    width: 75%;
 
     .calendar-wrapper {
       background: white;
       padding: 16px;
       box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.14);
       border-radius: 8px;
+      height: 85%;
+      margin-top: 40px;
     }
   }
 
@@ -69,10 +71,10 @@
     height: auto;
   }
 
-  .main-calendar {
+  .main-content {
     display: block;
 
-    .calendar-container {
+    .main-calendar {
       width: 98%;
       margin: 2% 1%;
 
@@ -106,7 +108,7 @@
 
 @media only screen and (max-device-width: 768px) {
   .content-container {
-    padding: 1%;
+    // padding: 1%;
   }
 }
 
@@ -137,7 +139,7 @@
     width: 90%;
   }
 
-  .main-calendar {
+  .main-content {
     .content-container {
       display: block;
     }

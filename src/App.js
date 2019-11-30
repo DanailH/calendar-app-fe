@@ -1,5 +1,6 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import Account from './components/account/Account';
@@ -156,17 +157,17 @@ class App extends React.Component {
       .then(res => res.json())
       .then(res => {
         const userInfo = res;
-        if(userInfo.sharedUsers && userInfo.sharedUsers.length) {
+        if (userInfo.sharedUsers && userInfo.sharedUsers.length) {
           const sharedUsersData = userInfo.sharedUsers.map(id =>
             fetch(`${BaseUrl}/users/user?userId=${id}`)
-            .then(res => res.json())
+              .then(res => res.json())
           );
 
           Promise.all(sharedUsersData)
-          .then(data => this.setState({
-            sharedUsersData: data
-          }))
-          .catch(error => console.error('Error:', error));
+            .then(data => this.setState({
+              sharedUsersData: data
+            }))
+            .catch(error => console.error('Error:', error));
         }
 
         fetch(`${BaseUrl}/holiday/holidays`)
@@ -258,11 +259,15 @@ class App extends React.Component {
 
             if (route === '/') {
               return (
-                <div className="main-calendar">
+                <div className="main-content">
                   {this.renderUsageOverlay()}
 
-                  <div className="calendar-container position-relative">
-                    <div className="absolute-center calendar-wrapper w-100">
+                  <div className="main-calendar">
+                    <div>
+                      <LocationOnIcon />
+                      <span>{this.state.country}</span>
+                    </div>
+                    <div className="calendar-wrapper w-100">
                       <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
                       <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
                     </div>
@@ -275,7 +280,7 @@ class App extends React.Component {
                       remainingHolidays={remainingHolidays}
                       holidaysTaken={this.state.listOfUsedHolidays}
                     />
-                    <AdditionalBox sharedUsersData={this.state.sharedUsersData}/>
+                    <AdditionalBox sharedUsersData={this.state.sharedUsersData} />
                   </div>
                 </div>
               );

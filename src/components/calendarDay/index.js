@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Box from '@material-ui/core/Box';
 import './style.scss';
 
@@ -25,15 +25,20 @@ class CalendarDay extends React.Component {
   }
 
   render() {
-    const { date, type } = this.props;
+    const { date, type, holidayInfo } = this.props;
     const targetDate = date ? new Date(date).getDate() : '';
-    
+    console.log(holidayInfo)
     return (
+      <Fragment>
       <div onClick={this.setAsHoliday} className="day-container">
         <Box component="span" className={`${type ? 'day' : ''} ${type !== 'weekend' && type ? 'c-pointer' : ''} ${this.isWeekend(date) || this.props.isHoliday ? 'weekend-text-color' : ''} ${this.isWeekend(date) ? 'weekend-bgr' : ''} ${this.props.isHoliday ? 'selected-holiday' : ''} ${this.props.type === 'public' ? 'public-holiday' : ''}`}>
           { targetDate }
         </Box>
       </div>
+        <div className="holiday-info">
+          {holidayInfo}
+        </div>
+      </Fragment>
     );
   }
 }

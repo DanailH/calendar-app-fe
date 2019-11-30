@@ -48,7 +48,7 @@ class CalendarMain extends React.Component {
     });
   }
 
-  renderDays() {
+  renderWeekDays() {
     return weekDays.map((days, i) => (
       <Grid item sm key={i} className="weekdays">
         {days}
@@ -59,10 +59,10 @@ class CalendarMain extends React.Component {
   render() {
     return (
       <Grid container justify={'center'} >
-        {this.renderDays()}
-      <Grid container className="calendar-container">
-        { this.printCalendarWeeks() }
-      </Grid>
+        {this.renderWeekDays()}
+        <Grid container className="calendar-container">
+          { this.printCalendarWeeks() }
+        </Grid>
       </Grid>
     );
   }
