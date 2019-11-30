@@ -18,6 +18,7 @@ class App extends React.Component {
     selectedMonth: new Date().getMonth(),
     holidays: 0,
     maxHolidaysTransfer: 0,
+    numberOfTransferedDays: 0,
     country: '',
     numberOfUsedHolidays: 0,
     listOfUsedHolidays: [],
@@ -38,10 +39,34 @@ class App extends React.Component {
   }
 
   selectYear(year) {
-    this.setState({
-      selectedYear: year,
-      selectedMonth: 1
-    });
+    const numberUsedHolidays = this.state.listOfUsedHolidays.filter(date => new Date(date).getFullYear() === year).length;
+    const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
+    let numberOfDaysToTransfer;
+
+    if (remainingHolidays <= this.state.maxHolidaysTransfer && remainingHolidays !== 0) {
+      numberOfDaysToTransfer = remainingHolidays;
+    } else if (remainingHolidays > this.state.maxHolidaysTransfer) {
+      numberOfDaysToTransfer = this.state.maxHolidaysTransfer;
+    } else {
+      numberOfDaysToTransfer = 0;
+    }
+
+    if (new Date().getFullYear() !== year) {
+      this.setState({
+        selectedYear: year,
+        selectedMonth: 1,
+        holidays: this.state.holidays + numberOfDaysToTransfer,
+        numberOfTransferedDays: numberOfDaysToTransfer,
+        numberOfUsedHolidays: numberUsedHolidays
+      });
+    } else {
+      this.setState({
+        selectedYear: year,
+        selectedMonth: 1,
+        holidays: this.state.holidays - this.state.numberOfTransferedDays,
+        numberOfUsedHolidays: numberUsedHolidays
+      });
+    }
   }
 
   selectMonth(month) {
@@ -211,7 +236,7 @@ class App extends React.Component {
                 holidays: userData.holidaysCount,
                 maxHolidaysTransfer: userData.maxHolidaysTransfer,
                 listOfUsedHolidays: userData.selectedHolidays,
-                numberOfUsedHolidays: userData.selectedHolidays.length,
+                numberOfUsedHolidays: userData.selectedHolidays.filter(date => new Date(date).getFullYear() === this.state.selectedYear).length,
                 isLoading: false,
                 user: userInfo,
                 drawerIsOpen: false
@@ -221,7 +246,7 @@ class App extends React.Component {
                   holidays: userData.holidaysCount,
                   maxHolidaysTransfer: userData.maxHolidaysTransfer,
                   listOfUsedHolidays: userData.selectedHolidays,
-                  numberOfUsedHolidays: userData.selectedHolidays.length,
+                  numberOfUsedHolidays: userData.selectedHolidays.filter(date => new Date(date).getFullYear() === this.state.selectedYear).length,
                   isLoading: false,
                   user: userInfo
                 })
@@ -258,7 +283,11 @@ class App extends React.Component {
   render() {
     console.log(this.state)
     const route = this.props.location.pathname;
+
+    // TODO: remove
     const dates = this.state.listOfUsedHolidays.map(date => new Date(date).toLocaleDateString()).sort()
+
+    const holidaysForCurrentYear = this.state.listOfUsedHolidays.filter(date => new Date(date).getFullYear() === this.state.selectedYear);
     const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) === i)
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
     const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => ({
@@ -287,7 +316,7 @@ class App extends React.Component {
                 remaining={this.state.numberOfUsedHolidays}
                 total={this.state.holidays}
                 remainingHolidays={remainingHolidays}
-                holidaysTaken={this.state.listOfUsedHolidays}
+                holidaysTaken={holidaysForCurrentYear}
               />;
             }
 
@@ -299,7 +328,7 @@ class App extends React.Component {
                   <div className="calendar-container position-relative">
                     <div className="absolute-center calendar-wrapper w-100">
                       <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
-                      <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.state.listOfUsedHolidays} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+                      <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={holidaysForCurrentYear} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
                     </div>
                   </div>
 
@@ -308,7 +337,7 @@ class App extends React.Component {
                       remaining={this.state.numberOfUsedHolidays}
                       total={this.state.holidays}
                       remainingHolidays={remainingHolidays}
-                      holidaysTaken={this.state.listOfUsedHolidays}
+                      holidaysTaken={holidaysForCurrentYear}
                     />
                     <AdditionalBox />
                   </div>
