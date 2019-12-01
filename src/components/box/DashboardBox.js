@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Donut from '../donutChart/Donut';
 import Divider from '@material-ui/core/Divider';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Donut from '../donutChart/Donut';
 import './style.scss';
 
 class DashboardBox extends Component {
@@ -30,6 +31,10 @@ class DashboardBox extends Component {
 
         <Divider />
 
+        <div>
+          <LocationOnIcon />
+          <span>{this.props.selectedCountry}</span>
+        </div>
         <div className="text-center">
           <div className={`holiday-number ${this.props.remainingHolidays <= 0 ? 'error' : ''}`}>
             {this.props.remainingHolidays}

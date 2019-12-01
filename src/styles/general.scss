@@ -126,32 +126,38 @@ input[type=number] {
 // Holiday dashboard boxes
 
 .holiday-icon {
-				width: 35px;
-				border-radius: 50%;
-				padding: 8px;
-				margin: 0 auto;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+  width: 35px;
+  border-radius: 50%;
+  padding: 8px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-				.MuiSvgIcon-root {
-					font-size: 1.2rem;
-				}
-			}
+  .MuiSvgIcon-root {
+    font-size: 1.2rem;
+  }
+}
 
-			.holiday-number {
-				font-weight: 800;
-				font-size: 1.7rem;
-				padding-top: 20px;
-			}
+.holiday-number {
+  font-weight: 800;
+  font-size: 1.7rem;
+  padding-top: 20px;
+}
 
-			.holiday-header {
-				font-size: 0.9rem;
-				color: #3e3a3a;
-			}
+.holiday-header {
+  font-size: 0.9rem;
+  color: #3e3a3a;
+}
 
-			.holiday-subheader {
-				font-size: 0.8rem;
-				color: #737373;
-				padding-bottom: 16px;
-			}
+.holiday-subheader {
+  font-size: 0.8rem;
+  color: #737373;
+  padding-bottom: 16px;
+}
+
+.content-header {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+}

@@ -108,12 +108,16 @@
 
 // Phone screen
 @media only screen and (max-device-width: 480px) {
-  .dashboard-tab-container .dashboard-container {
-		flex-direction: column;
-		align-items: center;
+  .dashboard-tab-container .dashboard-mobile-scroll {
+		width: 100%;
+    overflow-x: scroll;
+	
+		.dashboard-container {
+			width: 270%;
 
-		.dashboard-boxes {
-			width: 90%;
+			.dashboard-boxes {
+				width: 90%;
+			}
 		}
 	}
 

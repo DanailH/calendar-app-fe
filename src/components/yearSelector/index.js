@@ -40,18 +40,18 @@ class YearSelector extends React.Component {
       isCurrentYear: !this.state.isCurrentYear
     });
 
-    this.props.resetSelectedMonth();
+    // this.props.resetSelectedMonth();
     this.props.selectYear(selectedDate.getFullYear());
   }
 
   render() {
     return (
-      <Grid className="year-selector" container direction="row" alignItems="center" justify="center">
+      <Grid className="year-selector" container direction="row" alignItems="center" justify="flex-end">
         <IconButton className="material-icons" disabled={this.state.isCurrentYear} onClick={this.changeYear.bind(this, 'down')}>
           arrow_left
         </IconButton>
 
-        <Typography variant="h5">
+        <Typography variant="h7">
           {this.state.currentYear}
         </Typography>
 

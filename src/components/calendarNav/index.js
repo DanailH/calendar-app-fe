@@ -7,19 +7,19 @@ class CalendarNav extends React.Component {
   constructor() {
     super();
 
-    this.resetMonth = this.resetMonth.bind(this);
+    // this.resetMonth = this.resetMonth.bind(this);
     this.setMonthIndex = this.setMonthIndex.bind(this);
 
     this.state = {
       activeMonthIndex: new Date().getMonth() - 1
     };
   }
-
-  resetMonth() {
-    this.setState({
-      activeMonthIndex: 0
-    });
-  }
+  // ** resetMonth should be passed to YearSelector in the App.js
+  // resetMonth() {
+  //   this.setState({
+  //     activeMonthIndex: 0
+  //   });
+  // }
 
   setMonthIndex(index) {
     this.setState({
@@ -30,7 +30,6 @@ class CalendarNav extends React.Component {
   render() {
     return (
       <div className="calendar-nav-container">
-        <YearSelector resetSelectedMonth={this.resetMonth} selectYear={this.props.selectYear} />
         <MonthSelector holidayMonths={this.props.holidayMonths} selectMonth={this.props.selectMonth} setMonthIndex={this.setMonthIndex} activeMonthIndex={this.state.activeMonthIndex} />
       </div>
     )

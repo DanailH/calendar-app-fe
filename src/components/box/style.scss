@@ -1,13 +1,7 @@
 // Dashboard and Additional boxes
-
-.content-header {
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
 .dashboard-box {
   flex: 2;
+  margin-bottom: 32px;
 
   .MuiDivider-root {
     margin: 12px 0;
@@ -16,7 +10,6 @@
 
 .content-box {
   flex: 1;
-  margin-top: 16px;
   border-radius: 8px;
   padding: 16px;
   background: white;

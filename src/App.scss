@@ -20,18 +20,26 @@
   display: flex;
   justify-content: space-between;
   height: 92%;
+  padding: 16px;
 
   .main-calendar {
-    margin: 0 16px;
+    margin: 0 32px 0 16px;
     width: 75%;
 
-    .calendar-wrapper {
+    .main-header {
+      margin: 0 0 24px -16px;
+    }
+
+    .calendar-base-wrapper {
       background: white;
       padding: 16px;
       box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.14);
       border-radius: 8px;
-      height: 85%;
-      margin-top: 40px;
+      margin-bottom: 16px;
+    }
+    .calendar-wrapper {
+      @extend .calendar-base-wrapper;
+      height: 62%;
     }
   }
 
@@ -39,11 +47,13 @@
     background-color: transparent;
   }
 
-  .content-container {
+.mobile-boxes-scroll {
     width: 23%;
-    margin-right: 16px;
-    display: flex;
-    flex-direction: column;
+  
+    .content-container {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
@@ -107,8 +117,17 @@
 }
 
 @media only screen and (max-device-width: 768px) {
-  .content-container {
-    // padding: 1%;
+ .main-content .mobile-boxes-scroll {
+    width: 100%;
+
+    .content-container {
+      flex-direction: row;
+      align-items: initial;
+
+      .content-box {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
@@ -139,9 +158,18 @@
     width: 90%;
   }
 
-  .main-content {
+  .main-content .mobile-boxes-scroll {
+    width: 100%;
+    overflow-x: scroll;
+
     .content-container {
-      display: block;
+      flex-direction: row;
+      width: 200%;
+
+      .content-box {
+        // margin: 0;
+        width: initial;
+      }
     }
   }
 }

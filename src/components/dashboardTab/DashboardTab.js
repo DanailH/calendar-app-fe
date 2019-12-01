@@ -24,60 +24,60 @@ class DashboardTab extends Component {
 					</Link>
 				</div>
 				<Typography variant="h5">
-					Holiday Overview
-        		</Typography>
+					Holiday Dashboard
+        </Typography>
+				<div className="dashboard-mobile-scroll">
+					<div className="dashboard-container">
+						<div className="dashboard-boxes">
 
-				<div className="dashboard-container">
-					<div className="dashboard-boxes">
+							<div className="holiday-icon beach-icon">
+								<BeachAccessIcon />
+							</div>
+							<div className="holiday-number">
+								{this.props.total}
+							</div>
+							<div className="holiday-header">
+								Total days*
+						</div>
+							<Divider />
+							<div className="holiday-subheader">
+								*Your total number of holidays
+						</div>
+						</div>
 
-						<div className="holiday-icon beach-icon">
-							<BeachAccessIcon/>
+						<div className="dashboard-boxes">
+							<div className="holiday-icon date-icon">
+								<DateRangeIcon />
+							</div>
+							<div className="holiday-number">
+								{this.props.remaining}
+							</div>
+							<div className="holiday-header">
+								Taken days*
 						</div>
-						<div className="holiday-number">
-							{this.props.total}
+							<Divider />
+							<div className="holiday-subheader">
+								*The number of taken vacation days
 						</div>
-						<div className="holiday-header">
-							Total days*
 						</div>
-						<Divider />
-						<div className="holiday-subheader">
-							*Your total number of holidays
-						</div>
-					</div>
 
-					<div className="dashboard-boxes">
-						<div className="holiday-icon date-icon">
-							<DateRangeIcon />
+						<div className="dashboard-boxes">
+							<div className="holiday-icon add-icon">
+								<AddCircleIcon />
+							</div>
+							<div className={`holiday-number ${this.props.remainingHolidays <= 0 ? 'error' : ''}`}>
+								{this.props.remainingHolidays}
+							</div>
+							<div className="holiday-header">
+								Left days*
 						</div>
-						<div className="holiday-number">
-							{this.props.remaining}
+							<Divider />
+							<div className="holiday-subheader">
+								*The number of left holidays
 						</div>
-						<div className="holiday-header">
-							Taken days*
-						</div>
-						<Divider />
-						<div className="holiday-subheader">
-							*The number of taken vacation days
-						</div>
-					</div>
-
-					<div className="dashboard-boxes">
-						<div className="holiday-icon add-icon">
-							<AddCircleIcon />
-						</div>
-						<div className={`holiday-number ${this.props.remainingHolidays <= 0 ? 'error' : ''}`}>
-							{this.props.remainingHolidays}
-						</div>
-						<div className="holiday-header">
-							Left days*
-						</div>
-						<Divider />
-						<div className="holiday-subheader">
-							*The number of left holidays
 						</div>
 					</div>
 				</div>
-
 				<div className="dashboard-main-container">
 					<div className="donut-container">
 						<Donut remaining={this.props.remaining} total={this.props.total} />

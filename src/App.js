@@ -1,6 +1,6 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Typography from '@material-ui/core/Typography';
 import CalendarNav from './components/calendarNav';
 import CalendarMain from './components/calendarMain';
 import Account from './components/account/Account';
@@ -8,6 +8,7 @@ import Navigation from './components/navigation/Navigation';
 import DashboardBox from './components/box/DashboardBox';
 import AdditionalBox from './components/box/AdditionalBox';
 import DashboardTab from './components/dashboardTab/DashboardTab';
+import YearSelector from './components/yearSelector/index';
 import './App.scss';
 import './styles/base.scss';
 import { BaseUrl } from './config';
@@ -326,24 +327,32 @@ class App extends React.Component {
                   {this.renderUsageOverlay()}
 
                   <div className="main-calendar">
-                    <div>
-                      <LocationOnIcon />
-                      <span>{this.state.country}</span>
+                    <Typography variant="h5" className="main-header">
+                      Holiday Overview
+                    </Typography>
+                    <div className="d-flex justify-space align-fl-end">
+                      <div className="content-header">Months bar</div>
+                      <YearSelector selectYear={this.selectYear} />
                     </div>
-                    <div className="calendar-wrapper w-100">
+                    <div className="calendar-base-wrapper ">
                       <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
+                    </div>
+                    <div className="content-header">Calendar & Holidays</div>
+                    <div className="calendar-base-wrapper calendar-wrapper w-100">
                       <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={holidaysForCurrentYear} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
                     </div>
                   </div>
-
+                  <div className="mobile-boxes-scroll">
                   <div className="content-container">
                     <DashboardBox
                       remaining={this.state.numberOfUsedHolidays}
                       total={this.state.holidays}
                       remainingHolidays={remainingHolidays}
                       holidaysTaken={holidaysForCurrentYear}
+                      selectedCountry={this.state.country}
                     />
                     <AdditionalBox sharedUsersData={this.state.sharedUsersData} />
+                  </div>
                   </div>
                 </div>
               );
