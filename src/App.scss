@@ -39,7 +39,7 @@
     }
     .calendar-wrapper {
       @extend .calendar-base-wrapper;
-      height: 62%;
+      // height: 62%;
     }
   }
 
@@ -140,10 +140,6 @@
     button {
       padding: 0;
     }
-  }
-
-  .weekdays {
-    font-size: 0.5rem;
   }
 
   .MuiGrid-justify-xs-center {

@@ -2,6 +2,7 @@ import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Badge from '@material-ui/core/Badge';
 import './style.scss';
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -56,16 +57,17 @@ class MonthSelector extends React.Component {
         const isHolidayMonth = this.props.holidayMonths.indexOf(i);
 
         return (
-          <ListItem button
-            className={isHolidayMonth > -1 ? 'has-holidays' : ''}
-            key={i}
-            selected={this.state.activeMonthIndex === i}
-            onClick={this.activateMonth.bind(this, month)}
-          >
-            <ListItemText>
-              {month}
-            </ListItemText>
-          </ListItem>
+          <Badge color="secondary" className="has-holidays" variant="dot" invisible={!(isHolidayMonth > -1)}>
+            <ListItem button
+              key={i}
+              selected={this.state.activeMonthIndex === i}
+              onClick={this.activateMonth.bind(this, month)}
+            >
+              <ListItemText>
+                {month}
+              </ListItemText>
+            </ListItem>
+          </Badge>
         )
       }
     );

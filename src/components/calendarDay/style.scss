@@ -71,3 +71,10 @@
   font-size: 0.8rem;
   color: #9facbd;
 }
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+ .week-container .holiday-info {
+    display: none;
+  }
+}

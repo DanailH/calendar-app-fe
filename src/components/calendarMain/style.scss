@@ -3,3 +3,38 @@
   text-align: center;
   font-size: 0.9rem;
 }
+
+.calendar-container {
+  margin-top: 16px;
+}
+
+.monthly-holidays-wrapper {
+  display: none;
+}
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+  .monthly-holidays-wrapper {
+    display: block;
+  }
+
+  .monthly-holidays-container {
+    margin-top: 16px;
+
+    .content-header {
+      font-size: 0.9rem;
+    }
+
+    .holidays-box {
+      margin-bottom: 8px;
+
+      .public-holiday {
+        margin-right: 12px;
+      } 
+
+      .holiday-info {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

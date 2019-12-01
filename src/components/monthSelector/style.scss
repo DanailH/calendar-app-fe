@@ -54,5 +54,12 @@
 }
 
 .has-holidays {
-  border-bottom: 2px solid red !important; 
+  .MuiBadge-anchorOriginTopRightRectangle {
+    top: 14px;
+    right: 8px;
+  }
+
+  .MuiBadge-colorSecondary {
+    background-color: #F0C808;
+  }
 }
