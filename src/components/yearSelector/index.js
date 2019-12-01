@@ -40,7 +40,6 @@ class YearSelector extends React.Component {
       isCurrentYear: !this.state.isCurrentYear
     });
 
-    // this.props.resetSelectedMonth();
     this.props.selectYear(selectedDate.getFullYear());
   }
 
@@ -51,7 +50,7 @@ class YearSelector extends React.Component {
           arrow_left
         </IconButton>
 
-        <Typography variant="h7">
+        <Typography variant="h6">
           {this.state.currentYear}
         </Typography>
 

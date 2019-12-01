@@ -39,8 +39,6 @@ class TakenVacationDates extends Component {
 			return obj;
 		}, {});
 
-		console.log(groupedHolidays)
-
 		return (
 			<Fragment>
 

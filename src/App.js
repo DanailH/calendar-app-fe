@@ -17,7 +17,7 @@ class App extends React.Component {
   state = {
     // userId: localStorage.getItem('_id'),
     selectedYear: new Date().getFullYear(),
-    selectedMonth: new Date().getMonth(),
+    selectedMonth: new Date().getMonth() + 1,
     holidays: 0,
     maxHolidaysTransfer: 0,
     numberOfTransferedDays: 0,
@@ -284,10 +284,6 @@ class App extends React.Component {
 
   render() {
     const route = this.props.location.pathname;
-
-    // TODO: remove
-    const dates = this.state.listOfUsedHolidays.map(date => new Date(date).toLocaleDateString()).sort()
-
     const holidaysForCurrentYear = this.state.listOfUsedHolidays.filter(date => new Date(date).getFullYear() === this.state.selectedYear);
     const months = this.state.listOfUsedHolidays.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) === i)
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
@@ -335,7 +331,7 @@ class App extends React.Component {
                       <YearSelector selectYear={this.selectYear} />
                     </div>
                     <div className="calendar-base-wrapper ">
-                      <CalendarNav className="d-flex" selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
+                      <CalendarNav className="d-flex" selectedMonth={this.state.selectedMonth} selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
                     </div>
                     <div className="content-header">Calendar & Holidays</div>
                     <div className="calendar-base-wrapper calendar-wrapper w-100">

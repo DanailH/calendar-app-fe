@@ -23,7 +23,6 @@ class ShareUsersList extends Component {
   }
 
   handleChange = event => {
-    // this.setState({ checked: event.target.checked })
     const id = event.target.value
 
     fetch(`${BaseUrl}/holiday/holidays?userId=${id}`)
@@ -33,27 +32,24 @@ class ShareUsersList extends Component {
   }
 
   render() {
-    console.log(this.props.sharedUsersData)
     return (
       <div>
         {this.props.sharedUsersData.map((user, i) => {
-          console.log(user)
           return (
-            <div className="shared-list-container">
-            <div className="shared-list-wrapper">
-              <FormControlLabel
-                control={
-                  <Checkbox                    
-                    // checked={state.checkedB}
-                    onChange={this.handleChange}
-                    value={user._id}
-                  />
-                }
-                label={user.firstName + ' ' + user.lastName}
-              >
-              </FormControlLabel>
-              <LocalOfferIcon className={userColors[i]} />
-            </div>
+            <div key={i} className="shared-list-container">
+              <div className="shared-list-wrapper">
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      onChange={this.handleChange}
+                      value={user._id}
+                    />
+                  }
+                  label={user.firstName + ' ' + user.lastName}
+                >
+                </FormControlLabel>
+                <LocalOfferIcon className={userColors[i]} />
+              </div>
               <Divider/>
             </div>
           )

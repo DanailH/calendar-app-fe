@@ -5,11 +5,7 @@ import ShareUsersList from '../shareUsersList/ShareUsersList';
 import './style.scss';
 
 class AdditionalBox extends Component {
-  state = {
-  }
-
   render() {
-    console.log(this.props.sharedUsersData)
     return (
       <div className="content-box">
         <div className="content-header">ADDITIONAL</div>

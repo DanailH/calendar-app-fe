@@ -27,7 +27,7 @@ class CalendarDay extends React.Component {
   render() {
     const { date, type, holidayInfo } = this.props;
     const targetDate = date ? new Date(date).getDate() : '';
-    console.log(holidayInfo)
+
     return (
       <Fragment>
       <div onClick={this.setAsHoliday} className="day-container">
