@@ -58,12 +58,15 @@ class CalendarMain extends React.Component {
     ));
   }
 
-  showMonthlyPubHolidays() {
+  getCurrentMonthHolidays() {
     const publicHolidays = this.props.publicHolidays
     const getCurrentYearHolidays = publicHolidays.filter(holiday => new Date(holiday.date).getFullYear() === this.props.activeYear)
     const getCurrentMonthHolidays = getCurrentYearHolidays.filter(holiday => new Date(holiday.date).getMonth() === this.props.activeMonth - 1)
+    return getCurrentMonthHolidays;
+  }
 
-    return getCurrentMonthHolidays.map((pubHoliday, i) => {
+  showMonthlyPubHolidays() {
+    return this.getCurrentMonthHolidays().map((pubHoliday, i) => {
       const day = new Date(pubHoliday.date).getDate()
       return (
         <div key={i} className="d-flex align-center holidays-box">
@@ -83,13 +86,14 @@ class CalendarMain extends React.Component {
             {this.printCalendarWeeks()}
           </Grid>
         </Grid>
-        <div className="monthly-holidays-wrapper">
+        {!!this.getCurrentMonthHolidays().length && <div className="monthly-holidays-wrapper">
           <Divider />
-          <div className="monthly-holidays-container">
-            <div className="content-header">Public holidays</div>
-            {this.showMonthlyPubHolidays()}
-          </div>
+            <div className="monthly-holidays-container">
+              <div className="content-header">Public holidays</div>
+              {this.showMonthlyPubHolidays()}
+            </div>
         </div>
+          }
       </Fragment>
     );
   }

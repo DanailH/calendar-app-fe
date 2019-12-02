@@ -9,10 +9,9 @@
   }
 }
 
-// Tablet screen
-@media only screen and (max-device-width: 768px) {
-  .account-container {
-    // height: auto;
-    // padding: 1% 2%;
+// Mobile
+@media only screen and (max-device-width: 480px) {
+  .account-container  {
+     height: 9%;
   }
 }

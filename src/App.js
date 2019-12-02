@@ -303,6 +303,7 @@ class App extends React.Component {
           setHoliday={this.setHolidays}
           setCountry={this.setCountry}
           user={this.state.user}
+          isLoading={this.state.isLoading}
         />
         <div className="main-container">
           <Account user={this.state.user} />

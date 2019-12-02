@@ -48,8 +48,13 @@
   }
 }
 
+a {
+  color: #3f51b5;
+}
+
 .MuiButton-contained,
-a .MuiButton-contained {
+a .MuiButton-contained,
+ .proceed-btn {
   border-radius: 25px !important;
   background: linear-gradient(to right, #eb7873, #ee9578);
   padding: 2% 18% !important;
@@ -118,6 +123,7 @@ input[type=number] {
 .missing-user-info {
   background: #eb7873;
   padding: 6px 12px;
+  margin-top: 12px;
   font-size: 0.9rem;
   color: white;
   border-radius: 12px;
@@ -160,4 +166,15 @@ input[type=number] {
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 12px;
+}
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+  .user-container {
+    padding: 24px 16px 32px;
+  }
+
+  .login-container {
+    height: auto;
+  }
 }

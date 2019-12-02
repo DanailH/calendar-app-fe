@@ -88,6 +88,10 @@
       width: 98%;
       margin: 2% 1%;
 
+      .main-header {
+        margin: 0 0 24px 0;
+      }
+
       .calendar-wrapper {
         position: static;
         top: 0;
@@ -154,6 +158,10 @@
     width: 90%;
   }
 
+  .main-content {
+    height: 91%;
+  }
+
   .main-content .mobile-boxes-scroll {
     width: 100%;
     overflow-x: scroll;
@@ -163,7 +171,6 @@
       width: 200%;
 
       .content-box {
-        // margin: 0;
         width: initial;
       }
     }

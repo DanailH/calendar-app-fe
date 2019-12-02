@@ -102,3 +102,15 @@
     }
   }
 }
+
+@media only screen and (max-device-width: 480px) {
+  .send-box {
+    width: 340px;
+  }
+}
+
+@media only screen and (max-device-width: 320px) {
+  .send-box {
+    width: 288px;
+  }
+}
