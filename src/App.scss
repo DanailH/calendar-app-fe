@@ -4,6 +4,10 @@
 
 .app-container {
   height: 100vh;
+
+  .MuiAppBar-colorPrimary {
+    background-color: #5b39ef;
+  }
 }
 
 .main-content,
@@ -16,7 +20,7 @@
 }
 
 .main-content {
-  background: #f2f2ff;
+  background: #f6f6ff;
   display: flex;
   justify-content: space-between;
   height: 92%;
@@ -48,7 +52,7 @@
   }
 
 .mobile-boxes-scroll {
-    width: 23%;
+    width: 20%;
   
     .content-container {
       display: flex;
@@ -113,10 +117,10 @@
 .usage-overlay {
 	position: absolute;
 	z-index: 1;
-	top: 10%;
+	top: 8%;
 	left: 0;
 	width: 100%;
-	height: 90%;
+	height: 92%;
 	background: rgba(202, 201, 201, 0.81);
 }
 
@@ -146,6 +150,10 @@
     }
   }
 
+  .usage-overlay {
+    top: 9%;
+  }
+
   .MuiGrid-justify-xs-center {
     justify-content: space-between !important;
   }
@@ -160,6 +168,7 @@
 
   .main-content {
     height: 91%;
+    padding: 8px;
   }
 
   .main-content .mobile-boxes-scroll {
@@ -170,9 +179,9 @@
       flex-direction: row;
       width: 200%;
 
-      .content-box {
-        width: initial;
-      }
+      // .content-box {
+      //   width: initial;
+      // }
     }
   }
 }

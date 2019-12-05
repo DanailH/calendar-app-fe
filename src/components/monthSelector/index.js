@@ -1,8 +1,8 @@
 import React from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import Badge from '@material-ui/core/Badge';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 import './style.scss';
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -55,18 +55,18 @@ class MonthSelector extends React.Component {
     return months.map(
       (month, i) => {
         const isHolidayMonth = this.props.holidayMonths.indexOf(i);
-
         return (
-          <Badge color="secondary" className="has-holidays" variant="dot" invisible={!(isHolidayMonth > -1)}>
-            <ListItem button
+          <Badge
+            className="has-holidays"
+            badgeContent={<BeachAccessIcon/>}
+            invisible={!(isHolidayMonth > -1)}>
+            <Tab
+              label={month}
               key={i}
               selected={this.state.activeMonthIndex === i}
               onClick={this.activateMonth.bind(this, month)}
             >
-              <ListItemText>
-                {month}
-              </ListItemText>
-            </ListItem>
+            </Tab>
           </Badge>
         )
       }
@@ -75,11 +75,13 @@ class MonthSelector extends React.Component {
 
   render() {
     return (
-      <div>
-        <List component="nav" className="months">
-          { this.renderMonths() }
-        </List>
-      </div>
+      <Tabs
+        value={this.state.activeMonthIndex}
+        variant="scrollable"
+        scrollButtons="on"
+      >
+        {this.renderMonths()}
+      </Tabs>
     )
   };
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import EventIcon from '@material-ui/icons/Event';
 import Donut from '../donutChart/Donut';
 import './style.scss';
 
@@ -20,11 +21,11 @@ class DashboardBox extends Component {
     isDrawerOpen: false
   }
 
-  toggleDrawer = () => { 
+  toggleDrawer = () => {
     this.setState({
       isDrawerOpen: !this.state.isDrawerOpen,
     });
-  }; 
+  };
 
   render() {
     const selectedCountry = country.filter(el => el.code === this.props.selectedCountry)[0]
@@ -41,21 +42,22 @@ class DashboardBox extends Component {
 
         <Divider />
 
-        <div className="text-center">
-          <LocationOnIcon />
-          <span>{selectedCountry && selectedCountry.country}</span>
-        </div>
-        <div className="text-center">
-          <div className={`holiday-number ${this.props.remainingHolidays <= 0 ? 'error' : ''}`}>
-            {this.props.remainingHolidays}
+        <div className="dashboard-mini-info">
+
+          <div className="dashboard-mini-info-box">
+            <div className={`holiday-number dashboard-info-container ${this.props.remainingHolidays <= 0 ? 'error' : ''}`}>
+              <div className="icon-container"><EventIcon/></div>
+              <div>{this.props.remainingHolidays}
+                <div className="holiday-header">
+                  Left days
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="holiday-header">
-            Left days*
-						</div>
-          <Divider />
-          <div className="holiday-subheader">
-            *The number of left holidays
-					</div>
+          <div className="dashboard-mini-info-box dashboard-info-container">
+            <div className="icon-container"><LocationOnIcon /></div>
+            <span className="country-info">{selectedCountry && selectedCountry.country}</span>
+          </div>
         </div>
       </div>
     )

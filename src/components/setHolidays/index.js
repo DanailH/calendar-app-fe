@@ -1,8 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import './style.scss';
 
 class SetHolidays extends React.Component {
@@ -61,11 +59,6 @@ class SetHolidays extends React.Component {
         variant="outlined"
         InputProps={{
           startAdornment: <CalendarTodayIcon />,
-          endAdornment: (
-            <IconButton onClick={this.setHolidaysNumber} size="small" aria-label="directions">
-              <ChevronRightIcon fontSize="inherit" />
-            </IconButton>
-          )
         }}
       />
     )

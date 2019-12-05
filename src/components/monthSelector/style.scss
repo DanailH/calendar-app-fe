@@ -1,65 +1,70 @@
-@keyframes SELECT-MONTH-ANIMATION {
-  0%   {
-    opacity: 0.7;
-    font-size: 0.7rem;
-    line-height: 1.8rem;
-}
-  100% {
-    opacity: 1;
-    font-size: 1.3rem;
-    line-height: 1.8rem;
-  }
+.MuiTab-textColorInherit.Mui-selected {
+  // background: #d8d9f7;
+  // color: #eb7873;
+  background: linear-gradient(to right, #6469e4, #d2d3fb);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.MuiListItemText-root {
-  text-align: center;
+.PrivateTabIndicator-colorSecondary-365,
+.PrivateTabIndicator-colorSecondary-755,
+.PrivateTabIndicator-colorSecondary-499 {
+  display: none;
 }
 
-.MuiListItemText-root .MuiTypography-root.MuiTypography-body1 {
-  font-size: 0.7rem;
-  line-height: 1.8rem;
-  opacity: 0.6;
+.MuiTab-textColorInherit {
+  color: #737373;
 }
 
-.Mui-selected .MuiTypography-body1 {
-  font-size: 1.3rem !important;
-  line-height: 1.8rem !important;
-  opacity: 1 !important;
-}
-
-.Mui-selected:hover .MuiTypography-body1 {
-  animation: none !important;
-}
-
-.MuiListItem-button:hover .MuiTypography-body1 {
-  animation: SELECT-MONTH-ANIMATION 0.2s ease;
-  font-size: 1.3rem;
-  line-height: 1.8rem;
-  opacity: 1;
-}
-
-.months {
-  overflow-x: scroll;
-  display: flex;
-
-  .MuiListItem-root.Mui-selected,
-  .MuiListItem-root.Mui-selected:hover {
-    border-radius: 25px;
-    background-color: #d8d9f7 !important;
-  }
-}
-
-.months.MuiList-padding {
-  padding-left: 4px;
+.MuiTab-root {
+  min-width: 145px;
 }
 
 .has-holidays {
   .MuiBadge-anchorOriginTopRightRectangle {
-    top: 14px;
-    right: 8px;
+    top: 24%;
+    right: 14%;
+    color: #F0C808;
+    background: white;
   }
 
-  .MuiBadge-colorSecondary {
-    background-color: #F0C808;
+  .MuiBadge-badge {
+    padding: 0;
+  }
+
+  .MuiSvgIcon-root {
+    font-size: 1.3rem;
+  }
+}
+
+.MuiTabs-scrollable {
+  padding: 8px 0;
+}
+
+// Tablet
+@media only screen and (max-device-width: 768px) {
+  .MuiTab-root {
+    min-width: 125px !important;
+  }
+
+  .has-holidays .MuiBadge-anchorOriginTopRightRectangle {
+    top: 22%;
+    right: 6%;
+  }
+}
+
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+  .MuiTab-root {
+    min-width: 100px !important;
+    padding: 8px 26px !important;
+  }
+
+  .has-holidays .MuiBadge-anchorOriginTopRightRectangle {
+    top: 28%;
+    right: 4%;
   }
 }

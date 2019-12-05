@@ -11,9 +11,8 @@ import ErrorIcon from '@material-ui/icons/Error';
 import Drawer from '@material-ui/core/Drawer';
 import CloseIcon from '@material-ui/icons/Close';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import HomeIcon from '@material-ui/icons/Home';
 import Divider from '@material-ui/core/Divider';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import Tooltip from '@material-ui/core/Tooltip';
 import Logo from '../Logo/Logo';
 import UserGuide from '../userGuide/userGuide.js';
 import SetHolidays from '../setHolidays/index';
@@ -73,41 +72,41 @@ class Navigation extends Component {
       <Fragment>
         <AppBar position="static" className="navigation-container">
           <Toolbar className="toolbar">
-            <Link to="/">
-              <Logo />
-            </Link>
-            <IconButton
-              className="dashboard-btn"
-              aria-label="home button"
-              component={Link} to="/"
-              color="inherit"
-            >
-              <HomeIcon />
-            </IconButton>
-            <IconButton
-              aria-label="open drawer"
-              onClick={this.toggleDrawer}
-              color="inherit"
-            >
-              <Badge
-                overlap="circle"
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-                badgeContent={(!!this.props && showErrorIcon) && <ErrorIcon />}
+            <Tooltip title="Home" placement="right">
+              <Link to="/">
+                <Logo />
+              </Link>
+            </Tooltip>
+
+            <Tooltip title="Setting up" placement="right">
+              <IconButton
+                aria-label="open drawer"
+                onClick={this.toggleDrawer}
+                color="inherit"
               >
-                <DateRangeIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              className="dashboard-btn"
-              aria-label="open dashboard"
-              component={Link} to="/dashboard"
-              color="inherit"
-            >
-              <DashboardIcon />
-            </IconButton>
+                <Badge
+                  overlap="circle"
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                  badgeContent={(!!this.props && showErrorIcon) && <ErrorIcon />}
+                >
+                  <DateRangeIcon />
+                </Badge>
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip title="Dashboard" placement="right">
+              <IconButton
+                className="dashboard-btn"
+                aria-label="open dashboard"
+                component={Link} to="/dashboard"
+                color="inherit"
+              >
+                <DashboardIcon />
+              </IconButton>
+            </Tooltip>
 
             <Drawer
               classes={{
@@ -154,10 +153,12 @@ class Navigation extends Component {
                   </div>
                 )}
                 <SetMaxHolidaysTransfer count={this.props.maxHolidaysTransfer} setMaxHolidaysTransfer={this.props.setMaxHolidaysTransfer} />
-                {this.props.count !== 0 && this.props.country !== '' && 
-                <div className="proceed-btn" onClick={this.toggleDrawer}>
-                  GO
-                </div>}
+
+                {this.props.count !== 0 && this.props.country !== '' &&
+                  <div className="proceed-btn" onClick={this.toggleDrawer}>
+                    GO
+                  </div>
+                }
               </div>
             </Drawer>
           </Toolbar>

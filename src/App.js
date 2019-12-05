@@ -291,7 +291,7 @@ class App extends React.Component {
       date: holiday.date.split('T')[0],
       info: holiday.info
     })) : [];
-
+    
     return (
       <div className="d-flex app-container">
         {this.isLoading()}
@@ -331,9 +331,7 @@ class App extends React.Component {
                       <div className="content-header">Months bar</div>
                       <YearSelector selectYear={this.selectYear} />
                     </div>
-                    <div className="calendar-base-wrapper ">
-                      <CalendarNav className="d-flex" selectedMonth={this.state.selectedMonth} selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
-                    </div>
+                    <CalendarNav className="d-flex" selectedMonth={this.state.selectedMonth} selectYear={this.selectYear} selectMonth={this.selectMonth} holidayMonths={months} />
                     <div className="content-header">Calendar & Holidays</div>
                     <div className="calendar-base-wrapper calendar-wrapper w-100">
                       <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={holidaysForCurrentYear} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />

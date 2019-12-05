@@ -11,3 +11,16 @@
     margin: 0 auto;
   }
 }
+
+@media only screen and (max-device-width: 768px) {
+ .logo-container .img-container {
+    width: 75%;
+  }
+}
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+  .logo-container .img-container {
+    width: 84%;
+  }
+}

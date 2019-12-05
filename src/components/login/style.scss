@@ -1,24 +1,23 @@
 a.fb {
   border-radius: 8px;
-    border: solid 1px #d0d0d0;
-    padding: 12px 22px;
-    background: #4267B2;
-    box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+  padding: 12px 22px;
+  background: #4267B2;
+  box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
 
-    &:hover {
-      background: #365698;
-      box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
-    }
+  &:hover {
+    background: #365698;
+    box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+  }
 
-    .fb-icon {
-      width: 12px;
-      margin-right: 14px;
-    }
+  .fb-icon {
+    width: 12px;
+    margin-right: 14px;
+  }
 
-    span {
-      color: white;
-      font-size: 0.9rem;
-    }
+  span {
+    color: white;
+    font-size: 0.9rem;
+  }
 }
 
 .social-login-container {
@@ -30,23 +29,23 @@ a.fb {
   margin-top: 8px;
 
   .google-btn {
-      border-radius: 8px;
-      border: solid 1px #d0d0d0;
-      padding: 12px 27px;
-      box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    border: solid 1px #d0d0d0;
+    padding: 12px 27px;
+    box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
 
-      &:hover {
-        background: #f5f5f5;
-        box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
-      }
+    &:hover {
+      background: #f5f5f5;
+      box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+    }
 
-      .google-icon-wrapper {
-        padding-right: 14px;
-      }
-      .google-icon {
-        width: 18px;
-        height: 18px;
-      }
+    .google-icon-wrapper {
+      padding-right: 14px;
+    }
+    .google-icon {
+      width: 18px;
+      height: 18px;
+    }
 
     .btn-text {
       color: #737373;

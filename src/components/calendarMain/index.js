@@ -62,6 +62,14 @@ class CalendarMain extends React.Component {
     const publicHolidays = this.props.publicHolidays
     const getCurrentYearHolidays = publicHolidays.filter(holiday => new Date(holiday.date).getFullYear() === this.props.activeYear)
     const getCurrentMonthHolidays = getCurrentYearHolidays.filter(holiday => new Date(holiday.date).getMonth() === this.props.activeMonth - 1)
+    
+    if(this.props.activeMonth === 1) {
+      return [{
+        date: new Date(this.props.activeYear, 0, 1),
+        info: publicHolidays[0].info
+      }, ...getCurrentMonthHolidays]
+    }
+
     return getCurrentMonthHolidays;
   }
 
