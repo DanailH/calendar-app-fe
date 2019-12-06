@@ -26,6 +26,7 @@ const styles = {
     marginRight: '8px',
   }
 };
+
 class Account extends React.Component {
   state = {
     isAuth: true,

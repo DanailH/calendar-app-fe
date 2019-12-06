@@ -10,7 +10,7 @@ class AdditionalBox extends Component {
       <div className="content-box">
         <div className="content-header">ADDITIONAL</div>
         <div className="text-box">
-          <ShareUsersList sharedUsersData={this.props.sharedUsersData}/>
+          <ShareUsersList sharedUsersData={this.props.sharedUsersData} fetchSharedUsersData={this.props.fetchSharedUsersData} />
           <div className="feedback-box">
             <Link target="_blank" href='https://www.surveymonkey.com/r/3XKR6YW'>
               Leave feedback

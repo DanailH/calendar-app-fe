@@ -15,7 +15,6 @@ import { BaseUrl } from './config';
 
 class App extends React.Component {
   state = {
-    // userId: localStorage.getItem('_id'),
     selectedYear: new Date().getFullYear(),
     selectedMonth: new Date().getMonth() + 1,
     holidays: 0,
@@ -26,7 +25,8 @@ class App extends React.Component {
     listOfUsedHolidays: [],
     publicHolidays: {},
     isLoading: true,
-    sharedUsersData: []
+    sharedUsersData: [],
+    sharedUsersHolidays: [],
   }
 
   constructor() {
@@ -40,6 +40,7 @@ class App extends React.Component {
     this.setCountry = this.setCountry.bind(this);
   }
 
+  // TODO: known issue - when new year comes the transfered days wont be saved !
   selectYear(year) {
     const numberUsedHolidays = this.state.listOfUsedHolidays.filter(date => new Date(date).getFullYear() === year).length;
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
@@ -129,7 +130,6 @@ class App extends React.Component {
 
   setCountry(country) {
     const data = {
-      // userId: this.state.userId,
       country: country,
       holidaysCount: this.state.holidays,
       maxHolidaysTransfer: this.state.maxHolidaysTransfer,
@@ -172,7 +172,6 @@ class App extends React.Component {
     }
 
     const data = {
-      // userId: this.state.userId,
       country: this.state.country,
       holidaysCount: this.state.holidays,
       maxHolidaysTransfer: this.state.maxHolidaysTransfer,
@@ -281,6 +280,36 @@ class App extends React.Component {
     }
   }
 
+  fetchSharedUsersData = (event, index) => {
+    const id = event.target.value
+
+    if (event.target.checked) {
+      fetch(`${BaseUrl}/holiday/holidays?userId=${id}`)
+        .then(res => res.json())
+        .then(user => {
+          const selectedSharedUser = this.state.sharedUsersHolidays.filter(el => el.userId === user.userId);
+          const prepUserData = {
+            userId: user.userId,
+            selectedHolidays: user.selectedHolidays,
+            colorIndex: index
+          };
+
+          if (!selectedSharedUser.length) {
+            this.setState({
+              sharedUsersHolidays: [...this.state.sharedUsersHolidays, prepUserData]
+            });
+          }
+
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+      const sharedUsersUpdated = this.state.sharedUsersHolidays.filter(el => el.userId !== id);
+
+      this.setState({
+        sharedUsersHolidays: sharedUsersUpdated
+      });
+    }
+  }
 
   render() {
     const route = this.props.location.pathname;
@@ -335,7 +364,7 @@ class App extends React.Component {
                     </div>
                     <div className="content-header">Calendar & Holidays</div>
                     <div className="calendar-base-wrapper calendar-wrapper w-100">
-                      <CalendarMain useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={holidaysForCurrentYear} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
+                      <CalendarMain sharedCalendars={this.state.sharedUsersHolidays} useHoliday={this.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={holidaysForCurrentYear} canUseHolidays={remainingHolidays > 0} activeYear={this.state.selectedYear} activeMonth={this.state.selectedMonth} />
                     </div>
                   </div>
                   <div className="mobile-boxes-scroll">
@@ -347,7 +376,7 @@ class App extends React.Component {
                       holidaysTaken={holidaysForCurrentYear}
                       selectedCountry={this.state.country}
                     />
-                    <AdditionalBox sharedUsersData={this.state.sharedUsersData} />
+                    <AdditionalBox sharedUsersData={this.state.sharedUsersData} fetchSharedUsersData={this.fetchSharedUsersData} />
                   </div>
                   </div>
                 </div>

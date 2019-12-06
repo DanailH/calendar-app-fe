@@ -4,15 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import './style.scss';
 
-const currentDate = new Date();
-
 class YearSelector extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      currentDate: currentDate,
-      currentYear: currentDate.getFullYear(),
+      currentDate: new Date(),
+      currentYear: new Date().getFullYear(),
       isCurrentYear: true
     };
   }

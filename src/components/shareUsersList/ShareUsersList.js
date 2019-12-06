@@ -3,34 +3,10 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Divider from '@material-ui/core/Divider';
-import { BaseUrl } from '../../config';
+import { UsersColors } from '../../constants';
 import './style.scss';
 
-const userColors = [
-  "color-1",
-  "color-2",
-  "color-3",
-  "color-4",
-  "color-5",
-  "color-6",
-  "color-7",
-  "color-8",
-  "color-9",
-  "color-10",
-]
 class ShareUsersList extends Component {
-  state = {
-  }
-
-  handleChange = event => {
-    const id = event.target.value
-
-    fetch(`${BaseUrl}/holiday/holidays?userId=${id}`)
-      .then(res => res.json())
-      .then(console.log)
-
-  }
-
   render() {
     return (
       <div>
@@ -41,14 +17,14 @@ class ShareUsersList extends Component {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      onChange={this.handleChange}
+                      onChange={event => this.props.fetchSharedUsersData(event, i)}
                       value={user._id}
                     />
                   }
                   label={user.firstName + ' ' + user.lastName}
                 >
                 </FormControlLabel>
-                <LocalOfferIcon className={userColors[i]} />
+                <LocalOfferIcon className={UsersColors[i]} />
               </div>
               <Divider/>
             </div>
