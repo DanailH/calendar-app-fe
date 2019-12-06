@@ -33,10 +33,10 @@ class CalendarWeek extends React.Component {
       switch (weekDays[new Date(day).getDay()]) {
         case 'Saturday':
           type = dateType === 'public' ? 'public' : 'weekday';
-          return <Grid item sm key={i} className="week-container"><CalendarDay sharedCalendars={this.props.sharedCalendars} key={i} type={type} date={day} /></Grid>
+          return <Grid item sm key={i} className="week-container"><CalendarDay sharedCalendars={this.props.sharedCalendars} holidayInfo={holidayInfo ? holidayInfo.info : ''} key={i} type={type} date={day} /></Grid>
           case 'Sunday':
           type = dateType === 'public' ? 'public' : 'weekday';
-          return <Grid item sm key={i} className="week-container"><CalendarDay sharedCalendars={this.props.sharedCalendars} key={i} type={type} date={day} /></Grid>
+          return <Grid item sm key={i} className="week-container"><CalendarDay sharedCalendars={this.props.sharedCalendars} holidayInfo={holidayInfo ? holidayInfo.info : ''} key={i} type={type} date={day} /></Grid>
         default:
           return <Grid item sm key={i} className="week-container"><CalendarDay sharedCalendars={this.props.sharedCalendars} holidayInfo={holidayInfo ? holidayInfo.info : ''} useHoliday={this.props.useHoliday} isHoliday={isHoliday > -1 ? true : false} canUseHolidays={this.props.canUseHolidays} key={i} type={dateType} date={day} /></Grid>
       }

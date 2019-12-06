@@ -11,8 +11,8 @@
   }
 
   .toolbar {
-    display: block;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 
     .MuiButtonBase-root {
       margin-top: 8px;
@@ -37,12 +37,20 @@
       }
     }
   }
-
 }
 
 .navigation-box {
   .MuiDivider-root {
     margin: 12px 0 18px;
+  }
+
+  .proceed-btn {
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    width: 86%;
+    margin: 24px auto;
+    font-weight: 600;
   }
 }
 
@@ -56,5 +64,20 @@
 @media only screen and (max-device-width: 480px) {
   .dashboard-btn {
     padding: 12px 0 !important;
+  }
+
+  .navigation-container .toolbar .MuiBadge-anchorOriginBottomRightCircle {
+    right: 26%;
+  }
+}
+
+// Small mobile 
+@media only screen and (max-device-width: 320px) {
+  .closeBtn {
+    margin-right: 40px !important;
+  }
+
+  .proceed-btn {
+    margin: 24px 14% 0px 0px !important;
   }
 }

@@ -20,3 +20,11 @@
     }
   }
 }
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+ .guide-container {
+   width: 230px;
+   left: 54% !important;
+ }
+}

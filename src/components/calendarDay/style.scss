@@ -88,3 +88,10 @@
   width: 100%;
   height: 100%;
 }
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+  .week-container .holiday-info {
+    display: none;
+  }
+}

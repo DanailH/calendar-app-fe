@@ -1,5 +1,13 @@
 .week-container {
   height: 68px;
   text-align: center;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
+  width: 13%;
+}
+
+// Phone screen
+@media only screen and (max-device-width: 480px) {
+ .week-container {
+   height: 58px;
+  }
 }

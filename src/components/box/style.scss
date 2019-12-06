@@ -6,6 +6,64 @@
   .MuiDivider-root {
     margin: 12px 0;
   }
+
+  .MuiSvgIcon-root {
+    color: #5b39ef;
+  }
+
+  .dashboard-mini-info {
+    display: flex;
+    flex-direction: column;
+
+    .dashboard-info-container {
+      display: flex;
+      align-items: center;
+
+      .icon-container {
+        background: white;
+        height: 52px;
+        width: 52px;
+        border-radius: 25px;
+        margin-right: 16px;
+        position: relative;
+        // box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+
+        .MuiSvgIcon-root {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    .dashboard-mini-info-box {
+      flex: 1;
+      background: #e4e8fb;
+      // background: #F8F3EF;
+      // background: linear-gradient(to right, #d0d5ff, #ebeffd);
+      // background: linear-gradient(to left, #F8F3EF, #ebeffd);
+      padding: 8px 16px 8px 8px;
+      font-size: 0.9rem;
+      border-radius: 16px;
+      text-align: center;
+      // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+      &:first-child {
+        margin-bottom: 12px;
+      }
+
+      .holiday-header {
+        font-size: 0.7rem;
+        color: #737373;
+      }
+
+      .country-info {
+        font-weight: 600;
+        overflow: auto;
+      }
+    }
+  }
 }
 
 .content-box {
@@ -79,7 +137,6 @@
   margin: 12px 0 24px;
 }
 
-
 // TakenVacationDates component
 
 .dates-container {
@@ -111,6 +168,20 @@
   }
 }
 
+.feedback-box {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    font-size: 0.8rem;
+  }
+
+  .MuiButton-sizeSmall {
+    font-size: 0.7rem;
+  }
+}
+
 // Tablet screen
 @media only screen and (max-device-width: 768px) {
   .content-box {
@@ -123,7 +194,7 @@
 @media only screen and (max-device-width: 480px) {
   .content-box {
     flex: none;
-    width: 80%;
+    // width: 80%;
     margin: 15px auto;
   }
 

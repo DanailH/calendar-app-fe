@@ -1,8 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import UpdateIcon from '@material-ui/icons/Update';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import './style.scss';
 
 class SetMaxHolidaysTransfer extends React.Component {
@@ -61,11 +59,6 @@ class SetMaxHolidaysTransfer extends React.Component {
         variant="outlined"
         InputProps={{
           startAdornment: <UpdateIcon />,
-          endAdornment: (
-            <IconButton onClick={this.setMaxHolidays} size="small" aria-label="directions">
-              <ChevronRightIcon fontSize="inherit" />
-            </IconButton>
-          )
         }}
       />
     )

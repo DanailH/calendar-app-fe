@@ -1,15 +1,13 @@
 .account-container {
   .share-btn {
     color: #fff;
-    border: 1px solid #F0C808;
-    background: #F0C808;
+    border: none;
+    background: linear-gradient(to right, #eb7873, #ee9578);
     margin-right: 24px;
     padding: 4px 16px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
 
     &:hover {
-      background: #e4bd00;
-      border: 1px solid #e4bd00;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
     }
 
@@ -100,5 +98,17 @@
       background: linear-gradient(to right, #f36660, #ec825f);
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
     }
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .send-box {
+    width: 340px;
+  }
+}
+
+@media only screen and (max-device-width: 320px) {
+  .send-box {
+    width: 288px;
   }
 }

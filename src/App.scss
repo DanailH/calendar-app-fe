@@ -4,6 +4,10 @@
 
 .app-container {
   height: 100vh;
+
+  .MuiAppBar-colorPrimary {
+    background-color: #5b39ef;
+  }
 }
 
 .main-content,
@@ -16,7 +20,7 @@
 }
 
 .main-content {
-  background: #f2f2ff;
+  background: #f6f6ff;
   display: flex;
   justify-content: space-between;
   height: 92%;
@@ -39,7 +43,7 @@
     }
     .calendar-wrapper {
       @extend .calendar-base-wrapper;
-      height: 62%;
+      // height: 62%;
     }
   }
 
@@ -48,7 +52,7 @@
   }
 
 .mobile-boxes-scroll {
-    width: 23%;
+    width: 20%;
   
     .content-container {
       display: flex;
@@ -88,6 +92,10 @@
       width: 98%;
       margin: 2% 1%;
 
+      .main-header {
+        margin: 0 0 24px 0;
+      }
+
       .calendar-wrapper {
         position: static;
         top: 0;
@@ -109,10 +117,10 @@
 .usage-overlay {
 	position: absolute;
 	z-index: 1;
-	top: 10%;
+	top: 8%;
 	left: 0;
 	width: 100%;
-	height: 90%;
+	height: 92%;
 	background: rgba(202, 201, 201, 0.81);
 }
 
@@ -142,8 +150,8 @@
     }
   }
 
-  .weekdays {
-    font-size: 0.5rem;
+  .usage-overlay {
+    top: 9%;
   }
 
   .MuiGrid-justify-xs-center {
@@ -158,6 +166,11 @@
     width: 90%;
   }
 
+  .main-content {
+    height: 91%;
+    padding: 8px;
+  }
+
   .main-content .mobile-boxes-scroll {
     width: 100%;
     overflow-x: scroll;
@@ -166,10 +179,9 @@
       flex-direction: row;
       width: 200%;
 
-      .content-box {
-        // margin: 0;
-        width: initial;
-      }
+      // .content-box {
+      //   width: initial;
+      // }
     }
   }
 }
