@@ -47,6 +47,7 @@ class SetHolidays extends React.Component {
     return (
       <TextField
         id="outlined-name"
+        required
         label="Holidays per year"
         placeholder="Add holidays"
         name="holidays"
