@@ -53,10 +53,11 @@
 
 .mobile-boxes-scroll {
     width: 20%;
-  
+
     .content-container {
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
   }
 }
