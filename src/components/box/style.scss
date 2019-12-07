@@ -77,6 +77,10 @@
     margin-bottom: 16px;
   }
 
+  .content-header {
+    font-size: 0.9rem;
+  }
+
   .more-text {
     color: #737373;
     font-size: 0.8rem;
@@ -169,7 +173,7 @@
 }
 
 .feedback-box {
-  margin-top: 8px;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
 
@@ -194,8 +198,12 @@
 @media only screen and (max-device-width: 480px) {
   .content-box {
     flex: none;
-    // width: 80%;
+    width: 47%;
     margin: 15px auto;
+  }
+
+  .dashboard-box {
+    margin-right: 4%;
   }
 
   .dates-container .months-box {

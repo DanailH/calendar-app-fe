@@ -19,7 +19,7 @@ class DashboardTab extends Component {
 					</Link>
 				</div>
 				<Typography variant="h5">
-					Holiday Dashboard
+					Holidays Dashboard
         </Typography>
 				<DashboardBoxes
 					total={this.props.total}

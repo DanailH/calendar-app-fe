@@ -133,7 +133,7 @@
       align-items: initial;
 
       .content-box {
-        margin-bottom: 0;
+        margin-bottom: 12px;
       }
     }
   }
@@ -151,7 +151,7 @@
   }
 
   .usage-overlay {
-    top: 9%;
+    top: 9%;    
   }
 
   .MuiGrid-justify-xs-center {
@@ -177,11 +177,7 @@
 
     .content-container {
       flex-direction: row;
-      width: 200%;
-
-      // .content-box {
-      //   width: initial;
-      // }
+      width: 186%;
     }
   }
 }

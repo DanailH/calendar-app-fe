@@ -8,7 +8,7 @@ class AdditionalBox extends Component {
   render() {
     return (
       <div className="content-box">
-        <div className="content-header">ADDITIONAL</div>
+        <div className="content-header">OTHER CALENDARS</div>
         <div className="text-box">
           <ShareUsersList sharedUsersData={this.props.sharedUsersData} fetchSharedUsersData={this.props.fetchSharedUsersData} />
 
