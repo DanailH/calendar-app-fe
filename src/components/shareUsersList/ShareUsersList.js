@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
@@ -9,7 +9,7 @@ import './style.scss';
 class ShareUsersList extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         {this.props.sharedUsersData.map((user, i) => {
           return (
             <div key={i} className="shared-list-container">
@@ -31,7 +31,7 @@ class ShareUsersList extends Component {
           )
         }
         )}
-      </div>
+      </Fragment>
     )
   }
 }

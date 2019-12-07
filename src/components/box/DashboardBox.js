@@ -31,7 +31,7 @@ class DashboardBox extends Component {
     const selectedCountry = country.filter(el => el.code === this.props.selectedCountry)[0]
     return (
       <div className="content-box dashboard-box">
-        <div className="d-flex justify-space ">
+        <div className="d-flex justify-space align-baseline">
           <div className="content-header">DASHBOARD</div>
           <Link to="/dashboard" className="back-btn">
             <span className="more-text">More ></span>

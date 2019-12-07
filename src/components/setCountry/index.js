@@ -47,6 +47,7 @@ class SetCountry extends React.Component {
     return (
       <TextField
         id="outlined-select-currency"
+        required
         select
         label="Country"
         name="countryCode"

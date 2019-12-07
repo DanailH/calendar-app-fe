@@ -57,10 +57,11 @@ a .MuiButton-contained,
   border-radius: 25px !important;
   background: linear-gradient(to right, #eb7873, #ee9578);
   padding: 2% 18% !important;
-  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
 
   &:hover {
-    background: linear-gradient(to right, #b35c58, #d68469);
+    background: linear-gradient(to right, #f36660, #ec825f);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45);
   }
 
   &:active {
