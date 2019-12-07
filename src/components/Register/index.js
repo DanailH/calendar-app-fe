@@ -13,7 +13,7 @@ import Logo from '../Logo/Logo';
 import FormError from '../FormError/FormError';
 import { BaseUrl, ApiURL } from '../../config';
 import './style.scss';
-import '../login/style.scss';
+import '../Login/style.scss';
 
 class Register extends React.Component {
   state = {
