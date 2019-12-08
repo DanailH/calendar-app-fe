@@ -42,11 +42,16 @@ class CalendarMain extends React.Component {
 
   printCalendarWeeks() {
     const numberOfWeeks = this.state.weeks.length;
-    return this.state.weeks.map((week, i) => {
-      if (i === 0) return <CalendarWeek sharedCalendars={this.props.sharedCalendars} useHoliday={this.props.useHoliday} publicHolidays={this.props.publicHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} canUseHolidays={this.props.canUseHolidays} key={i} week={week} initialWeek={true} lastWeek={false} />
-      if (i === numberOfWeeks - 1) return <CalendarWeek sharedCalendars={this.props.sharedCalendars} useHoliday={this.props.useHoliday} publicHolidays={this.props.publicHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} canUseHolidays={this.props.canUseHolidays} key={i} week={week} initialWeek={false} lastWeek={true} />
+    const publicHolidays = this.props.publicHolidays.map(holiday => ({
+      date: holiday.date.split('T')[0],
+      info: holiday.info
+    }));
 
-      return <CalendarWeek sharedCalendars={this.props.sharedCalendars} useHoliday={this.props.useHoliday} canUseHolidays={this.props.canUseHolidays} publicHolidays={this.props.publicHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} key={i} week={week} initialWeek={false} lastWeek={false} />
+    return this.state.weeks.map((week, i) => {
+      if (i === 0) return <CalendarWeek sharedCalendars={this.props.sharedCalendars} useHoliday={this.props.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} canUseHolidays={this.props.canUseHolidays} key={i} week={week} initialWeek={true} lastWeek={false} />
+      if (i === numberOfWeeks - 1) return <CalendarWeek sharedCalendars={this.props.sharedCalendars} useHoliday={this.props.useHoliday} publicHolidays={publicHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} canUseHolidays={this.props.canUseHolidays} key={i} week={week} initialWeek={false} lastWeek={true} />
+
+      return <CalendarWeek sharedCalendars={this.props.sharedCalendars} useHoliday={this.props.useHoliday} canUseHolidays={this.props.canUseHolidays} publicHolidays={publicHolidays} listOfUsedHolidays={this.props.listOfUsedHolidays} key={i} week={week} initialWeek={false} lastWeek={false} />
     });
   }
 
@@ -62,13 +67,6 @@ class CalendarMain extends React.Component {
     const publicHolidays = this.props.publicHolidays
     const getCurrentYearHolidays = publicHolidays.filter(holiday => new Date(holiday.date).getFullYear() === this.props.activeYear)
     const getCurrentMonthHolidays = getCurrentYearHolidays.filter(holiday => new Date(holiday.date).getMonth() === this.props.activeMonth - 1)
-    
-    if(this.props.activeMonth === 1) {
-      return [{
-        date: new Date(this.props.activeYear, 0, 1),
-        info: publicHolidays[0].info
-      }, ...getCurrentMonthHolidays]
-    }
 
     return getCurrentMonthHolidays;
   }

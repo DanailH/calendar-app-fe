@@ -36,7 +36,7 @@ class CalendarDay extends React.Component {
         if ( calendar.selectedHolidays.indexOf(this.props.date) > -1 ) {
           childrenDepth++;
 
-          const sharedHolidayIndicator = <span key={i} className={`shared-holiday color-${calendar.colorIndex + 1}`}></span>;
+          const sharedHolidayIndicator = <span key={i} className={`shared-holiday ${UsersColors[calendar.colorIndex + 1]}`}></span>;
 
           if ( tempDom.length >= 1 ) {
             return React.cloneElement(tempDom[0], {

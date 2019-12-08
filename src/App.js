@@ -316,11 +316,8 @@ class App extends React.Component {
     const holidaysForCurrentYear = this.state.listOfUsedHolidays.filter(date => new Date(date).getFullYear() === this.state.selectedYear);
     const months = holidaysForCurrentYear.map(date => new Date(date).getMonth()).filter((x, i, a) => a.indexOf(x) === i)
     const remainingHolidays = this.state.holidays - this.state.numberOfUsedHolidays;
-    const publicHolidays = this.state.publicHolidays[this.state.selectedYear] ? this.state.publicHolidays[this.state.selectedYear].map(holiday => ({
-      date: holiday.date.split('T')[0],
-      info: holiday.info
-    })) : [];
-    
+    const publicHolidays = this.state.publicHolidays[this.state.selectedYear] || [];
+
     return (
       <div className="d-flex app-container">
         {this.isLoading()}
