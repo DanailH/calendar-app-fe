@@ -32,6 +32,7 @@ class Login extends React.Component {
 
     fetch(`${BaseUrl}/auth/login`, {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify(formData),
       headers: {
         'Content-Type': 'application/json'

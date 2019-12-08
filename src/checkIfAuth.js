@@ -3,7 +3,9 @@ import { BaseUrl } from './config';
 
 class CheckIfAuth extends React.Component {
   componentWillMount() {
-    fetch(`${BaseUrl}/auth/isAuth`)
+    fetch(`${BaseUrl}/auth/isAuth`, {
+      credentials: 'include'
+    })
       .then((res) => {
         if (res.status === 401) {
           localStorage.removeItem('auth');

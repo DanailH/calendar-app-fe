@@ -36,6 +36,7 @@ class Register extends React.Component {
 
     fetch(`${BaseUrl}/auth/register`, {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify(formData),
       headers: {
         'Content-Type': 'application/json'

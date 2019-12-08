@@ -88,6 +88,7 @@ class App extends React.Component {
 
     fetch(`${BaseUrl}/holiday/holidays`, {
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json'
@@ -113,6 +114,7 @@ class App extends React.Component {
 
     fetch(`${BaseUrl}/holiday/holidays`, {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
@@ -137,13 +139,16 @@ class App extends React.Component {
     };
     fetch(`${BaseUrl}/holiday/holidays`, {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       }
     })
       .then(
-      fetch(`${BaseUrl}/holiday/public?countryCode=${country}`)
+      fetch(`${BaseUrl}/holiday/public?countryCode=${country}`, {
+        credentials: 'include'
+      })
         .then(res => res.json())
         .then(res => this.setState({
           country: res.countryCode,
@@ -180,6 +185,7 @@ class App extends React.Component {
 
     fetch(`${BaseUrl}/holiday/holidays`, {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
@@ -195,7 +201,9 @@ class App extends React.Component {
 
   // TODO: Refactor
   componentWillMount() {
-    fetch(`${BaseUrl}/auth/isAuth`)
+    fetch(`${BaseUrl}/auth/isAuth`, {
+      credentials: 'include'
+    })
       .then((res) => {
         if (res.status === 401) {
           localStorage.removeItem('auth');
@@ -208,13 +216,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${BaseUrl}/users/user`)
+    fetch(`${BaseUrl}/users/user`, {
+      credentials: 'include'
+    })
       .then(res => res.json())
       .then(res => {
         const userInfo = res;
         if (userInfo.sharedUsers && userInfo.sharedUsers.length) {
           const sharedUsersData = userInfo.sharedUsers.map(id =>
-            fetch(`${BaseUrl}/users/user?userId=${id}`)
+            fetch(`${BaseUrl}/users/user?userId=${id}`, {
+              credentials: 'include'
+            })
               .then(res => res.json())
           );
 
@@ -225,11 +237,15 @@ class App extends React.Component {
             .catch(error => console.error('Error:', error));
         }
 
-        fetch(`${BaseUrl}/holiday/holidays`)
+        fetch(`${BaseUrl}/holiday/holidays`, {
+          credentials: 'include'
+        })
           .then(res => res.json())
           .then(res => {
             const userData = res;
-            fetch(`${BaseUrl}/holiday/public?countryCode=${res.country}`)
+            fetch(`${BaseUrl}/holiday/public?countryCode=${res.country}`, {
+              credentials: 'include'
+            })
               .then(res => res.json())
               .then(res => this.setState({
                 country: res.countryCode,
@@ -284,7 +300,9 @@ class App extends React.Component {
     const id = event.target.value
 
     if (event.target.checked) {
-      fetch(`${BaseUrl}/holiday/holidays?userId=${id}`)
+      fetch(`${BaseUrl}/holiday/holidays?userId=${id}`, {
+        credentials: 'include'
+      })
         .then(res => res.json())
         .then(user => {
           const selectedSharedUser = this.state.sharedUsersHolidays.filter(el => el.userId === user.userId);
