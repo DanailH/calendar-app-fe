@@ -21,12 +21,6 @@ class Login extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleFBLogin = () => {
-    fetch(`${BaseUrl}/auth/facebook`)
-      .then(console.log)
-      .catch(console.log)
-  }
-
   handleLogin(event) {
     event.preventDefault();
 

@@ -116,7 +116,7 @@
 }
 
 .usage-overlay {
-	position: absolute;
+	position: fixed;
 	z-index: 1;
 	top: 8%;
 	left: 0;
@@ -152,7 +152,7 @@
   }
 
   .usage-overlay {
-    top: 9%;    
+    top: 9%;
   }
 
   .MuiGrid-justify-xs-center {
