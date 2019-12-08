@@ -4,7 +4,7 @@ import {
 
 class UserService {
   logoutUser() {
-    return fetch(`${BaseUrl}/auth/logout`. {
+    return fetch(`${BaseUrl}/auth/logout`, {
       credentials: 'include'
     })
       .catch(error => console.error('Error: Logout user', error));
