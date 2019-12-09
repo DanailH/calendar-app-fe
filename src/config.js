@@ -1,2 +1,2 @@
-export const BaseUrl = '';
-export const ApiURL = 'http://localhost:3001';
+export const BaseUrl = 'https://api.foiz.io';
+export const ApiURL = 'https://api.foiz.io';
