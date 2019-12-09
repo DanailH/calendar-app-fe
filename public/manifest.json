@@ -6,6 +6,11 @@
       "src": "logo.png",
       "sizes": "185x185",
       "type": "image/png"
+    },
+    {
+      "src": "logo_big.png",
+      "sizes": "192x192",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
