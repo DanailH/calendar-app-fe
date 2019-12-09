@@ -9,7 +9,7 @@
 		.MuiSvgIcon-root {
 			font-size: 1rem;
 		}
-		
+
 		span {
 			font-size: 0.9rem;
 		}
@@ -110,8 +110,8 @@
 @media only screen and (max-device-width: 480px) {
   .dashboard-tab-container .dashboard-mobile-scroll {
 		width: 100%;
-    overflow-x: scroll;
-	
+    	overflow-y: scroll;
+
 		.dashboard-container {
 			width: 270%;
 

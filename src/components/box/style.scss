@@ -146,7 +146,7 @@
 .dates-container {
   display: flex;
   align-items: baseline;
-  
+
   font-size: 0.9rem;
 
   .months-box {
@@ -156,7 +156,7 @@
   }
     .dates-wrapper {
       width: 90%;
-      overflow-x: scroll;
+      // overflow-x: scroll;
     }
 
   .date-box {
@@ -164,7 +164,7 @@
 
     .date-el {
       background: #F0C808;
-      padding: 0 14px; 
+      padding: 0 14px;
       text-align: center;
       border-radius: 8px;
       margin-right: 8px

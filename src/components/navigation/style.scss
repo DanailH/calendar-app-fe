@@ -1,4 +1,5 @@
 .navigation-container {
+  position: sticky !important;
   height: 100vh;
   max-width: 6%;
 
@@ -71,7 +72,7 @@
   }
 }
 
-// Small mobile 
+// Small mobile
 @media only screen and (max-device-width: 320px) {
   .closeBtn {
     margin-right: 40px !important;
