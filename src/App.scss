@@ -181,7 +181,8 @@ body {
 
   .main-content .mobile-boxes-scroll {
     width: 100%;
-    overflow-x: scroll;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 
     .content-container {
       flex-direction: row;
