@@ -1,9 +1,11 @@
 .account-container {
-  position: sticky;
+  position: fixed;
   padding: 0 2%;
   justify-content: flex-end;
-  height: 8%;
+  height: 60px;
   align-items: center;
+  width: 94%;
+  z-index: 100;
 
   .MuiAvatar-root {
     cursor: pointer;
@@ -13,6 +15,7 @@
 // Mobile
 @media only screen and (max-device-width: 480px) {
   .account-container  {
-     height: 4%;
+    // height: 4%;
+    width: 90%;
   }
 }

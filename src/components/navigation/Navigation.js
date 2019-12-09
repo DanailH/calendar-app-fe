@@ -99,6 +99,7 @@ class Navigation extends Component {
 
             <Tooltip title="Dashboard" placement="right">
               <IconButton
+                disabled={isNewUser}
                 className="dashboard-btn"
                 aria-label="open dashboard"
                 component={Link} to="/dashboard"

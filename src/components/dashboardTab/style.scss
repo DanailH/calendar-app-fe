@@ -1,146 +1,147 @@
 .dashboard-tab-container {
-	background: #f2f2ff;
-	height: 92%;
-	padding: 16px;
+  background: #f2f2ff;
+  height: 92%;
+  padding: 16px;
 
-	.back-btn {
-		color:#737373;
+  .back-btn {
+    color:#737373;
 
-		.MuiSvgIcon-root {
-			font-size: 1rem;
-		}
+    .MuiSvgIcon-root {
+      font-size: 1rem;
+    }
 
-		span {
-			font-size: 0.9rem;
-		}
+    span {
+      font-size: 0.9rem;
+    }
 
-		&:hover {
-			color: #5f5353;
-			border-bottom: 1px solid #9c9c9c;
-			padding-bottom: 4px;
-		}
-	}
+    &:hover {
+      color: #5f5353;
+      border-bottom: 1px solid #9c9c9c;
+      padding-bottom: 4px;
+    }
+  }
 
-	.MuiTypography-root {
-		margin: 24px 0 8px;
-		font-weight: 600;
-	}
+  .MuiTypography-root {
+    margin: 24px 0 8px;
+    font-weight: 600;
+  }
 
-	.dashboard-container {
-		display: flex;
-		flex-direction: row;
+  .dashboard-container {
+    display: flex;
+    flex-direction: row;
 
-		.dashboard-boxes {
-			text-align: center;
-			flex: 1;
-			width: 50%;
-			background: #fff;
-			border-radius: 8px;
-			margin: 16px;
-			padding: 20px;
-			box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.14);
+    .dashboard-boxes {
+      text-align: center;
+      flex: 1;
+      width: 50%;
+      background: #fff;
+      border-radius: 8px;
+      margin: 16px;
+      padding: 20px;
+      box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.14);
 
-			&:hover {
-				box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.32);
-			}
+      &:hover {
+        box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.32);
+      }
 
-			.MuiDivider-root {
-				margin: 24px 0 8px;
-			}
+      .MuiDivider-root {
+        margin: 24px 0 8px;
+      }
 
-			.beach-icon {
-				background: #e6dce6;
+      .beach-icon {
+        background: #e6dce6;
 
-				.MuiSvgIcon-root {
-					color: #5b39ef;
-				}
-			}
+        .MuiSvgIcon-root {
+          color: #5b39ef;
+        }
+      }
 
-			.date-icon {
-				background: #fff0c0;
+      .date-icon {
+        background: #fff0c0;
 
-				.MuiSvgIcon-root {
-					color: #bf9e00;
-				}
-			}
+        .MuiSvgIcon-root {
+          color: #bf9e00;
+        }
+      }
 
-			.add-icon {
-				background: #d9ecd7;
+      .add-icon {
+        background: #d9ecd7;
 
-				.MuiSvgIcon-root {
-					color: #049a5d;
-				}
-			}
-		}
-	}
+        .MuiSvgIcon-root {
+          color: #049a5d;
+        }
+      }
+    }
+  }
 
-	.dashboard-main-container {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		background: #fff;
-		border-radius: 8px;
-		margin: 16px;
-		padding: 20px;
-		box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.14);
+  .dashboard-main-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 20px;
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.14);
 
-		.donut-container {
-			flex: 1;
-			width: 40%;
+    .donut-container {
+      flex: 1;
+      width: 40%;
 
-			.donut {
-				height: 13rem;
-			}
-		}
-		.taken-days-container {
-			flex: 1;
-			width: 50%;
-		}
-	}
+      .donut {
+        height: 13rem;
+      }
+    }
+    .taken-days-container {
+      flex: 1;
+      width: 50%;
+    }
+  }
 }
 
 // Tablet screen
 @media only screen and (max-device-width: 768px) {
   .dashboard-tab-container .dashboard-main-container .taken-days-container {
-		width: 60%
-	}
+    width: 60%
+  }
 }
 
 // Phone screen
 @media only screen and (max-device-width: 480px) {
-	.dashboard-mobile-scroll {
-		overflow-y: scroll;
-	}
+  .dashboard-mobile-scroll {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
     .dashboard-tab-container .dashboard-mobile-scroll {
-		width: 100%;
+    width: 100%;
 
-		.dashboard-container {
-			width: 270%;
+    .dashboard-container {
+      width: 270%;
 
-			.dashboard-boxes {
-				width: 90%;
-			}
-		}
-	}
+      .dashboard-boxes {
+        width: 90%;
+      }
+    }
+  }
 
-	.dashboard-tab-container .dashboard-main-container {
-		flex-direction: column;
+  .dashboard-tab-container .dashboard-main-container {
+    flex-direction: column;
 
-		.taken-days-container {
-			width: 100%;
-		}
+    .taken-days-container {
+      width: 100%;
+    }
 
-		.donut-container {
-			width: 100%;
-			margin-bottom: 16px;
+    .donut-container {
+      width: 100%;
+      margin-bottom: 16px;
 
-			.donut {
-				height: 6.5rem;
-			}
+      .donut {
+        height: 6.5rem;
+      }
 
-			.donut__text {
-				font-size: 2rem;
-			}
-		}
-	}
+      .donut__text {
+        font-size: 2rem;
+      }
+    }
+  }
 }

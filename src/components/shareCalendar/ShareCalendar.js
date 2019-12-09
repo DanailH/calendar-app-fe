@@ -68,7 +68,7 @@ class ShareCalendar extends Component {
 
   render() {
     return (
-      <div className="d-flex account-container">
+      <div>
         <Button variant="outlined" size="small" className="share-btn" onClick={this.toggleShareMenu}>
           <PeopleIcon />
           Share

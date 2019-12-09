@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #f6f6ff;
+}
+
 .app-container {
   // height: 100vh;
 
@@ -17,14 +21,16 @@
 
 .main-container {
   width: 94%;
+  margin-left: 6%;
 }
 
 .main-content {
   background: #f6f6ff;
   display: flex;
   justify-content: space-between;
-  height: 92%;
-  padding: 16px;
+  // height: 92%;
+  padding: 16px 16px 0 16px;
+  margin-top: 60px;
 
   .main-calendar {
     margin: 0 32px 0 16px;
@@ -63,7 +69,7 @@
 }
 
 .loader-overlay {
-  position: absolute;
+  position: fixed;
   z-index: 5;
   top: 0;
   left: 0;
@@ -165,11 +171,12 @@
 
   .main-container {
     width: 90%;
+    margin-left: 10%;
   }
 
   .main-content {
-    height: 91%;
-    padding: 8px;
+    // height: 91%;
+    padding: 8px 8px 0 8px;
   }
 
   .main-content .mobile-boxes-scroll {
