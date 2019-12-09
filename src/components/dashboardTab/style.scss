@@ -108,9 +108,11 @@
 
 // Phone screen
 @media only screen and (max-device-width: 480px) {
-  .dashboard-tab-container .dashboard-mobile-scroll {
+	.dashboard-mobile-scroll {
+		overflow-y: scroll;
+	}
+    .dashboard-tab-container .dashboard-mobile-scroll {
 		width: 100%;
-    	overflow-y: scroll;
 
 		.dashboard-container {
 			width: 270%;

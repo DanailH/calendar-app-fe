@@ -3,17 +3,17 @@
 }
 
 .app-container {
-  height: 100vh;
+  // height: 100vh;
 
   .MuiAppBar-colorPrimary {
     background-color: #5b39ef;
   }
 }
 
-.main-content,
-.dashboard-tab-container {
-  overflow-y: scroll;
-}
+// .main-content,
+// .dashboard-tab-container {
+//   overflow-y: scroll;
+// }
 
 .main-container {
   width: 94%;
