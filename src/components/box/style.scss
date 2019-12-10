@@ -154,10 +154,12 @@
     margin-right: 8px;
     width: 24%;
   }
-    .dates-wrapper {
-      width: 90%;
-      // overflow-x: scroll;
-    }
+
+  .dates-wrapper {
+    width: 90%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
 
   .date-box {
     padding: 10px;
