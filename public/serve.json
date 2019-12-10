@@ -1,0 +1,20 @@
+{
+  "redirects": [
+    {
+      "source": "http://**",
+      "destination": "https://**"
+    },
+    {
+      "source": "https://days-off.herokuapp.com",
+      "destination": "https://app.foiz.io"
+    },
+    {
+      "source": "https://days-off.herokuapp.com/login",
+      "destination": "https://app.foiz.io/login"
+    },
+    {
+      "source": "https://days-off.herokuapp.com/register",
+      "destination": "https://app.foiz.io/register"
+    }
+  ]
+}
