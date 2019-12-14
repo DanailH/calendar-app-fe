@@ -49,7 +49,7 @@ class DashboardBox extends Component {
               <div className="icon-container"><EventIcon/></div>
               <div>{this.props.remainingHolidays}
                 <div className="holiday-header">
-                  Left days
+                  Days left
                 </div>
               </div>
             </div>
