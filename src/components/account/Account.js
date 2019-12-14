@@ -55,8 +55,6 @@ class Account extends React.Component {
     if (this.props.user && this.props.user.firstName && this.props.user.lastName) {
       return `${this.props.user.firstName.charAt(0)}${this.props.user.lastName.charAt(0)}`;
     }
-
-    return 'JD';
   }
 
   render() {

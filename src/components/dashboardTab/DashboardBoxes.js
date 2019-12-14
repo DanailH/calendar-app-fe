@@ -36,11 +36,11 @@ class DashboardBoxes extends Component {
                 {this.props.remaining}
               </div>
               <div className="holiday-header">
-                Taken days*
+                Days taken*
               </div>
               <Divider />
               <div className="holiday-subheader">
-                *The number of taken vacation days
+                *The number of holidays taken
               </div>
             </div>
 
@@ -52,11 +52,11 @@ class DashboardBoxes extends Component {
                 {this.props.remainingHolidays}
               </div>
               <div className="holiday-header">
-                Left days*
+                Days left*
               </div>
               <Divider />
               <div className="holiday-subheader">
-                *The number of left holidays
+                *The number of holidays left
                 </div>
             </div>
           </div>
