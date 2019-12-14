@@ -44,7 +44,7 @@ class TakenVacationDates extends Component {
                   <DateRangeIcon />
                 </div>
                 <div key={i} className="sub-menu-header">
-                  Taken dates from {key}
+                  Days taken from {key}
                 </div>
               </div>
               {

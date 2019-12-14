@@ -21,8 +21,9 @@ class ShareCalendar extends Component {
   }
 
   handleEmailChange = (event) => {
-    const email = event.target.value;
     event.preventDefault();
+
+    const email = event.target.value;
     this.setState({
       sharedEmail: email,
       sharedEmailFailed: false,
@@ -32,23 +33,29 @@ class ShareCalendar extends Component {
   sendEmail = (e) => {
     e.preventDefault();
 
-    UserService.shareCalendar(this.state.sharedEmail)
-      .then(res => {
-        if (res.status === 404) {
-          this.setState({
-            sharedEmailFailed: true
-          })
-        } else {
-          this.setState({
-            sharedEmailSuccess: true,
-            sharedEmailFailed: false,
-            sharedEmail: '',
-          })
-        }
+    if (this.state.sharedEmail !== '') {
+      UserService.shareCalendar(this.state.sharedEmail)
+        .then(res => {
+          if (res.status !== 200) {
+            this.setState({
+              sharedEmailFailed: true
+            })
+          } else {
+            this.setState({
+              sharedEmailSuccess: true,
+              sharedEmailFailed: false,
+              sharedEmail: '',
+            })
+          }
+        })
+        .catch(err => {
+          this.setState({ sharedEmailFailed: true })
+        })
+    } else {
+      this.setState({
+        sharedEmailFailed: true
       })
-      .catch(err => {
-        this.setState({ sharedEmailFailed: true })
-      })
+    }
   }
 
   toggleShareMenu = (event) => {
@@ -88,7 +95,7 @@ class ShareCalendar extends Component {
         >
           <div className="send-box">
             <CloseIcon className="close-btn" onClick={this.handleClose}/>
-            {((!this.state.sharedEmailSuccess && !this.state.closePopover) || this.state.sharedEmail !== '') ? (
+            {!this.state.sharedEmailSuccess ? (
               <Fragment>
                 <form onSubmit={this.sendEmail}>
                   <div className="d-flex share-box">
@@ -112,7 +119,7 @@ class ShareCalendar extends Component {
                     </Button>
                   </div>
                 </form>
-                {(this.state.sharedEmailFailed && this.state.sharedEmail !== '') && (
+                {this.state.sharedEmailFailed && (
                   <div className="error-box">
                     <Divider />
                     <div className="d-flex msg-box">
